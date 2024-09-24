@@ -57,7 +57,7 @@ class Index extends IView{
             'object-fit' => 'cover',
             'z-index' => '-1'
         ]);
-        $this->video_background->setAttribute('src', 'Assets/Videos/MVI_1643.MP4');
+        $this->video_background->setAttribute('src', 'Assets\Videos\Portada1.mp4');
 
         // Título e imagen
         $this->div_title = new HTML('div', ['class' => 'image-container']);
@@ -190,13 +190,10 @@ class Index extends IView{
 
     public function compile()
     {
-        // Añadir el contenedor del video y la imagen
         $this->addBody($this->div_video_container);
 
-        // Añadir el video de fondo
         $this->div_video_container->addElement($this->video_background);
 
-        // Añadir la imagen dentro del contenedor de la imagen
         $this->addBody($this->div_title);
         $this->div_title->addElement($this->img_breaking);
 
