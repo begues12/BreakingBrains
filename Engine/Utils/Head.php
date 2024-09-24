@@ -14,13 +14,13 @@ class Head extends BasicHead
         parent::__construct();
         
         $Title = new HTML('title');
-        $Title->setText('Wellcome to Fountain!');
+        $Title->setText('BreakingBrains.es');
         $this->addElement($Title);
 
         $Icon = new HTML('link');
         $Icon->setAttribute('rel', 'icon');
         $Icon->setAttribute('type', 'image/x-icon');
-        $Icon->setAttribute('href', 'Images\Head\maximo-de-cinco.png');
+        $Icon->setAttribute('href', 'Assets\Images\BreakingBrains\breakingbrains_transparent.png');
         $this->addElement($Icon);
 
         $LinkBootstrap = new HTML('link');
