@@ -1,0 +1,61 @@
+<?php
+
+namespace Plugins\Wave\BasicWave;
+
+use Engine\Core\HTML;
+
+class BasicWave extends HTML
+{
+    private $waveDiv;
+    private $barCount;
+    private $barHeight;
+
+    public function __construct(int $barCount = 20, int $barHeight = 100, bool $visible = true)
+    {
+        parent::__construct('div');
+        $this->setAttribute('id', 'wave-container');
+        $this->setAttribute('class', 'wave');
+        $this->setStyle(['display' => $visible ? 'block' : 'none']);
+
+        // Configuración dinámica
+        $this->barCount = $barCount;
+        $this->barHeight = $barHeight;
+
+        // Agregar la referencia al archivo CSS y JS
+        $this->setCssFile('Plugins/Wave/BasicWave/Css/BasicWave.css');
+        $this->setJsFile('Plugins/Wave/BasicWave/Js/BasicWave.js');
+
+        $this->waveDiv = new HTML('div');
+        $this->waveDiv->setId('bar-container');
+        $this->waveDiv->setAttribute('class', 'bar-container');
+
+        // Llamar al método para añadir las barras
+        $this->addBars();
+
+        $this->compile();
+    }
+
+    private function compile()
+    {
+        // Agregamos el div de barras animadas (bar-container) al contenedor principal
+        $this->addElement($this->waveDiv);
+    }
+
+    private function addBars()
+    {
+        // Generamos las barras dinámicamente según la cantidad y altura que se haya definido
+        for ($i = 0; $i < $this->barCount; $i++) {
+            $bar = new HTML('div');
+            $bar->setAttribute('class', 'bar');
+            $bar->setStyle([
+                'height' => rand(10, $this->barHeight) . 'px',
+                'width' => (100 / $this->barCount) . '%',  // Distribuir el ancho de cada barra uniformemente
+            ]);
+
+            // Agregamos cada barra al contenedor principal
+            $this->waveDiv->addElement($bar);
+        }
+    }
+}
+
+?>

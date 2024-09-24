@@ -1,0 +1,43 @@
+{
+    "app": {
+        "name": "Fountain Framework",
+        "version": "1.0.0",
+        "author": "Alejandro Fuentes Pardo",
+        "email": "",
+        "url": "fountainframework.com",
+        "debug": true
+    },
+    "server": {
+        "hostname": "localhost",
+        "port": "8080"
+    },
+    "database": { 
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "port": "3306",
+        "database": "myapp"
+    },
+    "ftp": {
+        "username": "",
+        "password": "",
+        "hostname": "",
+        "port": "21",
+        "path": ""
+    },
+    "smtp": {
+        "username": "",
+        "password": "",
+        "hostname": "",
+        "port": "25",
+        "from": ""
+    },
+    "ipEditor": {
+        "whitelist": [
+            "127.0.0.1",
+            "::1",
+            "192.168.1.69"
+        ],
+        "blacklist": []
+    }
+}
