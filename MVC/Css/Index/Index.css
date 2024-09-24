@@ -1,8 +1,7 @@
 /* Imagen central con efecto de vinilo */
 .ligthing-icon {
-    position: relative;
-    width: 280px;  /* Ajusta el tamaño según sea necesario */
-    height: 280px;
+    width: 200px;  /* Ajusta el tamaño según sea necesario */
+    height: 200px;
     border-radius: 50%;  /* Hacer la imagen circular */
     overflow: hidden;
     border: 10px solid #4CAF50;  /* Un borde para simular el vinilo */
@@ -14,19 +13,6 @@
     margin-top: 1em;
 }
 
-/* Agujero en el centro de la imagen */
-.ligthing-icon::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;  /* Tamaño del agujero central */
-    height: 60px;
-    background-color: black;  /* Color del agujero */
-    border-radius: 50%;  /* Circular */
-    z-index: 1;  /* Colocarlo sobre la imagen */
-}
 
 /* Animación de rotación lenta */
 @keyframes rotateVinyl {
@@ -42,6 +28,25 @@
 .btn-futuristic:hover {
     transform: scale(1.2);    
     opacity: 1;
+}
+
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.image-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 

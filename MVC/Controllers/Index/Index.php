@@ -13,9 +13,16 @@ class Index extends IController
 
     public function prepare()
     {
-        //Read ViewCode and put into a variable   
-        $this->setVar('CtrlCode',str_replace("<?php", "&#60;?php", file_get_contents($this->getCtrlPath())));
-        $this->setVar('ViewCode',str_replace("<?php", "&#60;?php", file_get_contents($this->getViewPath())));
+        $this->setVar('galleryImages',
+        [
+            'Assets\Images\TeamPhoto\BielTheLake_SergiLopez 10.jpg',
+            'Assets\Images\TeamPhoto\SadiTheLake_SergiLopez 1.jpg',
+            'Assets\Images\TeamPhoto\FuentesTheLake_SergiLopez 2.jpg',
+            'Assets\Images\TeamPhoto\BielTheLake_SergiLopez 18 (1).jpg',
+            'Assets\Images\TeamPhoto\SadiTheLake_SergiLopez 9.jpg',
+            'Assets\Images\TeamPhoto\FuentesTheLake_SergiLopez 1.jpg',
+            'Assets\Images\TeamPhoto\BielTheLake_SergiLopez 18.jpg',
+        ]);
     }
 
     public function execute()

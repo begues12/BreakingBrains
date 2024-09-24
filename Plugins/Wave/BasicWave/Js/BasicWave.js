@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function randomizeBars() {
         bars.forEach(bar => {
-            const randomHeight = Math.floor(Math.random() * 100) + 10; // Genera una altura aleatoria entre 10 y 100px
+            const randomHeight = Math.floor(Math.random() * 30) + 10; // Genera una altura aleatoria entre 10 y 100px
             bar.style.height = randomHeight + 'px';
         });
     }

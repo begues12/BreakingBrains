@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ffffff;
-    overflow: hidden; /* Evita el scroll en la página */
     height: 100vh;
     position: relative;
 }
