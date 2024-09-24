@@ -1,21 +1,20 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
     height: 100vh;
-    position: relative;
 }
 
 #wave-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    position: fixed; /* Fija el contenedor de las barras en la parte inferior */
-    bottom: 0; /* Coloca el contenedor al fondo de la página */
-    left: 2px;
+    position: absolute;
+    top: 130px;
+    left: -1.2em;
     width: 100vw;
     height: 100px; /* La altura máxima de las barras */
     background-color: transparent; /* Puedes cambiarlo si quieres un fondo específico */
+    z-index: -1;
 }
 
 .bar-container {

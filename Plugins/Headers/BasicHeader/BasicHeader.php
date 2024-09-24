@@ -48,12 +48,11 @@ class BasicHeader extends \Engine\Core\HTML
         // Creación del logo (imagen) si es necesario
         $this->imgLogo = new HTML('img');
         $this->imgLogo->setAttribute('alt', 'Logo');
-        $this->imgLogo->setClasses(['navbar-brand', 'm-0', 'ligthing-icon-header']);
+        $this->imgLogo->setClasses(['navbar-brand', 'm-2', 'ligthing-icon-header']);
         $this->setLogo('Assets\Images\BreakingBrains\breakingbrains_transparent.png', 'Logo');
         $this->imgLogo->setStyle([
             'height' => '80px',
             'width' => '80px',
-            'margin-left' => '30px',
         ]);
 
         $this->aTitle = new HTML('a');

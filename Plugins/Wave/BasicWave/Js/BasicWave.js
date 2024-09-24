@@ -3,11 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function randomizeBars() {
         bars.forEach(bar => {
-            const randomHeight = Math.floor(Math.random() * 30) + 10; // Genera una altura aleatoria entre 10 y 100px
-            bar.style.height = randomHeight + 'px';
+            const scaleFactor = Math.random() * 2 + 1; // Genera un factor de escala aleatorio entre 0.5 y 2.5
+            bar.style.transformOrigin = 'center'; // Establece el origen en el centro
+            bar.style.transform = `scaleY(${scaleFactor})`; // Aplica el escalado en Y de forma simétrica
         });
     }
 
-    // Cambia la altura de las barras cada 300ms
+    // Cambia el tamaño de las barras cada 100ms
     setInterval(randomizeBars, 100);
 });

@@ -33,10 +33,10 @@ class Index extends IView{
         // Contenedor del video y la imagen
         $this->div_video_container = new HTML('div', ['class' => 'video-container']);
         $this->div_video_container->setStyle([
-            'position' => 'relative',
-            'width' => '100%',
-            'height' => '250px',
-            'overflow' => 'hidden',
+            'position'  => 'relative',
+            'width'     => '100%',
+            'height'    => '250px',
+            'overflow'  => 'hidden',
         ]);
 
         // Video de fondo
@@ -122,7 +122,7 @@ class Index extends IView{
         $this->div_side_images->setClasses(['d-flex', 'justify-content-between', 'align-items-center', 'w-100', 'mt-4']);
         
         // $this->createSideImage('Assets\Images\BreakingBrains\breakingbrains_transparent.png', $this->getVar('BBText'), 'left');
-        
+
         // $this->createSideImage('Assets\Images\BreakingBrains\3Djs.jpg', $this->getVar('BBText2'), 'right');
 
         // Galería de fotos

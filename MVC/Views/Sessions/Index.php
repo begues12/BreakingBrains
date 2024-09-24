@@ -72,20 +72,37 @@ class Index extends IView
 
         // Título de la sesión (Artista - Título)
         $session_title = new HTML('span', ['class' => 'session-title']);
-        $session_title->setText($session['artist'] . ' - ' . $session['title']);
+        $session_title->setText($session['title']);
         $session_title->setStyle([
             'color' => '#21d4fd',
+        ]);
+
+        // Contenedor para la barra de progreso y el texto de tiempo
+        $progress_container = new HTML('div', ['class' => 'progress-container']);
+        $progress_container->setStyle([
+            'display' => 'flex',
+            'align-items' => 'center',
+            'margin-top' => '10px',
         ]);
 
         // Barra de progreso del audio
         $audio_progress = new HTML('input', ['type' => 'range', 'class' => 'audio-progress']);
         $audio_progress->setStyle([
-            'width' => '100%',
-            'margin-top' => '10px',
+            'flex-grow' => '1',
+            'margin-right' => '10px',
         ]);
         $audio_progress->setAttribute('value', '0');
         $audio_progress->setAttribute('max', '100');
         $audio_progress->setAttribute('step', '1');
+
+        // Contenedor de tiempo (mm:ss/mm:ss)
+        $time_display = new HTML('span', ['class' => 'time-display']);
+        $time_display->setText('00:00/00:00');
+        $time_display->setStyle([
+            'color' => '#21d4fd',
+            'font-size' => '14px',
+            'white-space' => 'nowrap',
+        ]);
 
         // Reproductor de audio
         $audio_player = new HTML('audio', ['class' => 'audio-player']);
@@ -105,9 +122,13 @@ class Index extends IView
         $play_button->setAttribute('data-audio-src', $session['audio']);
         $play_button->setText('▶'); // Icono de Play
 
+        // Añadir los elementos a los contenedores
+        $progress_container->addElement($audio_progress);
+        $progress_container->addElement($time_display);
+
         // Añadir los elementos al contenedor de texto
         $text_container->addElement($session_title);
-        $text_container->addElement($audio_progress);
+        $text_container->addElement($progress_container);
 
         // Añadir los elementos al div de la sesión
         $div_session->addElement($img);          // Imagen del artista
