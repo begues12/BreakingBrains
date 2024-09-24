@@ -8,7 +8,6 @@ use Engine\Core\HTML;
 class Head extends BasicHead
 {
 
-
     public function __construct()
     {
         parent::__construct();

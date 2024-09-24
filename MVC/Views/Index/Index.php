@@ -39,7 +39,7 @@ class Index extends IView{
             'ligthing-icon'
         ]);
         $this->img_breaking->setAttributes([
-            'src' => 'Assets/Images/BreakingBrains/breakingbrains_transparent.png',
+            'src' => 'Assets/Images/BreakingBrains/BreakingBrainsVinil.png',
             'alt' => 'Breaking Brains',
             'width' => '250px',
             'height' => '250px'

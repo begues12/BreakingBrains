@@ -31,4 +31,22 @@ body {
     margin: 0 2px;
     display: inline-block;
     transition: height 0.2s ease-in-out; /* Transición suave para los cambios de altura */
+    animation: changeBarColor 5s linear infinite; /* Animación de cambio de color */
+}
+
+
+
+@keyframes changeBarColor{
+    0%{
+        background-color: #f76800;
+    }
+    33%{
+        background-color: #86fd03;
+    }
+    66%{
+        background-color: #018ff1;
+    }
+    100%{
+        background-color: #f76800;
+    }
 }

@@ -1,11 +1,49 @@
-/* On button futuristis on hover oversize */
+/* Imagen central con efecto de vinilo */
+.ligthing-icon {
+    position: relative;
+    width: 280px;  /* Ajusta el tamaño según sea necesario */
+    height: 280px;
+    border-radius: 50%;  /* Hacer la imagen circular */
+    overflow: hidden;
+    border: 10px solid #4CAF50;  /* Un borde para simular el vinilo */
+    animation: rotateVinyl 15s linear infinite, glow 2s linear infinite, changeBorderColor 5s linear infinite;  /* Animaciones */
+    box-shadow: 0px 0px 10px 5px white;
+    border-radius: 50%;
+    margin-top: 1em;
+}
+
+/* Agujero en el centro de la imagen */
+.ligthing-icon::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;  /* Tamaño del agujero central */
+    height: 60px;
+    background-color: black;  /* Color del agujero */
+    border-radius: 50%;  /* Circular */
+    z-index: 1;  /* Colocarlo sobre la imagen */
+}
+
+/* Animación de rotación lenta */
+@keyframes rotateVinyl {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Botón futurista */
 .btn-futuristic{
     background-color: #4CAF50;
     border: none;
     color: white;
     padding: 16px 40px;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     margin: 4px 16px;
     opacity: 0.6;
     transition: 0.3s;
@@ -13,8 +51,8 @@
     text-decoration: none;
     cursor: pointer;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     box-shadow: 0 5px 0 white;
 }
 
@@ -23,35 +61,28 @@
     opacity: 1;
 }
 
-.ligthing-icon{
-    box-shadow:0px 0px 10px 5px white;
-    border-radius:50%;
-    animation: glow 1s infinite;
-    margin-top: 3em;
+
+/* Genera una animación para el brillo */
+@keyframes glow {
+    from {
+        box-shadow: 0px 0px 10px 5px white;
+    }
+    to {
+        box-shadow: 0px 0px 20px 10px white;
+    }
 }
 
-
-
-/* Generate a animation changing the shadow size like a glow */
-@keyframes glow {
-    /* Crea una transicion suave para el efecto de brillo */
-    0% {
-        box-shadow: 0px 0px 0px 5px white;
+@keyframes changeBorderColor{
+    0%{
+        border-color: #f76800;
     }
-    20% {
-        box-shadow: 0px 0px 10px 5px white;
+    33%{
+        border-color: #86fd03;
     }
-    40% {
-        box-shadow: 0px 0px 20px 5px white;
+    66%{
+        border-color: #018ff1;
     }
-    60% {
-        box-shadow: 0px 0px 10px 5px white;
+    100%{
+        border-color: #f76800;
     }
-    80% {
-        box-shadow: 0px 0px 0px 5px white;
-    }
-    100% {
-        box-shadow: 0px 0px 0px 5px white;
-    }
-
 }
