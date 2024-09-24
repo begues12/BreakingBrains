@@ -1,0 +1,11 @@
+{
+    "name"          : "Basic confirm",
+    "author"        : "Alejandro Fuentes",
+    "version"       : "1.0.0",
+    "type"          : "action",
+    "description"   : "Show confirm messages in the screen",
+    "category"      : "Alerts",
+    "icon"          : "icon.png",
+    "dependencies"  : ["jquery"],
+    "installfile"   : "install.php"
+}

@@ -1,0 +1,10 @@
+/* Estilos para el footer */
+.basic-footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 10px; /* Espaciado interno del footer */
+    text-align: center; /* Alineación del texto en el centro */
+    background-color: white;
+  }
+  

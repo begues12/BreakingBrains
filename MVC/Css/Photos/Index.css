@@ -1,0 +1,17 @@
+.container {
+    max-width: 1200px;
+}
+
+.img-fluid {
+    object-fit: cover;  /* Asegura que la imagen siempre ocupe todo el espacio del contenedor */
+}
+
+.g-4 > .col-lg-3 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.g-4 > .col-lg-3:hover {
+    transform: scale(1.05);  /* Efecto hover para ampliar ligeramente la tarjeta */
+}
+
+/* On click grow image size */
