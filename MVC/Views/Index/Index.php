@@ -61,14 +61,7 @@ class Index extends IView{
 
         // Título e imagen
         $this->div_title = new HTML('div', ['class' => 'image-container']);
-        $this->div_title->setStyle([
-            'position' => 'absolute',
-            'top' => '0',
-            'left' => '50%',
-            'transform' => 'translate(-50%, 175px)',
-            'border-radius' => '50%',
-            'z-index' => '1',  
-        ]);
+        $this->div_title->setClasses(['d-flex', 'flex-column', 'align-items-center', 'justify-content-center', 'w-100']);
 
         $this->img_breaking = new HTML('img');
         $this->img_breaking->setClasses(['ligthing-icon']);
@@ -81,7 +74,7 @@ class Index extends IView{
         $this->div_buttons = new HTML('div');
         $this->div_buttons->setClasses(['container', 'd-flex', 'align-items-between', 'justify-content-center', 'w-50']);
         $this->div_buttons->setStyle([
-            'margin-top' => '90px'
+            'margin-top' => '30px'
         ]);
 
         $button_classes = ['btn', 'btn-futuristic', 'mt-3', 'mx-2'];
@@ -128,9 +121,9 @@ class Index extends IView{
         $this->div_side_images = new HTML('div', ['class' => 'side-images-container']);
         $this->div_side_images->setClasses(['d-flex', 'justify-content-between', 'align-items-center', 'w-100', 'mt-4']);
         
-        $this->createSideImage('Assets\Images\BreakingBrains\breakingbrains_transparent.png', $this->getVar('BBText'), 'left');
+        // $this->createSideImage('Assets\Images\BreakingBrains\breakingbrains_transparent.png', $this->getVar('BBText'), 'left');
         
-        $this->createSideImage('Assets\Images\BreakingBrains\3Djs.jpg', $this->getVar('BBText2'), 'right');
+        // $this->createSideImage('Assets\Images\BreakingBrains\3Djs.jpg', $this->getVar('BBText2'), 'right');
 
         // Galería de fotos
         $this->div_gallery = new HTML('div', ['class' => 'gallery-container']);
@@ -199,7 +192,7 @@ class Index extends IView{
 
     public function compile()
     {
-        $this->addBody($this->div_video_container);
+        // $this->addBody($this->div_video_container);
 
         $this->div_video_container->addElement($this->video_background);
 

@@ -107,7 +107,7 @@ class BasicHeader extends \Engine\Core\HTML
         $this->addElement($this->nav);
 
         // Añadir la imagen del logo antes del título
-        // $this->nav->addElement($this->imgLogo);  // La imagen del logo irá primero
+        $this->nav->addElement($this->imgLogo);  // La imagen del logo irá primero
         $this->nav->addElement($this->aTitle);   // Luego el título
 
         $this->nav->addElement($this->buttonCollapse);

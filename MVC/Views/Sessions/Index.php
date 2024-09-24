@@ -47,51 +47,73 @@ class Index extends IView
 
     private function createSessionItem(array $session)
     {
-        // Cada sesión es un div con su título, botón de reproducción, visualizador y reproductor de audio
+        // Cada sesión es un div con su título, imagen, visualizador y reproductor de audio
         $div_session = new HTML('div', ['class' => 'session-item']);
-        $div_session->setStyle([
-            'padding' => '10px',
-            'width' => '80%',
-            'margin' => '10px 0',
+
+        // Imagen del artista con clase futurista
+        $img = new HTML('img', ['src' => $session['image'], 'alt' => $session['title']]);
+        $img->setClasses(['rotateVinyl']);
+        $img->setStyle([
+            'width' => '70px',
+            'height' => '70px',
+            'border-radius' => '50%',
+            'border' => '2px solid #21d4fd',
+            'object-fit' => 'cover',
+            'margin-right' => '15px',
+        ]);
+
+        // Contenedor para el texto (Artista - Título)
+        $text_container = new HTML('div', ['class' => 'text-container']);
+        $text_container->setStyle([
+            'flex-grow' => '1',
             'display' => 'flex',
             'flex-direction' => 'column',
-            'align-items' => 'center',
-            'background-color' => '#333',
-            'color' => '#fff',
-            'border-radius' => '8px',
         ]);
 
-        // Título de la sesión
-        $session_title = new HTML('span');
-        $session_title->setText($session['title']);
+        // Título de la sesión (Artista - Título)
+        $session_title = new HTML('span', ['class' => 'session-title']);
+        $session_title->setText($session['artist'] . ' - ' . $session['title']);
+        $session_title->setStyle([
+            'color' => '#21d4fd',
+        ]);
 
-        // Botón para reproducir la sesión
-        $play_button = new HTML('button');
-        $play_button->setClasses(['btn', 'btn-light', 'playPauseBtn']);
-        $play_button->setAttribute('data-audio-src', $session['audio']);
-        $play_button->setAttribute('data-title', $session['title']);
-        $play_button->setText('Reproducir');
-
-        // Visualizador de audio
-        $audio_visualizer = new HTML('canvas', ['class' => 'audioVisualizer']);
-        $audio_visualizer->setStyle([
+        // Barra de progreso del audio
+        $audio_progress = new HTML('input', ['type' => 'range', 'class' => 'audio-progress']);
+        $audio_progress->setStyle([
             'width' => '100%',
-            'height' => '200px',
-            'background-color' => '#222',
-            'border-radius' => '10px',
-            'margin-bottom' => '20px',
+            'margin-top' => '10px',
         ]);
+        $audio_progress->setAttribute('value', '0');
+        $audio_progress->setAttribute('max', '100');
+        $audio_progress->setAttribute('step', '1');
 
         // Reproductor de audio
         $audio_player = new HTML('audio', ['class' => 'audio-player']);
-        $audio_player->setAttribute('controls', true);
+        $audio_player->setAttribute('src', $session['audio']);
         $audio_player->setStyle(['display' => 'none']); // Oculto, se controla mediante el botón
 
-        // Añadir los elementos a la sesión
-        $div_session->addElement($session_title);
-        $div_session->addElement($play_button);
-        $div_session->addElement($audio_visualizer);
-        $div_session->addElement($audio_player);
+        // Botón de Play/Pausa
+        $play_button = new HTML('button', ['class' => 'playPauseBtn']);
+        $play_button->setStyle([
+            'background-color' => 'transparent',
+            'border' => 'none',
+            'cursor' => 'pointer',
+            'font-size' => '24px',
+            'margin-right' => '10px',
+            'color' => '#21d4fd',
+        ]);
+        $play_button->setAttribute('data-audio-src', $session['audio']);
+        $play_button->setText('▶'); // Icono de Play
+
+        // Añadir los elementos al contenedor de texto
+        $text_container->addElement($session_title);
+        $text_container->addElement($audio_progress);
+
+        // Añadir los elementos al div de la sesión
+        $div_session->addElement($img);          // Imagen del artista
+        $div_session->addElement($play_button);  // Botón de Play/Pausa
+        $div_session->addElement($text_container); // Contenedor del título y barra de progreso
+        $div_session->addElement($audio_player); // Reproductor de audio
 
         // Añadir cada sesión a la lista de sesiones
         $this->div_sessions_list->addElement($div_session);
