@@ -19,7 +19,7 @@ class Header extends BasicHeader{
         $this->addHeaderLink('Sessions', '?Ctrl=Sessions', iconClass: 'fas fa-music');
         $this->addHeaderLink('Photos', '?Ctrl=Photos', iconClass: 'fas fa-camera');
         // $this->addHeaderLink('About Us', '?Ctrl=AboutUs', iconClass: 'fas fa-microphone');
-        $this->addHeaderLink('Contact Us', '?Ctrl=ContactUs', iconClass: 'fas fa-headset');
+        $this->addHeaderLink('Contact Us', '?Ctrl=Contact', iconClass: 'fas fa-headset');
 
         if(in_array($_SERVER['REMOTE_ADDR'], $config->get('ipEditor')['whitelist']))
         {
