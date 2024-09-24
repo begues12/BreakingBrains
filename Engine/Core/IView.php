@@ -40,7 +40,7 @@ abstract class IView extends HTML
         $this->body->setClass('bg-dark text-light');
 
         $this->main->setId('main-content');
-        $this->main->setClass('');
+        $this->main->setClass('pb-5');
     }
 
     public function setVars($vars)
