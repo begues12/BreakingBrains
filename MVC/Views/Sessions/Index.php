@@ -8,9 +8,7 @@ use Engine\Core\HTML;
 class Index extends IView
 {
     private $sessions;
-    private $div_player;
     private $div_sessions_list;
-    private $div_visualizer;
 
     public function prepare()
     {
@@ -20,24 +18,6 @@ class Index extends IView
 
     public function createObjects()
     {
-        // Contenedor del reproductor
-        $this->div_player = new HTML('div', ['class' => 'audio-player-container']);
-        $this->div_player->setStyle([
-            'width' => '100%',
-            'max-width' => '600px',
-            'margin' => '50px auto'
-        ]);
-
-        // Contenedor del canvas para visualización de ondas
-        $this->div_visualizer = new HTML('canvas', ['id' => 'audioVisualizer']);
-        $this->div_visualizer->setStyle([
-            'width' => '100%',
-            'height' => '200px',
-            'background-color' => '#222',
-            'border-radius' => '10px',
-            'margin-bottom' => '20px'
-        ]);
-
         // Contenedor para la lista de sesiones
         $this->div_sessions_list = new HTML('div', ['class' => 'sessions-list']);
         $this->div_sessions_list->setStyle([
@@ -54,9 +34,7 @@ class Index extends IView
 
     public function compile()
     {
-        // Agregar el canvas para visualización de ondas y el reproductor de audio
-        $this->addBody($this->div_visualizer);
-        $this->addBody($this->div_player);
+        // Agregar la lista de sesiones a la vista
         $this->addBody($this->div_sessions_list);
     }
 
@@ -69,14 +47,14 @@ class Index extends IView
 
     private function createSessionItem(array $session)
     {
-        // Cada sesión es un div con su título y un botón de reproducir
+        // Cada sesión es un div con su título, botón de reproducción, visualizador y reproductor de audio
         $div_session = new HTML('div', ['class' => 'session-item']);
         $div_session->setStyle([
             'padding' => '10px',
             'width' => '80%',
             'margin' => '10px 0',
             'display' => 'flex',
-            'justify-content' => 'space-between',
+            'flex-direction' => 'column',
             'align-items' => 'center',
             'background-color' => '#333',
             'color' => '#fff',
@@ -89,16 +67,34 @@ class Index extends IView
 
         // Botón para reproducir la sesión
         $play_button = new HTML('button');
-        $play_button->setClasses(['btn', 'btn-light']);
-        $play_button->setAttribute('onclick', "playSession('" . $session['audio'] . "', '" . $session['title'] . "')");
+        $play_button->setClasses(['btn', 'btn-light', 'playPauseBtn']);
+        $play_button->setAttribute('data-audio-src', $session['audio']);
+        $play_button->setAttribute('data-title', $session['title']);
         $play_button->setText('Reproducir');
 
+        // Visualizador de audio
+        $audio_visualizer = new HTML('canvas', ['class' => 'audioVisualizer']);
+        $audio_visualizer->setStyle([
+            'width' => '100%',
+            'height' => '200px',
+            'background-color' => '#222',
+            'border-radius' => '10px',
+            'margin-bottom' => '20px',
+        ]);
+
+        // Reproductor de audio
+        $audio_player = new HTML('audio', ['class' => 'audio-player']);
+        $audio_player->setAttribute('controls', true);
+        $audio_player->setStyle(['display' => 'none']); // Oculto, se controla mediante el botón
+
+        // Añadir los elementos a la sesión
         $div_session->addElement($session_title);
         $div_session->addElement($play_button);
+        $div_session->addElement($audio_visualizer);
+        $div_session->addElement($audio_player);
 
         // Añadir cada sesión a la lista de sesiones
         $this->div_sessions_list->addElement($div_session);
     }
 }
-
 ?>

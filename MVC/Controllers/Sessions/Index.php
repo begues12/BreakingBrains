@@ -2,7 +2,6 @@
 namespace MVC\Controllers\Sessions;
 
 use Engine\Core\IController;
-use getID3;
 
 class Index extends IController
 {
@@ -18,14 +17,23 @@ class Index extends IController
 
     public function prepare()
     {
-        // Obtener todas las sesiones de audio del directorio
-        $this->setVar('sessions', $this->getSessionsWithMetadata());
+        // Obtener todas las sesiones de audio del directorio con sus "metadatos" simples
+        $this->setVar('sessions', $this->getSessions());
     }
 
-    // Método para obtener archivos de audio y sus metadatos
-    public function getSessionsWithMetadata()
+    public function execute()
     {
-        $getID3 = new getID3();  // Instancia de getID3
+        // Opcional: lógica de ejecución
+    }
+
+    public function finish()
+    {
+        // Opcional: lógica de finalización
+    }
+
+    // Método para obtener archivos de audio
+    public function getSessions()
+    {
         $sessions = [];
 
         // Escanear el directorio de sesiones
@@ -34,48 +42,23 @@ class Index extends IController
                 continue;
             }
 
-            $filePath = $this->session_dir . '/' . $file;
-            $fileInfo = $getID3->analyze($filePath);  // Obtener metadatos del archivo
-
-            // Solo procesar archivos de audio
-            if (isset($fileInfo['playtime_string'])) {
+            // Solo procesar archivos de audio (puedes agregar más validaciones si necesitas)
+            $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+            if (in_array(strtolower($fileExtension), ['mp3', 'wav', 'flac'])) {
+                $filePath = $this->session_dir . '/' . $file;
+                
+                // Crear sesión con información básica
                 $sessions[] = [
-                    'title' => $fileInfo['tags']['id3v2']['title'][0] ?? pathinfo($file, PATHINFO_FILENAME),
-                    'artist' => $fileInfo['tags']['id3v2']['artist'][0] ?? 'Desconocido',
-                    'image' => $this->getCoverArt($fileInfo),
-                    'audio' => $filePath,
-                    'duration' => $fileInfo['playtime_string']
+                    'title' => pathinfo($file, PATHINFO_FILENAME),  // El nombre del archivo sin extensión como título
+                    'artist' => 'Artista Desconocido',              // Artista predeterminado
+                    'image' => 'Assets\Images\BreakingBrains\BreakingBrainsVinil.png',   // Imagen predeterminada
+                    'audio' => $filePath,                           // Ruta del archivo de audio
+                    'duration' => 'Desconocido'                     // No podemos obtener la duración sin getID3
                 ];
             }
         }
 
         return $sessions;
     }
-
-    // Obtener la imagen de portada si está presente
-    private function getCoverArt($fileInfo)
-    {
-        if (isset($fileInfo['id3v2']['APIC'][0]['data'])) {
-            $imageData = $fileInfo['id3v2']['APIC'][0]['data'];
-            $imageType = $fileInfo['id3v2']['APIC'][0]['image_mime'];
-            return 'data:' . $imageType . ';base64,' . base64_encode($imageData);
-        }
-        return 'Assets/Images/default-cover.jpg';  // Imagen por defecto
-    }
-
-    public function render()
-    {
-        $this->renderView('Sessions/Index');
-    }
-
-    public function getTitle()
-    {
-        return 'Sesiones';
-    }
-
-    public function execute()
-    {
-        $this->prepare();
-        $this->render();
-    }
 }
+
