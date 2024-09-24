@@ -114,7 +114,7 @@ class Index extends IView{
         );
 
         $this->linkIcon_instagram = new LinkIcon(
-            'fa-square-instagram',
+            'fa-user',
             '2x',
             'white',
             'https://www.instagram.com/breakingbrainsdj/',
@@ -128,8 +128,9 @@ class Index extends IView{
         $this->div_side_images = new HTML('div', ['class' => 'side-images-container']);
         $this->div_side_images->setClasses(['d-flex', 'justify-content-between', 'align-items-center', 'w-100', 'mt-4']);
         
-        // $this->createSideImage('Assets/Images/side1.jpg', 'Texto a la izquierda', 'left');
-        // $this->createSideImage('Assets/Images/side2.jpg', 'Texto a la derecha', 'right');
+        $this->createSideImage('Assets\Images\BreakingBrains\breakingbrains_transparent.png', $this->getVar('BBText'), 'left');
+        
+        $this->createSideImage('Assets\Images\BreakingBrains\3Djs.jpg', $this->getVar('BBText2'), 'right');
 
         // Galería de fotos
         $this->div_gallery = new HTML('div', ['class' => 'gallery-container']);
@@ -141,32 +142,40 @@ class Index extends IView{
     private function createSideImage($src, $text, $position)
     {
         $div_side_image = new HTML('div', ['class' => 'side-image']);
-        $div_side_image->setClasses(['d-flex', 'flex-column', 'align-items-center']);
+        $div_side_image->setClasses(['d-flex', 'flex-column', 'align-items-center', 'p-3']);
+
+        // Crear la imagen
         $img = new HTML('img', ['src' => $src, 'alt' => $text]);
         $img->setStyle([
-            'width' => '150px',
-            'height' => '150px',
+            'width' => '200px',
+            'height' => '200px',
             'border-radius' => '50%',
             'object-fit' => 'cover',
-            'margin-bottom' => '100px'
+            'margin-bottom' => '10px'
         ]);
 
+        // Crear el texto
         $div_text = new HTML('div');
         $div_text->setText($text);
         $div_text->setStyle([
-            'margin-top' => '10px',
+            'margin-left' => '20px', // Espacio entre la imagen y el texto
             'font-size' => '16px',
-            'color' => '#333',
+            'color' => 'white'
         ]);
 
-        $div_side_image->addElement($img);
-        $div_side_image->addElement($div_text);
-
+        // Reordenar según la posición ('left' o 'right')
         if ($position === 'left') {
-            $this->div_side_images->addElement($div_side_image);
+            // Si la imagen debe estar a la izquierda
+            $div_side_image->addElement($img);
+            $div_side_image->addElement($div_text);
         } else {
-            $this->div_side_images->addElement($div_side_image);
+            // Si la imagen debe estar a la derecha
+            $div_side_image->addElement($div_text);
+            $div_side_image->addElement($img);
         }
+
+        // Agregar el div al contenedor principal
+        $this->div_side_images->addElement($div_side_image);
     }
 
     // Crear galería de fotos
