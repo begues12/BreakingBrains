@@ -17,6 +17,7 @@ class Index extends IView{
     private $linkIcon_showPhots;
     private $linkIcon_aboutUs;
     private $linkIcon_contactUs;
+    private $linkIcon_instagram;
     private $waveEffect;
 
     public function prepare()
@@ -48,7 +49,10 @@ class Index extends IView{
         $this->div_buttons = new HTML('div');
         $this->div_buttons->setClasses([
             'container',
-            'text-center'
+            'd-flex',
+            'align-items-between',
+            'justify-content-center',
+            'w-50'
         ]);
         $this->div_buttons->setStyle([
             'margin-top' => '20px'
@@ -58,7 +62,7 @@ class Index extends IView{
         ]);
         
 
-        $button_classes = ['btn', 'btn-futuristic', 'mx-5', 'mt-3'];
+        $button_classes = ['btn', 'btn-futuristic', 'mt-3', 'mx-2'];
 
         $this->linkIcon_showMusic = new LinkIcon(
             'fa-compact-disc', 
@@ -94,8 +98,15 @@ class Index extends IView{
             '?Ctrl=ContactUs',
             'Contact Us', 
             $button_classes);
-
-
+        
+        $this->linkIcon_instagram = new LinkIcon(
+            'fa-square-instagram', 
+            '2x', 
+            'white', 
+            'https://www.instagram.com/breakingbrainsdj/',
+            'Instagram', 
+            $button_classes
+        );
         $this->waveEffect = new BasicWave(30, 100);
 
 
@@ -109,7 +120,9 @@ class Index extends IView{
         $this->div_buttons->addElement($this->linkIcon_showMusic);
         $this->div_buttons->addElement($this->linkIcon_showPhots);
         // $this->div_buttons->addElement($this->linkIcon_aboutUs);
+        $this->div_buttons->addElement($this->linkIcon_instagram);
         $this->div_buttons->addElement($this->linkIcon_contactUs);
+
 
         $this->addBody($this->waveEffect);
     }

@@ -40,7 +40,7 @@ class LinkIcon extends HTML
         $this->classes = $classes;
 
         $this->iIcon->setClasses([
-            'fa',
+            'fas',
             $this->icon,
             'fa-' . $this->size,
             'text-' . $this->color,
@@ -57,9 +57,7 @@ class LinkIcon extends HTML
 
         $this->setClasses($this->classes);
 
-        $this->addElement($this->iIcon);
-        $this->addElement($this->button);
-        
+        $this->addElement($this->iIcon);        
         
         $this->setJsFile('Plugins\Icons\FontAwesome\Js\StartIcon.js');
     }
