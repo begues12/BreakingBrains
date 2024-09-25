@@ -65,9 +65,13 @@ class Index extends IController
     }
 
     // Simular el envío de un correo
-    private function sendEmail($data)
+    public function sendEmail()
     {
-        $to = "contact@example.com";  // El correo al que se enviará
+        
+
+        $data = $_POST;
+
+        $to = "beeguespark@gmail.com";  // El correo al que se enviará
         $subject = "Nuevo mensaje de contacto: " . $data['subject'];
         $message = "Nombre: " . $data['name'] . "\n" .
                    "Correo electrónico: " . $data['email'] . "\n\n" .
@@ -75,7 +79,7 @@ class Index extends IController
         $headers = "From: " . $data['email'];
 
         // Simulamos el envío de un correo
-        // mail($to, $subject, $message, $headers);
+        mail($to, $subject, $message, $headers);
 
         // Para fines de desarrollo, simplemente puedes guardar en logs o simular el proceso.
         error_log("Mensaje de contacto enviado: \n" . $message);

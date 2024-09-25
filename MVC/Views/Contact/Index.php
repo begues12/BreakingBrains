@@ -6,122 +6,107 @@ use Engine\Core\IView;
 use Engine\Utils\Header;
 use Engine\Core\HTML;
 
-class Index extends IView{
-
-    private $div_contact_form;
+class Index extends IView
+{
+    private $div_contact;
 
     public function prepare()
     {
-        // Configurar el encabezado
         $this->setHeader(new Header());
     }
 
     public function createObjects()
     {
-        // Contenedor principal del formulario de contacto
-        $this->div_contact_form = new HTML('div', ['class' => 'container']);
-        $this->div_contact_form->setClasses(['row', 'justify-content-center', 'g-4', 'w-100']);
-        $this->div_contact_form->setStyle([
-            'margin-top' => '50px',
-            'margin-bottom' => '50px',
-            'margin-left' => 'auto',
-            'margin-right' => 'auto'
-        ]);
+        // Contenedor principal con row de Bootstrap
+        $this->div_contact = new HTML('div', ['class' => 'container']);
+        $row = new HTML('div', ['class' => 'row']);
+        
+        // Información de contacto a la izquierda
+        $div_info = $this->createContactInfo();
+        $div_info->setClasses(['col-md-6', 'col-12']);
 
-        $this->createContactForm();
+        // Formulario de contacto a la derecha
+        $div_form = $this->createContactForm();
+        $div_form->setClasses(['col-md-6', 'col-12']);
+
+        $row->addElement($div_info);
+        $row->addElement($div_form);
+        $this->div_contact->addElement($row);
     }
 
     public function compile()
     {
-        // Agregar el formulario de contacto al cuerpo
-        $this->addBody($this->div_contact_form);
+        $this->addBody($this->div_contact);
+    }
+
+    private function createContactInfo()
+    {
+        $div_info = new HTML('div', ['class' => 'contact-info']);
+
+        $h2 = new HTML('h2');
+        $h2->setClasses(['text-left']);
+        $h2->setText('Contacto');
+
+        $p1 = new HTML('p');
+        $p1->setText('<strong>Teléfono:</strong> +34 615 765 329');
+
+        $p2 = new HTML('p');
+        $p2->setText('<strong>Email:</strong> info@breakingbrains.es');
+
+        $p3 = new HTML('p');
+        $p3->setText('<strong>Dirección:</strong> Calle Jacint Verdager 102');
+
+        $div_info->addElement($h2);
+        $div_info->addElement($p1);
+        $div_info->addElement($p2);
+        $div_info->addElement($p3);
+
+        return $div_info;
     }
 
     private function createContactForm()
     {
-        // Crear el formulario
-        $form = new HTML('form');
+        $form = new HTML('form', ['id' => 'contactForm', 'class' => 'contact-form']);
         $form->setAttribute('method', 'post');
-        $form->setAttribute('action', '/contact/submit');  // La ruta de acción del formulario
-        $form->setClasses(['contact-form', 'w-100']);
+        $form->setAttribute('action', '?Ctrl=ContactUs&Action=Send');
+        $form->addElement($this->createInput('Nombre', 'name', 'text', 'Tu nombre'));
+        $form->addElement($this->createInput('Correo Electrónico', 'email', 'email', 'Tu correo electrónico'));
+        $form->addElement($this->createInput('Asunto', 'subject', 'text', 'Asunto del mensaje'));
+        $form->addElement($this->createTextArea('Mensaje', 'message', 'Escribe tu mensaje aquí...'));
+        $form->addElement(new HTML('button', ['type' => 'submit', 'class' => 'btn btn-primary'], 'Enviar'));
+        return $form;
+    }
 
-        // Campo de nombre
-        $div_name = new HTML('div', ['class' => 'mb-3']);
-        $label_name = new HTML('label', ['for' => 'name']);
-        $label_name->setText('Nombre');
-        $input_name = new HTML('input', [
-            'type' => 'text',
+    private function createInput($labelText, $name, $type, $placeholder)
+    {
+        $div = new HTML('div', ['class' => 'mb-3']);
+        $label = new HTML('label', ['for' => $name], $labelText);
+        $input = new HTML('input', [
+            'type' => $type,
             'class' => 'form-control',
-            'id' => 'name',
-            'name' => 'name',
-            'placeholder' => 'Tu nombre'
+            'id' => $name,
+            'name' => $name,
+            'placeholder' => $placeholder
         ]);
+        $div->addElement($label);
+        $div->addElement($input);
+        return $div;
+    }
 
-        $div_name->addElement($label_name);
-        $div_name->addElement($input_name);
-        $form->addElement($div_name);
-
-        // Campo de correo electrónico
-        $div_email = new HTML('div', ['class' => 'mb-3']);
-        $label_email = new HTML('label', ['for' => 'email']);
-        $label_email->setText('Correo Electrónico');
-        $input_email = new HTML('input', [
-            'type' => 'email',
+    private function createTextArea($labelText, $name, $placeholder)
+    {
+        $div = new HTML('div', ['class' => 'mb-3']);
+        $label = new HTML('label', ['for' => $name], $labelText);
+        $textarea = new HTML('textarea', [
             'class' => 'form-control',
-            'id' => 'email',
-            'name' => 'email',
-            'placeholder' => 'Tu correo electrónico'
-        ]);
-
-        $div_email->addElement($label_email);
-        $div_email->addElement($input_email);
-        $form->addElement($div_email);
-
-        // Campo de asunto
-        $div_subject = new HTML('div', ['class' => 'mb-3']);
-        $label_subject = new HTML('label', ['for' => 'subject']);
-        $label_subject->setText('Asunto');
-        $input_subject = new HTML('input', [
-            'type' => 'text',
-            'class' => 'form-control',
-            'id' => 'subject',
-            'name' => 'subject',
-            'placeholder' => 'Asunto del mensaje'
-        ]);
-
-        $div_subject->addElement($label_subject);
-        $div_subject->addElement($input_subject);
-        $form->addElement($div_subject);
-
-        // Campo de mensaje
-        $div_message = new HTML('div', ['class' => 'mb-3']);
-        $label_message = new HTML('label', ['for' => 'message']);
-        $label_message->setText('Mensaje');
-        $textarea_message = new HTML('textarea', [
-            'class' => 'form-control',
-            'id' => 'message',
-            'name' => 'message',
+            'id' => $name,
+            'name' => $name,
             'rows' => '5',
-            'placeholder' => 'Escribe tu mensaje aquí...'
+            'placeholder' => $placeholder
         ]);
-
-        $div_message->addElement($label_message);
-        $div_message->addElement($textarea_message);
-        $form->addElement($div_message);
-
-        // Botón de enviar
-        $div_submit = new HTML('div', ['class' => 'mb-3']);
-        $button_submit = new HTML('button', [
-            'type' => 'submit',
-            'class' => 'btn btn-primary'
-        ]);
-        $button_submit->setText('Enviar');
-
-        $div_submit->addElement($button_submit);
-        $form->addElement($div_submit);
-
-        // Agregar el formulario completo al contenedor principal
-        $this->div_contact_form->addElement($form);
+        $div->addElement($label);
+        $div->addElement($textarea);
+        return $div;
     }
 }
 

@@ -1,24 +1,31 @@
 /* Estilos generales */
 .sessions-list {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px 0;
 }
 
 .session-item {
-    background: linear-gradient(135deg, #0d0d0d 0%, #1f1f1f 100%);
+    background: transparent;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 80%;
+    cursor: pointer;
 }
 
 .session-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
 }
 
-/* Imagen estilo futurista */
+/* Estilo de la imagen del artista */
 .session-item img {
     border: 2px solid #21d4fd;
     border-radius: 50%;
@@ -32,27 +39,23 @@
     animation: rotateVinyl 5s linear infinite;
 }
 
-/* Animación de rotación para vinilo */
+/* Animación de rotación para la imagen */
 @keyframes rotateVinyl {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* Texto de la sesión */
+/* Estilos del título de la sesión */
 .session-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 12px;
+    font-size: 16px; /* Incrementado para mejorar la legibilidad */
     color: #21d4fd;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-/* Barra de progreso futurista */
+/* Estilos para la barra de progreso */
 .audio-progress {
     -webkit-appearance: none;
     appearance: none;
@@ -61,7 +64,6 @@
     background: #555;
     border-radius: 4px;
     outline: none;
-    transition: background 0.3s ease;
 }
 
 .audio-progress::-webkit-slider-thumb {
@@ -72,7 +74,6 @@
     background: #21d4fd;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s ease;
 }
 
 .audio-progress::-webkit-slider-thumb:hover {
@@ -80,21 +81,19 @@
 }
 
 .audio-progress::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
     background: #21d4fd;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s ease;
 }
 
+/* Botón de reproducción/pausa */
 .playPauseBtn {
     font-size: 24px;
     background-color: transparent;
     border: none;
     color: #21d4fd;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .playPauseBtn:hover {
@@ -103,4 +102,22 @@
 
 .playPauseBtn:active {
     transform: scale(0.9);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .session-item {
+        flex-direction: column;
+        width: 90%; /* Más ancho para dispositivos más pequeños */
+        align-items: center;
+    }
+
+    .session-item img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .text-container {
+        align-items: center;
+    }
 }
