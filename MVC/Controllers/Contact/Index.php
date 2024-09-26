@@ -3,15 +3,20 @@ namespace MVC\Controllers\Contact;
 
 use Engine\Core\IController;
 use Plugins\EmailSender\EmailSender;
+use Engine\Config;
 use Exception;
 
 class Index extends IController
 {
     private $data;
+    private $config;
 
     function __construct()
     {
         parent::__construct();
+        $config = new Config();
+        $this->config = $config->get('contact');
+        $this->setVars($this->config);
     }
 
     public function prepare()
@@ -43,16 +48,12 @@ class Index extends IController
             'message' => $_POST['message'] ?? ''
         ];
 
-        // Validar los datos (básica)
         if ($this->validate()) {
-            // Aquí podrías enviar un correo o almacenar la información en una base de datos
             $this->sendEmail($this->data);
             
-            // Redirigir o mostrar un mensaje de éxito
             header('Location: /contact/success');
             exit;
         } else {
-            // Mostrar errores o volver a mostrar el formulario con mensajes de error
             $this->setVar('error', 'Por favor, completa todos los campos correctamente.');
         }
     }
@@ -72,16 +73,26 @@ class Index extends IController
         try{
             $data = $_POST;
 
-            $to = "beeguespark@gmail.com";  // El correo al que se enviará
-            $subject = "Nuevo mensaje de contacto: " . $data['subject'];
-            $message = "Nombre: " . $data['name'] . "\n" .
-                    "Correo electrónico: " . $data['email'] . "\n\n" .
-                    "Mensaje:\n" . $data['message'];
-            $headers = "From: " . $data['email'];
+            
+            $to = $data['email'];
+            $subject = $data['subject'];
+
+            $data = [
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'subject' => $data['subject'],
+                'contact_email' => $this->config['email'],
+                'message' => $data['message']
+            ];
+
 
             $emailSender = new EmailSender();
+            $message = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/send_info_template.html", $data);
             $emailSender->sendEmail($to, $subject, $message);
-            
+    
+            $body = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/admin_notification_template.html", $data);
+
+            $emailSender->sendEmail($this->config['email'], $subject, $body);
 
             // Para fines de desarrollo, simplemente puedes guardar en logs o simular el proceso.
             error_log("Mensaje de contacto enviado: \n" . $message);
@@ -90,4 +101,5 @@ class Index extends IController
             error_log("Error al enviar el mensaje de contacto: " . $e->getMessage());
         }
     }
+    
 }

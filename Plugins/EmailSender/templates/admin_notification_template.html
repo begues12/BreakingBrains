@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Consulta Recibida - Breaking Brains</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ffffff;
+        color: #333333;
+        padding: 20px;
+        font-size: 16px;
+    }
+    h1 {
+        color: #21d4fd;
+    }
+    p {
+        margin: 10px 0;
+        line-height: 1.5;
+    }
+    .info {
+        background-color: #f2f2f2;
+        padding: 10px;
+        margin-top: 10px;
+        border-left: 3px solid #21d4fd;
+    }
+    .footer {
+        font-size: 14px;
+        color: #666666;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <h1>Nueva Consulta Recibida</h1>
+    <p>Se ha recibido una nueva consulta a través del formulario de contacto. Aquí están los detalles:</p>
+    <div class="info">
+        <p><strong>Nombre:</strong> {{name}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Asunto:</strong> {{subject}}</p>
+        <p><strong>Mensaje:</strong> {{message}}</p>
+    </div>
+    <p class="footer">Por favor, sigue con el procedimiento estándar para responder lo antes posible.</p>
+</body>
+</html>

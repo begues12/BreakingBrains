@@ -32,6 +32,12 @@
         "port": "587",
         "from": "info@breakingbrains.es"
     },
+    "contact": {
+        "email": "info@breakingbrains.es",
+        "phone": "+34 615765329",
+        "address": "Calle Jacinto Verdaguer 120, 08205 Sabadell, Barcelona",
+        "instagram": "https://www.instagram.com/breakingbrainsdj/"
+    },
     "ipEditor": {
         "whitelist": [
             "127.0.0.1",
