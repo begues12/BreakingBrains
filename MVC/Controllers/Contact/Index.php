@@ -3,6 +3,7 @@ namespace MVC\Controllers\Contact;
 
 use Engine\Core\IController;
 use Plugins\EmailSender\EmailSender;
+use Exception;
 
 class Index extends IController
 {
@@ -68,22 +69,25 @@ class Index extends IController
     // Simular el envío de un correo
     public function sendEmail()
     {
-        
+        try{
+            $data = $_POST;
 
-        $data = $_POST;
+            $to = "beeguespark@gmail.com";  // El correo al que se enviará
+            $subject = "Nuevo mensaje de contacto: " . $data['subject'];
+            $message = "Nombre: " . $data['name'] . "\n" .
+                    "Correo electrónico: " . $data['email'] . "\n\n" .
+                    "Mensaje:\n" . $data['message'];
+            $headers = "From: " . $data['email'];
 
-        $to = "beeguespark@gmail.com";  // El correo al que se enviará
-        $subject = "Nuevo mensaje de contacto: " . $data['subject'];
-        $message = "Nombre: " . $data['name'] . "\n" .
-                   "Correo electrónico: " . $data['email'] . "\n\n" .
-                   "Mensaje:\n" . $data['message'];
-        $headers = "From: " . $data['email'];
+            $emailSender = new EmailSender();
+            $emailSender->sendEmail($to, $subject, $message);
+            
 
-        $emailSender = new EmailSender();
-        $emailSender->sendEmail($to, $subject, $message);
-        
-
-        // Para fines de desarrollo, simplemente puedes guardar en logs o simular el proceso.
-        error_log("Mensaje de contacto enviado: \n" . $message);
+            // Para fines de desarrollo, simplemente puedes guardar en logs o simular el proceso.
+            error_log("Mensaje de contacto enviado: \n" . $message);
+    
+        } catch (Exception $e) {
+            error_log("Error al enviar el mensaje de contacto: " . $e->getMessage());
+        }
     }
 }
