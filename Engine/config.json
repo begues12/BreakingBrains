@@ -26,11 +26,11 @@
         "path": ""
     },
     "smtp": {
-        "username": "",
-        "password": "",
-        "hostname": "",
-        "port": "25",
-        "from": ""
+        "username": "info@breakingbrains.es",
+        "password": "937331g2ae!",
+        "hostname": "smtp.ionos.es",
+        "port": "587",
+        "from": "info@breakingbrains.es"
     },
     "ipEditor": {
         "whitelist": [

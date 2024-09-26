@@ -2,6 +2,7 @@
 namespace MVC\Controllers\Contact;
 
 use Engine\Core\IController;
+use Plugins\EmailSender\EmailSender;
 
 class Index extends IController
 {
@@ -78,8 +79,9 @@ class Index extends IController
                    "Mensaje:\n" . $data['message'];
         $headers = "From: " . $data['email'];
 
-        // Simulamos el envío de un correo
-        mail($to, $subject, $message, $headers);
+        $emailSender = new EmailSender();
+        $emailSender->sendEmail($to, $subject, $message);
+        
 
         // Para fines de desarrollo, simplemente puedes guardar en logs o simular el proceso.
         error_log("Mensaje de contacto enviado: \n" . $message);
