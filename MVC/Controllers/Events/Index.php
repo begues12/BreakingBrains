@@ -17,7 +17,34 @@ class Index extends IController
     public function prepare()
     {
         // Get all photos from Assets\Images\TeamPhoto
-        $this->setVar('photos', $this->getPhotos());
+        $events = [
+            [
+                'src' => 'Assets\Images\Events\AmericanLake.jpeg',
+                'name' => 'Summer Fest',
+                'date' => '2024-09-30',
+                'description' => 'The ultimate summer music festival. Join us for unforgettable nights filled with music and dance.'
+            ],
+            [
+                'src' => 'Assets\Images\Events\AmericanLake.jpeg',
+                'name' => 'Winter Ball',
+                'date' => '2024-12-15',
+                'description' => 'An exclusive winter gala event featuring top DJs and winter-themed decorations.'
+            ],
+            [
+                'src' => 'Assets\Images\Events\AmericanLake.jpeg',
+                'name' => 'Spring Break Bash',
+                'date' => '2024-04-05',
+                'description' => 'Celebrate spring break with us with amazing performances and special guests.'
+            ],
+            [
+                'src' => 'Assets\Images\Events\AmericanLake.jpeg',
+                'name' => 'Fall Fest',
+                'date' => '2024-11-26',
+                'description' => 'Join us for a fun-filled day of music, food, and games at our annual fall festival.'
+            ]
+            // Agregar más eventos según sea necesario
+        ];
+        $this->setVar('events',$events);
 
     }
 

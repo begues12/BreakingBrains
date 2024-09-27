@@ -1,44 +1,59 @@
-/* Estilos generales para la galería de DJs */
+/* Estilos generales para la página */
 .container {
     max-width: 1200px;
     margin: 50px auto; /* Centra el contenedor y añade espacio arriba y abajo */
     padding: 15px;
+    background-color: #212529; /* Fondo oscuro característico de Breaking Brains */
     color: #ffffff; /* Texto en blanco para contraste */
     border-radius: 8px; /* Bordes redondeados para el contenedor */
 }
 
-
-/* Estilos para cada tarjeta de DJ en la galería */
-.col-lg-3, .col-md-4, .col-sm-6 {
+/* Tarjetas de eventos */
+.card-event {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente para más profundidad */
+    margin-bottom: 30px; /* Espacio entre tarjetas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para hover */
+    background: linear-gradient(to bottom, #333333 50%, #212529 100%); /* Gradiente sutil */
+    padding: 0;
 }
 
-.card-dj:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+.card-event:hover {
+    transform: translateY(-5px); /* Levanta la tarjeta al hacer hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Sombra más intensa en hover */
 }
 
-/* Imágenes dentro de las tarjetas */
+/* Imágenes de eventos */
 .img-fluid {
+    margin: 0;
     width: 100%;
     height: auto;
-    border-radius: 8px; /* Esquinas redondeadas en las imágenes */
+    border-top-left-radius: 8px; /* Redondea solo las esquinas superiores */
+    border-top-right-radius: 8px;
 }
 
-/* Estilos para los nombres de los DJs */
+/* Títulos de eventos */
 h5 {
-    color: #21d4fd; /* Color distintivo para los nombres */
+    font-size: 1.5em;
+    color: #21d4fd; /* Color distintivo para los títulos */
     text-align: center;
-    margin-top: 15px; /* Espacio entre la imagen y el nombre */
+    padding: 10px 0; /* Espacio antes y después del título */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejorar legibilidad */
 }
 
-/* Descripción del DJ */
+/* Descripción de eventos */
 p {
-    color: #cccccc; /* Texto más claro para la descripción */
+    color: #cccccc; /* Gris claro para la descripción */
     text-align: center;
-    font-size: 14px;
-    padding: 0 10px; /* Padding horizontal para alinear texto */
+    font-size: 1em;
+    padding: 10px 20px; /* Padding para alinear texto */
+    margin-bottom: 0; /* Elimina margen inferior para ajustar al final de la tarjeta */
+}
+
+/* Finalizado - estilo para eventos pasados */
+.finalizado {
+    color: #ff6347; /* Rojo tomate para eventos finalizados */
+    font-weight: bold;
 }

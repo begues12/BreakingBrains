@@ -8,19 +8,14 @@ use Engine\Core\HTML;
 
 class Index extends IView
 {
-    private $photos;
+    private $events;
     private $div_gallery;
 
     public function prepare()
     {
         $this->setHeader(new Header());
-        // Aquí deberías cargar los datos de los DJs de una base de datos o configuración
-        $this->photos = [
-            ['src' => 'Assets\Images\TeamPhoto\SadiTheLake_SergiLopez 1.jpg', 'name' => 'OMEGA', 'description' => 'Specializing in house and electronic beats.'],
-            ['src' => 'Assets\Images\TeamPhoto\SadiTheLake_SergiLopez 1.jpg', 'name' => 'SADI', 'description' => 'Specializing in house and electronic beats.'],
-            ['src' => 'Assets\Images\TeamPhoto\SadiTheLake_SergiLopez 1.jpg', 'name' => 'NTK', 'description' => 'Bringing the best of hip hop and top 40.'],
-            // Agrega más DJs aquí...
-        ];
+        // Supongamos que estos datos se obtienen de alguna lógica del backend:
+        $this->events = $this->getVar('events');
     }
 
     public function createObjects()
@@ -35,7 +30,7 @@ class Index extends IView
             'margin-right' => 'auto'
         ]);
 
-        $this->createPhotoGallery();
+        $this->createEventGallery();
     }
 
     public function compile()
@@ -43,37 +38,35 @@ class Index extends IView
         $this->addBody($this->div_gallery);
     }
 
-    private function createPhotoGallery()
+    private function createEventGallery()
     {
-        foreach ($this->photos as $photo) {
-            $this->createPhotoCard($photo);
+        $today = date('Y-m-d'); // Fecha actual para comparar con la fecha del evento
+        foreach ($this->events as $event) {
+            $isPast = (strtotime($event['date']) < strtotime($today)) ? true : false;
+            $this->createEventCard($event, $isPast);
         }
     }
 
-    private function createPhotoCard($dj)
+    private function createEventCard($event, $isPast)
     {
-        $div_card = new HTML('div', ['class' => 'col-lg-3 col-md-4 col-sm-6 my-3 card-dj']);
+        $div_card = new HTML('div', ['class' => 'col-lg-3 col-md-6 col-sm-12 m-3 p-0 card-event']);
 
-        // Imagen
+        // Imagen del evento
         $img = new HTML('img', [
-            'src' => $dj['src'],
+            'src' => $event['src'],
             'class' => 'img-fluid',
-            'alt' => 'Photo of ' . $dj['name']
-        ]);
-        $img->setStyle([
-            'width' => '100%',
-            'height' => 'auto',
-            'border-radius' => '8px'
+            'alt' => 'Photo of event ' . $event['name']
         ]);
 
-        // Nombre del DJ
+        // Nombre del evento
         $h5 = new HTML('h5');
-        $h5->setText($dj['name']);
+        $h5->setText($event['name'] . ($isPast ? " - Finalizado" : ""));
         $h5->setStyle(['color' => '#fff', 'text-align' => 'center', 'margin-top' => '15px']);
+        $h5->setClass( $isPast ? 'bg-danger' : 'bg-primary' );
 
-        // Descripción del DJ
+        // Descripción del evento
         $p = new HTML('p');
-        $p->setText($dj['description']);
+        $p->setText($event['description']);
         $p->setStyle(['color' => '#ccc', 'text-align' => 'center', 'font-size' => '14px']);
 
         $div_card->addElement($img);
@@ -83,5 +76,3 @@ class Index extends IView
         $this->div_gallery->addElement($div_card);
     }
 }
-
-?>
