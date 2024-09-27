@@ -114,7 +114,7 @@ class Index extends IView{
             '2x',
             'white',
             '?Ctrl=Events',
-            'Our Djs',
+            'Events',
             $button_classes
         );
 
