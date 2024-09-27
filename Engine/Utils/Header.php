@@ -17,7 +17,7 @@ class Header extends BasicHeader{
         
         $this->addHeaderLink('🏠 Home', '?', true, iconClass: 'fas fa-home');
         $this->addHeaderLink('📀 Sessions', '?Ctrl=Sessions', iconClass: 'fas fa-music');
-        $this->addHeaderLink('📷 Photos', '?Ctrl=Photos', iconClass: 'fas fa-camera');
+        $this->addHeaderLink('📷 Gallery', '?Ctrl=Gallery', iconClass: 'fas fa-camera');
         $this->addHeaderLink('📅 Events', '?Ctrl=Events', iconClass: 'fas fa-calendar-alt');
         $this->addHeaderLink('​🎛️​ Our Djs', '?Ctrl=OurDjs', iconClass: 'fas fa-user');
         $this->addHeaderLink('🎧​ Contact Us', '?Ctrl=Contact', iconClass: 'fas fa-headset');

@@ -1,5 +1,5 @@
 <?php
-namespace MVC\Controllers\Photos;
+namespace MVC\Controllers\Gallery;
 
 use Engine\Core\IController;
 

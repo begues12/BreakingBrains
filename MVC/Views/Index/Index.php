@@ -95,8 +95,8 @@ class Index extends IView{
             'fa-camera-retro',
             '2x',
             'white',
-            '?Ctrl=Photos',
-            'Photos',
+            '?Ctrl=Gallery',
+            'Gallery',
             $button_classes
         );
 

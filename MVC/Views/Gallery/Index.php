@@ -1,6 +1,6 @@
 <?php
 
-namespace MVC\Views\Photos;
+namespace MVC\Views\Gallery;
 
 use Engine\Core\IView;
 use Engine\Utils\Header;
