@@ -122,7 +122,7 @@ class Index extends IView{
             'fa-headset',
             '2x',
             'white',
-            '?Ctrl=ContactUs',
+            '?Ctrl=Contact',
             'Contact Us',
             $button_classes
         );
