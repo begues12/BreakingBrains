@@ -18,6 +18,7 @@ class Index extends IView{
     private $linkIcon_showMusic;
     private $linkIcon_showPhots;
     private $linkIcon_ourDjs;
+    private $linkIcon_events;
     private $linkIcon_contactUs;
     private $linkIcon_instagram;
     private $waveEffect;
@@ -104,6 +105,15 @@ class Index extends IView{
             '2x',
             'white',
             '?Ctrl=OurDjs',
+            'Our Djs',
+            $button_classes
+        );
+
+        $this->linkIcon_events  = new LinkIcon(
+            'fa-ticket',
+            '2x',
+            'white',
+            '?Ctrl=Events',
             'Our Djs',
             $button_classes
         );
@@ -215,6 +225,7 @@ class Index extends IView{
         $this->div_buttons->addElement($this->linkIcon_showMusic);
         $this->div_buttons->addElement($this->linkIcon_showPhots);
         $this->div_buttons->addElement($this->linkIcon_ourDjs);
+        $this->div_buttons->addElement($this->linkIcon_events);
         $this->div_buttons->addElement($this->linkIcon_instagram);
         $this->div_buttons->addElement($this->linkIcon_contactUs);
 
