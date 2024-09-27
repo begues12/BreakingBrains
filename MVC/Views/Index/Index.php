@@ -73,12 +73,13 @@ class Index extends IView{
 
         // Botones
         $this->div_buttons = new HTML('div');
-        $this->div_buttons->setClasses(['container', 'd-flex', 'align-items-between', 'justify-content-center', 'w-50']);
+        # Si los botones ocupan toda la pantlla saltar a la siguiente línea
+        $this->div_buttons->setClasses(['container', 'd-flex', 'flex-wrap', 'justify-content-center']);
         $this->div_buttons->setStyle([
             'margin-top' => '30px'
         ]);
 
-        $button_classes = ['btn', 'btn-futuristic', 'mt-3', 'mx-2'];
+        $button_classes = ['btn', 'btn-futuristic', 'mt-3', 'mx-2', 'd-flex', 'align-items-center', 'justify-content-center'];
 
         $this->linkIcon_showMusic = new LinkIcon(
             'fa-compact-disc',
