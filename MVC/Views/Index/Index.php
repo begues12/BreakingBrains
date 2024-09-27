@@ -110,7 +110,7 @@ class Index extends IView{
         );
 
         $this->linkIcon_events  = new LinkIcon(
-            'fa-calendar-days',
+            'fa-calendar',
             '2x',
             'white',
             '?Ctrl=Events',
