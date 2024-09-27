@@ -17,6 +17,7 @@ class Index extends IView{
     private $div_buttons;
     private $linkIcon_showMusic;
     private $linkIcon_showPhots;
+    private $linkIcon_ourDjs;
     private $linkIcon_contactUs;
     private $linkIcon_instagram;
     private $waveEffect;
@@ -97,6 +98,15 @@ class Index extends IView{
             $button_classes
         );
 
+        $this->linkIcon_ourDjs = new LinkIcon(
+            'fa-user',
+            '2x',
+            'white',
+            '?Ctrl=OurDjs',
+            'Our Djs',
+            $button_classes
+        );
+
         $this->linkIcon_contactUs = new LinkIcon(
             'fa-headset',
             '2x',
@@ -107,7 +117,7 @@ class Index extends IView{
         );
 
         $this->linkIcon_instagram = new LinkIcon(
-            'fa-user',
+            'fa-instagram',
             '2x',
             'white',
             'https://www.instagram.com/breakingbrainsdj/',
@@ -203,6 +213,7 @@ class Index extends IView{
         $this->addBody($this->div_buttons);
         $this->div_buttons->addElement($this->linkIcon_showMusic);
         $this->div_buttons->addElement($this->linkIcon_showPhots);
+        $this->div_buttons->addElement($this->linkIcon_ourDjs);
         $this->div_buttons->addElement($this->linkIcon_instagram);
         $this->div_buttons->addElement($this->linkIcon_contactUs);
 

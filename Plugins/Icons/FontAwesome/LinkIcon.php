@@ -48,6 +48,7 @@ class LinkIcon extends HTML
         // Establecer el icono
         $this->iIcon->setClasses([
             'fas',
+            'fa-brands',
             $this->icon,
             'fa-' . $this->size,
             'text-' . $this->color,

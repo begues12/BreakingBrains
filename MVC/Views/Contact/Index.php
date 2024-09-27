@@ -41,6 +41,7 @@ class Index extends IView
 
     private function createContactInfo()
     {
+
         $div_info = new HTML('div', ['class' => 'contact-info']);
 
         $h2 = new HTML('h2');
@@ -48,13 +49,13 @@ class Index extends IView
         $h2->setText('Contacto');
 
         $p1 = new HTML('p');
-        $p1->setText('<strong>Teléfono:</strong> +34 615 765 329');
+        $p1->setText('<strong>Teléfono:</strong> '. $this->getVar('phone'));
 
         $p2 = new HTML('p');
-        $p2->setText('<strong>Email:</strong> info@breakingbrains.es');
+        $p2->setText('<strong>Email:</strong> '. $this->getVar('email'));
 
         $p3 = new HTML('p');
-        $p3->setText('<strong>Dirección:</strong> Calle Jacint Verdager 102');
+        $p3->setText('<strong>Dirección:</strong> '. $this->getVar('address'));
 
         $div_info->addElement($h2);
         $div_info->addElement($p1);
@@ -73,7 +74,13 @@ class Index extends IView
         $form->addElement($this->createInput('Correo Electrónico', 'email', 'email', 'Tu correo electrónico'));
         $form->addElement($this->createInput('Asunto', 'subject', 'text', 'Asunto del mensaje'));
         $form->addElement($this->createTextArea('Mensaje', 'message', 'Escribe tu mensaje aquí...'));
-        $form->addElement(new HTML('button', ['type' => 'submit', 'class' => 'btn btn-primary'], 'Enviar'));
+        
+        $submit = new HTML('button');
+        $submit->setClasses(['btn', 'btn-primary']);
+        $submit->setAttribute('type', 'submit');
+        $submit->setText('Enviar');
+        $form->addElement($submit);
+
         return $form;
     }
 

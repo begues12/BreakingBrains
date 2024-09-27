@@ -78,11 +78,11 @@ class Index extends IController
             $subject = $data['subject'];
 
             $data = [
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'subject' => $data['subject'],
+                'name'          => $data['name'],
+                'email'         => $data['email'],
+                'subject'       => $data['subject'],
                 'contact_email' => $this->config['email'],
-                'message' => $data['message']
+                'message'       => $data['message']
             ];
 
 
