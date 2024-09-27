@@ -10,12 +10,11 @@ class BasicWave extends HTML
     private $barCount;
     private $barHeight;
 
-    public function __construct(int $barCount = 20, int $barHeight = 100, bool $visible = true)
+    public function __construct(int $barCount = 20, int $barHeight = 100)
     {
         parent::__construct('div');
         $this->setAttribute('id', 'wave-container');
-        $this->setAttribute('class', 'wave');
-        $this->setStyle(['display' => $visible ? 'block' : 'none']);
+        $this->setAttribute('class', 'wave w-100');
 
         // Configuración dinámica
         $this->barCount = $barCount;
