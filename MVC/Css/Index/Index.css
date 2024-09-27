@@ -3,7 +3,7 @@
     width: 200px;  /* Ajusta el tamaño según sea necesario */
     height: 200px;
     border-radius: 50%;  /* Hacer la imagen circular */
-    overflow: hidden;
+    overflow-x: hidden;
     border: 10px solid #4CAF50;  /* Un borde para simular el vinilo */
     animation: rotateVinyl 15s linear infinite, 
     glow 2s linear infinite, 
