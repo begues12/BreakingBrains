@@ -24,10 +24,10 @@ class Index extends IView
         $this->div_gallery = new HTML('div', ['class' => 'container']);
         $this->div_gallery->setClasses(['row', 'justify-content-center', 'g-4', 'w-100']);
         $this->div_gallery->setStyle([
-            'margin-top' => '50px',
+            'margin-top'    => '50px',
             'margin-bottom' => '50px',
-            'margin-left' => 'auto',
-            'margin-right' => 'auto'
+            'margin-left'   => 'auto',
+            'margin-right'  => 'auto'
         ]);
 
         $this->createEventGallery();

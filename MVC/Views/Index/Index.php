@@ -161,7 +161,7 @@ class Index extends IView{
         $this->addBody($this->imageText2());
 
         // Añadir la galería de fotos
-        $this->addBody($this->div_gallery);
+        // $this->addBody($this->div_gallery);
     }
 
     public function imageText1(): HTML
@@ -279,7 +279,7 @@ class Index extends IView{
     
         // Crear el título
         $h2_title = new HTML('h2');
-        $h2_title->setText("¿Qué es Breaking Brains?");
+        $h2_title->setText("¿Que hacemos?");
         $h2_title->setStyle([
             'font-size'     => '24px',
             'color'         => 'white',
@@ -289,7 +289,7 @@ class Index extends IView{
     
         // Crear el párrafo
         $p_text = new HTML('p');
-        $p_text->setText("Breaking Brains es un grupo de DJs que se dedican a la música electrónica. Nos encargamos de hacer que tu evento sea inolvidable.");
+        $p_text->setText("Nos encargamos de hacer que tu evento sea inolvidable. Con nuestra música electrónica y nuestros DJs profesionales, tu evento será único.");
         $p_text->setStyle([
             'font-size'     => '16px',
             'color'         => 'white',

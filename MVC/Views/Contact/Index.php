@@ -18,7 +18,7 @@ class Index extends IView
     public function createObjects()
     {
         // Contenedor principal con row de Bootstrap
-        $this->div_contact = new HTML('div', ['class' => 'container']);
+        $this->div_contact = new HTML('div', ['class' => 'container mt-5']);
         $row = new HTML('div', ['class' => 'row']);
         
         // Información de contacto a la izquierda
