@@ -36,13 +36,12 @@ class BasicHeader extends \Engine\Core\HTML
         ]);
 
         $this->nav = new HTML('nav');
-        $this->nav->setStyle(['width' => '100%', 'z-index' => '1000']);
+        $this->nav->setStyle(['width' => '100%', 'z-index' => '1000', 'background-color' => '#000000']);
         $this->nav->setClasses([
             'navbar',
             'navbar-expand-md',
             'navbar-light',
-            'text-light',
-            'bg-dark',
+            'text-light'
         ]);
 
         // Creación del logo (imagen) si es necesario
