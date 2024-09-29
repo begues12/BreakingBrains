@@ -13,11 +13,13 @@ class BasicFooter extends HTML
         $this->setClasses([
             'container-fluid',
             'mt-2',
-            'border-top',
             'w-100',
             'text-center',
-            'p-1'
         ]);
+        $this->setStyle([
+            'background-color' => '#000000',
+        ]);
+
         $this->setCssFile('Plugins/Footers/BasicFooter/Css/BasicFooter.css');
         $this->setJsFile('Plugins/Footers/BasicFooter/Js/BasicFooter.js');
     }

@@ -122,6 +122,11 @@ abstract class IView extends HTML
 
         $this->body->addElement($this->main);
 
+        $this->addElement($this->footer);
+        
+        if (!isset($this->config->get('cookiesConsent')['enabled']) || !$this->config->get('cookiesConsent')['enabled']) {
+            $this->body->addElement(new \Plugins\Alerts\Cookies\CookiesConsent(true));
+        } #TODO: Add a way to disable this plugin
 
         if (in_array($_SERVER['REMOTE_ADDR'], $this->config->get('ipEditor')['whitelist'])) {
             // $this->body->addElement($this->editorButton);
