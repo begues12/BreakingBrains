@@ -1,33 +1,29 @@
-let currentSlideIndex = 0;
-const photos = JSON.parse(document.getElementById('photo-data').textContent);
+let isExpanded = false;
+let currentExpandedImage = null;
 
-function openModal(index) {
-    currentSlideIndex = index;
-    showSlide(currentSlideIndex);
-    document.getElementById('imageModal').style.display = 'block';
+function toggleExpandImage(imageElement) {
+    if (!isExpanded) {
+        imageElement.classList.add('expanded');
+        currentExpandedImage = imageElement;
+        isExpanded = true;
+    } else {
+        imageElement.classList.remove('expanded');
+        currentExpandedImage = null;
+        isExpanded = false;
+    }
 }
 
-function closeModal() {
-    document.getElementById('imageModal').style.display = 'none';
-}
-
-function changeSlide(step) {
-    currentSlideIndex += step;
-    if (currentSlideIndex >= photos.length) currentSlideIndex = 0;
-    if (currentSlideIndex < 0) currentSlideIndex = photos.length - 1;
-    showSlide(currentSlideIndex);
-}
-
-function showSlide(index) {
-    const carouselSlides = document.getElementById('carouselSlides');
-    carouselSlides.innerHTML = `
-        <img src="Assets/Images/TeamPhoto/${photos[index]}" class="modal-image" alt="Photo">
-    `;
-}
+document.querySelectorAll('.image-gallery').forEach(function(image) {
+    image.addEventListener('click', function() {
+        if (currentExpandedImage && currentExpandedImage !== image) {
+            toggleExpandImage(currentExpandedImage);
+        }
+        toggleExpandImage(image);
+    });
+});
 
 window.onclick = function(event) {
-    const modal = document.getElementById('imageModal');
-    if (event.target == modal) {
-        closeModal();
+    if (isExpanded && event.target !== currentExpandedImage) {
+        toggleExpandImage(currentExpandedImage);
     }
 }

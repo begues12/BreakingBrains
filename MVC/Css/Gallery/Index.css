@@ -1,17 +1,41 @@
+/* Contenedor principal de la galería */
 .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Número de columnas automático según el espacio disponible */
+    gap: 20px; /* Espacio entre las imágenes */
+    justify-items: center; /* Centrar las imágenes en sus celdas */
     max-width: 1200px;
+    margin: 50px auto;
 }
 
-.img-fluid {
-    object-fit: cover;  /* Asegura que la imagen siempre ocupe todo el espacio del contenedor */
+/* Imágenes en la galería */
+.image-gallery {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que las imágenes llenen el espacio sin deformarse */
+    border-radius: 8px;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.g-4 > .col-lg-3 {
-    transition: transform 0.3s ease-in-out;
+/* Efecto hover para ampliar ligeramente */
+.image-gallery:hover {
+    transform: scale(1.05);
 }
 
-.g-4 > .col-lg-3:hover {
-    transform: scale(1.05);  /* Efecto hover para ampliar ligeramente la tarjeta */
+/* Imágenes expandidas al hacer clic */
+.image-gallery.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    z-index: 9999;
+    object-fit: contain; /* Las imágenes expandidas mantienen su proporción sin recortarse */
+    cursor: zoom-out;
+    transition: transform 1s ease-in-out;
 }
-
-/* On click grow image size */

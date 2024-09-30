@@ -22,7 +22,7 @@ class Footer extends BasicFooter
     public function createObjects()
     {
         // Contenedor principal del footer (más compacto, menos padding)
-        $this->divContent = new HTML('div', ['class' => 'container-fluid']);
+        $this->divContent = new HTML('div', ['class' => 'container-fluid mt-3']);
         $this->divContent->setClasses(['d-flex', 'flex-column', 'align-items-center', 'justify-content-center', 'py-2']);
 
         // Título o marca del footer
