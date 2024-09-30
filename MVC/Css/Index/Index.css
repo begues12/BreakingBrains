@@ -74,15 +74,3 @@
         border-color: #f76800;
     }
 }
-
-@keyframes bounceEffect {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);  /* Escala el elemento ligeramente */
-    }
-    100% {
-        transform: scale(1);
-    }
-}
