@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: flex-end;
     position: absolute;
-    top: 130px;
+    top: 150px;
     width: 100vw;
     height: 100px; /* La altura máxima de las barras */
     background-color: transparent; /* Puedes cambiarlo si quieres un fondo específico */
