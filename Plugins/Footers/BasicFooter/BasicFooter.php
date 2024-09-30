@@ -21,7 +21,7 @@ class BasicFooter extends HTML
         ]);
 
         $this->setCssFile('Plugins/Footers/BasicFooter/Css/BasicFooter.css');
-        $this->setJsFile('Plugins/Footers/BasicFooter/Js/BasicFooter.js');
+        #$this->setJsFile('Plugins/Footers/BasicFooter/Js/BasicFooter.js');
     }
 
     public function render()
