@@ -188,7 +188,7 @@ class Index extends IView{
             'alt' => 'Breaking Brains'
         ]);
         $img->setStyle([
-            'width'         => '80%',          // La imagen ocupará como máximo el 80% de su contenedor
+            'width'         => '100%',          // La imagen ocupará como máximo el 80% de su contenedor
             'height'        => 'auto',        // Mantener la relación de aspecto
             'border-radius' => '10px',  // Imagen circular
             'object-fit'    => 'cover',
@@ -263,7 +263,7 @@ class Index extends IView{
             'alt' => 'Breaking Brains'
         ]);
         $img->setStyle([
-            'width'         => '80%',          // La imagen ocupará como máximo el 80% de su contenedor
+            'width'         => '100%',          // La imagen ocupará como máximo el 80% de su contenedor
             'height'        => 'auto',        // Mantener la relación de aspecto
             'border-radius' => '10px',  // Imagen circular
             'object-fit'    => 'cover',
