@@ -110,7 +110,7 @@ class Index extends IView{
             $button_classes
         );
 
-        $this->waveEffect = new BasicWave(90, 20);
+        $this->waveEffect = new BasicWave(80, 20);
 
         // Galería de fotos
         $this->div_gallery = new HTML('div', ['class' => 'gallery-container']);
