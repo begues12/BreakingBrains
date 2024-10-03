@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const barWidthMax       = bar.parentElement.offsetWidth;
             // If bar width is bigger than 10px create bars to complete the parent width
 
-            if(barWidth < 10)
+            if(barWidth > barWidthMax)
             {
-                const barsToCreate = Math.floor(barWidthMax / barWidth);
+                const barsToCreate = Math.floor(barWidth / barWidthMax);
                 for (let i = 0; i < barsToCreate; i++) {
                     const newBar = bar.cloneNode(true);
                     bar.parentElement.appendChild(newBar);
                 }
             }
-            
+
         });
     }
 
