@@ -31,6 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Cambia el tamaño de las barras cada 100ms
     setInterval(randomizeBars, 100);
-    setInterval(comproveBars, 5000);
+    // setInterval(comproveBars, 5000);
 
 });
