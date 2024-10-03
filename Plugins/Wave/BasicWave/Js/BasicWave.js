@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function comproveBars()
     {
-        print("comproveBars");
+        console.log("Comprobando barras");
         bars.forEach(bar => {
             const barWidth          = bar.offsetWidth;
             const windowWidth       = window.innerWidth;
