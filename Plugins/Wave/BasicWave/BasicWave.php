@@ -49,7 +49,7 @@ class BasicWave extends HTML
             $bar->setStyle([
                 'border-radius' => '2px',  // Bordes redondeados
                 'height' => rand(10, $this->barHeight) . 'px',
-                'width' => (100 / $this->barCount) . '%',  // Distribuir el ancho de cada barra uniformemente
+                'width' => '6px',  // Distribuir el ancho de cada barra uniformemente
             ]);
 
             // Agregamos cada barra al contenedor principal
