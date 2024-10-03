@@ -55,6 +55,9 @@ class BasicWave extends HTML
             // Agregamos cada barra al contenedor principal
             $this->waveDiv->addElement($bar);
         }
+
+
+        #Get screen width and height
     }
 }
 
