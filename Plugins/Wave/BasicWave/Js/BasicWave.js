@@ -1,11 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const bars = document.querySelectorAll('.bar');
     
-    // if bars's width are so big create news bars to fit the screen
-    if (bars.length > 0) {
-
-        setInterval(comproveBars, 5000);
-    }
 
     function randomizeBars() {
         bars.forEach(bar => {
@@ -37,4 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Cambia el tamaño de las barras cada 100ms
     setInterval(randomizeBars, 100);
+    setInterval(comproveBars, 5000);
+
 });
