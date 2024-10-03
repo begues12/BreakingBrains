@@ -12,21 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function comproveBars()
     {
-        console.log("Comprobando barras");
         bars.forEach(bar => {
             const barWidth          = bar.offsetWidth;
-            const windowWidth       = window.innerWidth;
-            const barMarginLeft     = parseInt(window.getComputedStyle(bar).getPropertyValue('margin-left'));
-            const barMarginRight    = parseInt(window.getComputedStyle(bar).getPropertyValue('margin-right'));
-            const barTotalWidth     = barWidth + barMarginLeft + barMarginRight;
+            const barWidthMax       = bar.parentElement.offsetWidth;
+            // If bar width is bigger than 10px create bars to complete the parent width
 
-            if (barTotalWidth > windowWidth) {
-                const newBars = Math.ceil(barTotalWidth / windowWidth);
-                for (let i = 0; i < newBars; i++) {
+            if(barWidth < 10)
+            {
+                const barsToCreate = Math.floor(barWidthMax / barWidth);
+                for (let i = 0; i < barsToCreate; i++) {
                     const newBar = bar.cloneNode(true);
-                    bar.parentNode.appendChild(newBar);
+                    bar.parentElement.appendChild(newBar);
                 }
             }
+            
         });
     }
 
