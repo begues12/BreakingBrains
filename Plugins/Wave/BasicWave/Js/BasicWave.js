@@ -4,6 +4,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // if bars's width are so big create news bars to fit the screen
     if (bars.length > 0) {
 
+        setInterval(comproveBars, 5000);
+    }
+
+    function randomizeBars() {
+        bars.forEach(bar => {
+            const scaleFactor           = Math.random() * 2 + 1; // Genera un factor de escala aleatorio entre 0.5 y 2.5
+            bar.style.transformOrigin   = 'center'; // Establece el origen en el centro
+            bar.style.transform         = `scaleY(${scaleFactor})`; // Aplica el escalado en Y de forma simétrica
+        });
+    }
+
+    function comproveBars()
+    {
         bars.forEach(bar => {
             const barWidth          = bar.offsetWidth;
             const windowWidth       = window.innerWidth;
@@ -18,14 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     bar.parentNode.appendChild(newBar);
                 }
             }
-        });
-    }
-    
-    function randomizeBars() {
-        bars.forEach(bar => {
-            const scaleFactor           = Math.random() * 2 + 1; // Genera un factor de escala aleatorio entre 0.5 y 2.5
-            bar.style.transformOrigin   = 'center'; // Establece el origen en el centro
-            bar.style.transform         = `scaleY(${scaleFactor})`; // Aplica el escalado en Y de forma simétrica
         });
     }
 
