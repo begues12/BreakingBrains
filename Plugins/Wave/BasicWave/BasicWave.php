@@ -24,8 +24,8 @@ class BasicWave extends HTML
         $this->setCssFile('Plugins/Wave/BasicWave/Css/BasicWave.css');
         $this->setJsFile('Plugins/Wave/BasicWave/Js/BasicWave.js');
 
-        $this->waveDiv = new HTML('div');
-        $this->waveDiv->setId('bar-container');
+        $this->waveDiv = new HTML('canvas');
+        $this->waveDiv->setId('barCanvas');
         $this->waveDiv->setAttribute('class', 'bar-container');
 
         // Llamar al método para añadir las barras
