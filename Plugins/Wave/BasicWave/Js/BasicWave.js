@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         });
-
+    }
+    
     function randomizeBars() {
         bars.forEach(bar => {
             const scaleFactor           = Math.random() * 2 + 1; // Genera un factor de escala aleatorio entre 0.5 y 2.5
