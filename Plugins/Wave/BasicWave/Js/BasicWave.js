@@ -10,27 +10,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function comproveBars()
-    {
-        bars.forEach(bar => {
-            const barWidth          = bar.offsetWidth;
-            const barWidthMax       = bar.parentElement.offsetWidth;
-            // If bar width is bigger than 10px create bars to complete the parent width
-
-            if(barWidth > barWidthMax)
-            {
-                const barsToCreate = Math.floor(barWidth / barWidthMax);
-                for (let i = 0; i < barsToCreate; i++) {
-                    const newBar = bar.cloneNode(true);
-                    bar.parentElement.appendChild(newBar);
-                }
-            }
-
-        });
-    }
-
     // Cambia el tamaño de las barras cada 100ms
     setInterval(randomizeBars, 100);
     // setInterval(comproveBars, 5000);
 
 });
+
+// Al cambiar el tamaño de la pantalla mira si las barras ocupan toda la pantalla y si no añade más barras
+
+function comproveBars() {
+    const bars = document.querySelectorAll('.bar');
+    const content = document.getElementById("main-content");
+    const contentHeight = content.offsetHeight;
+    const windowHeight = window.innerHeight;
+    const barsHeight = bars[0].offsetHeight;
+    const barsMarginTop = parseInt(window.getComputedStyle(bars[0]).getPropertyValue("margin-top"));
+    const barsMarginBottom = parseInt(window.getComputedStyle(bars[0]).getPropertyValue("margin-bottom"));
+    const barsTotalHeight = barsHeight + barsMarginTop + barsMarginBottom;
+    const barsNumber = bars.length;
+    const barsTotalHeightAll = barsTotalHeight * barsNumber;
+
+    if (contentHeight < windowHeight) {
+        if (barsTotalHeightAll < windowHeight) {
+            const newBar = document.createElement("div");
+            newBar.classList.add("bar");
+            content.appendChild(newBar);
+        }
+    }
+}
