@@ -1,5 +1,4 @@
 <?php
-
 namespace Plugins\Wave\SoundWave;
 
 use Engine\Core\HTML;
@@ -13,7 +12,6 @@ class SoundWavePlayer extends HTML
     private $audioElement;
     private $playButton;
     private $timeDisplay;
-    private $progressBar;
 
     public function __construct(string $imageSrc, string $audioSrc, string $trackName)
     {
@@ -26,7 +24,9 @@ class SoundWavePlayer extends HTML
         $this->createPlayerElements();
 
         // Añadir el script externo para manejar la visualización de ondas de sonido
-        $this->setJsFile('Plugins\Wave\SoundWave\Js\SoundWave.js');
+        $this->setJsFile('Plugins/Wave/SoundWave/Js/SoundWave.js');
+        // Añadir el archivo de estilos CSS
+        $this->setCssFile('Plugins/Wave/SoundWave/Css/SoundWave.css');
     }
 
     private function createPlayerElements()
@@ -40,6 +40,7 @@ class SoundWavePlayer extends HTML
             'border' => '2px solid #21d4fd',
             'object-fit' => 'cover',
             'margin-right' => '15px',
+            'align-self' => 'center', // Centrando la imagen dentro del contenedor
         ]);
 
         // Contenedor de texto con el nombre del track
@@ -47,6 +48,9 @@ class SoundWavePlayer extends HTML
         $textContainer->setStyle([
             'display' => 'flex',
             'flex-direction' => 'column',
+            'justify-content' => 'center',
+            'margin-bottom' => '10px',
+            'align-items' => 'center'
         ]);
 
         // Título del track
@@ -56,6 +60,7 @@ class SoundWavePlayer extends HTML
             'color' => '#21d4fd',
         ]);
 
+        $textContainer->addElement($image);
         $textContainer->addElement($trackTitle);
 
         // Reproductor de audio
@@ -69,20 +74,10 @@ class SoundWavePlayer extends HTML
             'border' => 'none',
             'cursor' => 'pointer',
             'font-size' => '24px',
-            'margin-right' => '10px',
+            'margin-right' => '15px',
             'color' => '#21d4fd',
         ]);
         $this->playButton->setText('▶'); // Icono de Play
-
-        // Barra de progreso del audio
-        $this->progressBar = new HTML('input', ['type' => 'range', 'class' => 'audio-progress']);
-        $this->progressBar->setAttribute('value', '0');
-        $this->progressBar->setAttribute('max', '100');
-        $this->progressBar->setAttribute('step', '1');
-        $this->progressBar->setStyle([
-            'flex-grow' => '1',
-            'margin-right' => '10px',
-        ]);
 
         // Visualización del tiempo actual y duración total
         $this->timeDisplay = new HTML('span', ['class' => 'time-display']);
@@ -91,7 +86,21 @@ class SoundWavePlayer extends HTML
             'color' => '#21d4fd',
             'font-size' => '14px',
             'white-space' => 'nowrap',
+            'margin-right' => '15px',
         ]);
+
+        // Contenedor de controles (play, tiempo)
+        $controlContainer = new HTML('div', ['class' => 'control-container']);
+        $controlContainer->setStyle([
+            'display' => 'flex',
+            'align-items' => 'center',
+            'justify-content' => 'center',
+            'margin-bottom' => '10px',
+        ]);
+
+        // Añadir los controles al contenedor
+        $controlContainer->addElement($this->playButton);
+        $controlContainer->addElement($this->timeDisplay);
 
         // Canvas para la visualización de ondas de sonido
         $this->canvas = new HTML('canvas', ['class' => 'soundwave-canvas']);
@@ -102,24 +111,19 @@ class SoundWavePlayer extends HTML
             'margin-top' => '10px',
         ]);
 
-        // Contenedor de control
-        $controlContainer = new HTML('div', ['class' => 'control-container']);
-        $controlContainer->setStyle([
+        // Añadir los elementos al contenedor principal (distribución en columna)
+        $this->setStyle([
             'display' => 'flex',
+            'flex-direction' => 'column',
             'align-items' => 'center',
+            'width' => '100%',
+            'flex-wrap' => 'wrap',
         ]);
 
-        // Añadir los elementos al contenedor de control
-        $controlContainer->addElement($this->playButton);
-        $controlContainer->addElement($this->progressBar);
-        $controlContainer->addElement($this->timeDisplay);
-
-        // Añadir los elementos al contenedor principal
-        $this->addElement($image);
         $this->addElement($textContainer);
-        $this->addElement($this->audioElement);
         $this->addElement($controlContainer);
         $this->addElement($this->canvas);
+        $this->addElement($this->audioElement);
     }
 }
 ?>

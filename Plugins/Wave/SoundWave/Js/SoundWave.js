@@ -3,13 +3,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
     players.forEach(player => {
         const canvas = player.querySelector('.soundwave-canvas');
-        const context = canvas.getContext('2d');
-        const audio = player.querySelector('audio');
+        const context = canvas ? canvas.getContext('2d') : null;
+        const audio = player.querySelector('.audio-player');
         const playButton = player.querySelector('.playPauseBtn');
         const timeDisplay = player.querySelector('.time-display');
-        const bars = 50; // Número de barras en la onda
 
-        // Web Audio API
+        if (!canvas || !context || !audio || !playButton || !timeDisplay) {
+            console.error("No se encontraron todos los elementos necesarios.");
+            return;
+        }
+
+        let barWidth = 2; // Ancho de cada barra
+        let barSpacing = 5; // Espacio entre barras
+        let bars; // Número de barras en el canvas
+        let barProgress = 0;
+        let isSeeking = false;
+
+        const minBarHeight = 5; // Altura mínima para cada barra
+
+        // Aumentar la resolución del canvas para evitar pixelación
+        function resizeCanvas() {
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            canvas.width = canvas.clientWidth * devicePixelRatio;
+            canvas.height = canvas.clientHeight * devicePixelRatio;
+            context.scale(devicePixelRatio, devicePixelRatio);
+            bars = Math.floor(canvas.width / (barWidth + barSpacing) / devicePixelRatio);
+        }
+
+        // Inicializar el tamaño del canvas
+        resizeCanvas();
+
+        // Redimensionar el canvas y recalcular las barras en caso de que cambie el tamaño de la ventana
+        window.addEventListener('resize', function () {
+            resizeCanvas();
+            drawWave(); // Redibujar la onda cuando cambie el tamaño
+        });
+
+        // Inicializar la API de Web Audio
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const analyser = audioContext.createAnalyser();
         const source = audioContext.createMediaElementSource(audio);
@@ -17,59 +47,131 @@ document.addEventListener('DOMContentLoaded', function () {
         analyser.connect(audioContext.destination);
 
         analyser.fftSize = 256;
-        const bufferLength = analyser.frequencyBinCount; // Número de datos de frecuencia
-        const dataArray = new Uint8Array(bufferLength); // Array donde se almacenarán los datos
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
 
-        // Dibujar las ondas de sonido
+        // Dibujar la onda de sonido
         function drawWave() {
-            analyser.getByteFrequencyData(dataArray); // Obtener los datos de frecuencia
+            analyser.getByteFrequencyData(dataArray);
 
-            context.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
-            const width = canvas.width / bars;
-            const height = canvas.height;
+            // Limpiar el canvas antes de redibujar
+            context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+            const height = canvas.clientHeight;
 
-            // Dibujar las barras en base a los datos de frecuencia
             for (let i = 0; i < bars; i++) {
-                const barHeight = (dataArray[i] / 255) * height; // Escalar el valor de frecuencia
-                context.fillStyle = '#21d4fd'; // Color de la barra
-                context.fillRect(i * width, height - barHeight, width - 2, barHeight); // Dibujar la barra
+                const x = i * (barWidth + barSpacing);
+                // Altura de la barra, asegurando que no sea menor que la altura mínima
+                let barHeight = (dataArray[i] / 255) * height / 2;
+                barHeight = Math.max(barHeight, minBarHeight);
+
+                // Decidir el color de la barra según el progreso
+                if (i < barProgress) {
+                    context.fillStyle = '#21d4fd'; // Barras ya reproducidas en color azul
+                } else {
+                    context.fillStyle = '#ccc'; // Barras no reproducidas en gris
+                }
+
+                // Dibujar la barra con puntas redondeadas
+                context.beginPath();
+                context.moveTo(x, (height / 2) - barHeight);
+                context.lineTo(x + barWidth, (height / 2) - barHeight);
+                context.quadraticCurveTo(x + barWidth + 1, height / 2, x + barWidth, (height / 2) + barHeight);
+                context.lineTo(x, (height / 2) + barHeight);
+                context.quadraticCurveTo(x - 1, height / 2, x, (height / 2) - barHeight);
+                context.fill();
             }
 
-            if (!audio.paused && !audio.ended) {
-                requestAnimationFrame(drawWave);
-            }
+            requestAnimationFrame(drawWave);
         }
 
-        // Actualizar el tiempo de la canción y sincronizar la visualización
-        audio.addEventListener('play', () => {
-            if (audioContext.state === 'suspended') {
-                audioContext.resume();
-            }
-            requestAnimationFrame(drawWave);
-        });
-
-        audio.addEventListener('timeupdate', () => {
-            const currentTime = audio.currentTime;
+        // Mostrar el tiempo total de la canción cuando los metadatos están cargados
+        audio.addEventListener('loadedmetadata', () => {
             const duration = audio.duration;
-            timeDisplay.textContent = formatTime(currentTime) + '/' + formatTime(duration);
+            timeDisplay.textContent = '00:00/' + formatTime(duration);
         });
 
-        // Formato del tiempo en minutos y segundos
+        // Actualizar el progreso de la onda a medida que el audio avanza
+        audio.addEventListener('timeupdate', () => {
+            if (!isSeeking) {
+                const currentTime = audio.currentTime;
+                const duration = audio.duration;
+
+                barProgress = Math.floor((currentTime / duration) * bars) || 0;
+
+                timeDisplay.textContent = formatTime(currentTime) + '/' + formatTime(duration);
+            }
+        });
+
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return minutes + ':' + (secs < 10 ? '0' : '') + secs;
         }
 
-        // Botón de Play/Pausa
+        // Control de Play/Pausa
         playButton.addEventListener('click', () => {
             if (audio.paused) {
+                audioContext.resume();
                 audio.play();
-                playButton.textContent = '❚❚'; // Cambiar a icono de pausa
+                playButton.textContent = '❚❚';
             } else {
                 audio.pause();
-                playButton.textContent = '▶'; // Cambiar a icono de play
+                playButton.textContent = '▶';
             }
         });
+
+        // Hacer clic en el canvas para buscar en la canción (escritorio)
+        canvas.addEventListener('click', function (e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const seekTime = (x / canvas.clientWidth) * audio.duration;
+            audio.currentTime = seekTime;
+        });
+
+        // Modo de arrastre para buscar en la canción (escritorio)
+        canvas.addEventListener('mousedown', function () {
+            isSeeking = true;
+            canvas.addEventListener('mousemove', seekAudio);
+        });
+
+        canvas.addEventListener('mouseup', function () {
+            isSeeking = false;
+            canvas.removeEventListener('mousemove', seekAudio);
+        });
+
+        // Hacer clic en el canvas para buscar en la canción (móvil)
+        canvas.addEventListener('touchstart', function (e) {
+            isSeeking = true;
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            const x = touch.clientX - rect.left;
+            const seekTime = (x / canvas.clientWidth) * audio.duration;
+            audio.currentTime = seekTime;
+        });
+
+        // Modo de arrastre para buscar en la canción (móvil)
+        canvas.addEventListener('touchmove', function (e) {
+            if (isSeeking) {
+                const touch = e.touches[0];
+                const rect = canvas.getBoundingClientRect();
+                const x = touch.clientX - rect.left;
+                const seekTime = (x / canvas.clientWidth) * audio.duration;
+                audio.currentTime = seekTime;
+            }
+        });
+
+        canvas.addEventListener('touchend', function () {
+            isSeeking = false;
+        });
+
+        function seekAudio(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const seekTime = (x / canvas.clientWidth) * audio.duration;
+            audio.currentTime = seekTime;
+        }
+
+        // Iniciar el dibujo de la onda al cargar la página
+        requestAnimationFrame(drawWave);
     });
 });

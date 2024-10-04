@@ -22,9 +22,9 @@ class Index extends IView
         // Contenedor para la lista de sesiones
         $this->div_sessions_list = new HTML('div', ['class' => 'sessions-list']);
         $this->div_sessions_list->setStyle([
-            'display' => 'flex',
-            'flex-direction' => 'column',
-            'align-items' => 'center',
+            'display' => 'grid',
+            'grid-template-columns' => 'repeat(auto-fit, minmax(300px, 1fr))',
+            'gap' => '20px',
             'width' => '100%',
             'margin-top' => '20px',
         ]);
@@ -50,6 +50,13 @@ class Index extends IView
     {
         // Cada sesión es un div con su título, imagen, visualizador y reproductor de audio
         $div_session = new HTML('div', ['class' => 'session-item']);
+        $div_session->setStyle([
+            'background-color' => '#333',
+            'padding' => '15px',
+            'border-radius' => '10px',
+            'margin-left' => 'auto',
+            'margin-right' => 'auto',
+        ]);
     
         // Crear el plugin SoundWavePlayer para cada sesión
         $soundwavePlayer = new SoundWavePlayer($session['image'], $session['audio'], $session['title']);
@@ -60,6 +67,5 @@ class Index extends IView
         // Añadir cada sesión a la lista de sesiones
         $this->div_sessions_list->addElement($div_session);
     }
-    
 }
 ?>
