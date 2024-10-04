@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < numberOfBars; i++) {
             const scaleFactor = (Math.random() * 1.5 + 0.5) * (Math.random() < 0.5 ? 1 : -1); // Ahora puede ser positivo o negativo
             barTargetHeights[i] = scaleFactor * canvas.height / 2; // Permitir que baje también
-            speedFactors[i] = 0.08; // Velocidad de cambio de altura de cada barra
+            speedFactors[i] = 0.06; // Velocidad de cambio de altura de cada barra
         }
     
         // Aplicar la curva gaussiana en los puntos seleccionados y afectar las barras cercanas
