@@ -51,6 +51,7 @@ class Index extends IView
         // Cada sesión es un div con su título, imagen, visualizador y reproductor de audio
         $div_session = new HTML('div', ['class' => 'session-item']);
         $div_session->setStyle([
+            'border' => '4px solid transparent',
             'background-color' => '#333',
             'padding' => '15px',
             'border-radius' => '10px',

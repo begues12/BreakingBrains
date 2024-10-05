@@ -7,9 +7,25 @@
 
 
 .changeBorderColor {
-    animation: changeBorderColor 2s ease-in-out forwards;
+    border: 4px solid #f76800;
+    animation: changeBorderColor 4s linear infinite;
 }
 
+
+@keyframes changeBarColor{
+    0%{
+        border-color: #f76800;
+    }
+    33%{
+        border-color: #86fd03;
+    }
+    66%{
+        border-color: #018ff1;
+    }
+    100%{
+        border-color: #f76800;
+    }
+}
 
 @keyframes changeBorderColor {
     0%{

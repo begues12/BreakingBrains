@@ -68,7 +68,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (i < barProgress) {
                     context.fillStyle = '#21d4fd'; // Barras ya reproducidas en color azul
                 } else {
-                    context.fillStyle = '#ccc'; // Barras no reproducidas en gris
+                    // Get the border color of the css 
+                    let color = window.getComputedStyle(player.parentElement).borderColor;
+                    
+                    context.fillStyle = '#ffffff';
+
+                    if (color != 'rgba(0, 0, 0, 0)') {
+                        context.fillStyle = color;
+                    }
+
+
+
                 }
 
                 // Dibujar la barra con puntas redondeadas
@@ -114,9 +124,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 audioContext.resume();
                 audio.play();
                 playButton.textContent = '❚❚';
+                // Add class to the player's parent changeBorderColor
+                player.parentElement.classList.add('changeBorderColor');
             } else {
                 audio.pause();
                 playButton.textContent = '▶';
+                // Remove class to the player changeBorderColor
+                player.parentElement.classList.remove('changeBorderColor');
             }
         });
 
