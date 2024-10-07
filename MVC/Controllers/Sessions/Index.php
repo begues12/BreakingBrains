@@ -34,7 +34,7 @@ class Index extends IController
     // Método para obtener archivos de audio
     public function getSessions()
     {
-        return json_decode(file_get_contents($this->session_json), true);
+        $this->setVar('sessions', json_decode(file_get_contents($this->session_json), true));
     }
 }
 
