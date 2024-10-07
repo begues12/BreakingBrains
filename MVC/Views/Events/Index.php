@@ -50,17 +50,26 @@ class Index extends IView
     private function createEventCard($event, $isPast)
     {
         $div_card = new HTML('div', ['class' => 'col-lg-3 col-md-6 col-sm-12 m-3 p-0 card-event']);
+        $div_card->setStyle([
+            'margin-left' => 'auto',
+            'margin-right' => 'auto',
+            'overflow' => 'hidden'
+        ]);
 
         // Imagen del evento
         $img = new HTML('img', [
-            'src' => $event['src'],
+            'src' => $event['image'],
             'class' => 'img-fluid',
-            'alt' => 'Photo of event ' . $event['name']
+            'alt' => 'Photo of event ' . $event['title']
+        ]);
+        $img->setStyle([
+            'width' => '100%',
+            'height' => '200px',
         ]);
 
         // Nombre del evento
         $h5 = new HTML('h5');
-        $h5->setText($event['name'] . ($isPast ? " - Finalizado" : ""));
+        $h5->setText($event['title'] . ($isPast ? " - Finalizado" : ""));
         $h5->setStyle(['color' => '#fff', 'text-align' => 'center', 'margin-top' => '15px']);
         $h5->setClass( $isPast ? 'bg-danger' : 'bg-primary' );
 

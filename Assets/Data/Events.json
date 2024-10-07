@@ -1,23 +1,20 @@
 [
     {
+        "title"         : "Panoramica Golf Club",
+        "description"   : "Panorámica Golf & Sport Resort es un complejo turístico y residencial situado en la Costa del Azahar, en Castellón.",
+        "date"          : "19/05/2024",
+        "image"         : "Assets/Images/Events/panoramica.jpeg"
+    },
+    {
+        "title"         : "Gavà Jove",
+        "description"   : "Gavà Jove es un espacio de ocio y cultura para jóvenes de 12 a 30 años, donde se realizan actividades y talleres de todo tipo.",
+        "date"          : "12/06/2024",
+        "image"         : "Assets/Images/Events/casa_gran.jpeg"
+    },
+    {
         "title"         : "The LAKE",
         "description"   : "Un evento de música electrónica en el que se reúnen los mejores DJs de la escena electrónica actual.",
         "date"          : "12/07/2024",
         "image"         : "Assets/Images/Events/the_lake.png"
-    },
-    {
-        "title"         : "Panoramica Golf Club",
-        "description"   : "Panorámica Golf & Sport Resort es un complejo turístico y residencial situado en la Costa del Azahar, en Castellón.",
-        "date"          : "12/07/2024",
-        "image"         : "Assets/Images/Events/the_lake.png"
-    },
-    {
-        "title"         : "Gavà Jove",
-        "description"   : "string",
-        "date"          : "12/07/2024",
-        "image"         : "Assets/Images/Events/the_lake.png"
-    },
-    {
-        
     }
 ]
