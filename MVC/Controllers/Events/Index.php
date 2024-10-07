@@ -10,7 +10,7 @@ class Index extends IController
     function __construct()
     {
         parent::__construct();
-        $this->events_json = 'Assets\Data\Events.json';
+        $this->events_json = 'Assets/Data/Events.json';
     }
 
     public function prepare()
