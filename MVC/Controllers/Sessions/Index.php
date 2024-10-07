@@ -12,29 +12,25 @@ class Index extends IController
     {
         parent::__construct();
         // Definir el directorio donde se almacenan las sesiones de audio
-        $this->session_json = 'Assets\Data\Sessions.json';
+        $this->session_json = 'Assets/Data/Sessions.json';
     }
 
     public function prepare()
     {
-        // Obtener todas las sesiones de audio del directorio con sus "metadatos" simples
         $this->setVar('sessions', $this->getSessions());
     }
 
     public function execute()
     {
-        // Opcional: lógica de ejecución
     }
 
     public function finish()
     {
-        // Opcional: lógica de finalización
     }
 
     // Método para obtener archivos de audio
     public function getSessions()
     {
-        print_r(json_decode(file_get_contents($this->session_json), true));
         return json_decode(file_get_contents($this->session_json), true);
     }
 }
