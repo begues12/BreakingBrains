@@ -1,0 +1,18 @@
+[
+
+    {
+        "title"     : "NTK - Sesion 1",
+        "artist"    : "NTK",
+        "image"     : "Assets/Images/Sessions/ntk_session1.jpg",
+        "audio"     : "Assets/Audio/Sessions/NTK - Session 1.wav",
+        "duration"  : "1:00:00"
+    },
+    {
+        "title"     : "Biel - Sesion 1",
+        "artist"    : "Biel",
+        "image"     : "Assets/Images/Sessions/biel_session1.jpg",
+        "audio"     : "Assets/Audio/Sessions/Omega - Session 1.wav",
+        "duration"  : "1:00:00"
+    }
+
+]

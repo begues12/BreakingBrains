@@ -27,10 +27,6 @@
 
 /* Estilo de la imagen del artista */
 .session-item img {
-    border: 2px solid #21d4fd;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
     margin-right: 20px;
     transition: transform 0.5s ease;
 }

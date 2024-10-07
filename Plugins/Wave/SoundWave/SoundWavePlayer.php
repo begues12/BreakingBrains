@@ -34,13 +34,13 @@ class SoundWavePlayer extends HTML
         // Imagen del track/artista
         $image = new HTML('img', ['src' => $this->imageSrc, 'alt' => $this->trackName]);
         $image->setStyle([
-            'width' => '70px',
-            'height' => '70px',
-            'border-radius' => '50%',
-            'border' => '2px solid #21d4fd',
-            'object-fit' => 'cover',
-            'margin-right' => '15px',
-            'align-self' => 'center', // Centrando la imagen dentro del contenedor
+            'width'         => '100%',
+            'height'        => '150px',
+            'border-radius' => '7px',
+            'object-fit'    => 'cover',
+            'margin-right'  => 'auto',
+            'margin-left'   => 'auto',
+            'align-self'    => 'center', // Centrando la imagen dentro del contenedor
         ]);
 
         // Contenedor de texto con el nombre del track
