@@ -35,7 +35,7 @@ class SoundWavePlayer extends HTML
         $image = new HTML('img', ['src' => $this->imageSrc, 'alt' => $this->trackName]);
         $image->setStyle([
             'width'         => '100%',
-            'height'        => '150px',
+            'height'        => '200px',
             'border-radius' => '7px',
             'object-fit'    => 'cover',
             'margin-right'  => 'auto',
@@ -58,6 +58,8 @@ class SoundWavePlayer extends HTML
         $trackTitle->setText($this->trackName);
         $trackTitle->setStyle([
             'color' => '#21d4fd',
+            'margin-top' => '10px',
+            'font-size' => '20px',
         ]);
 
         $textContainer->addElement($image);
