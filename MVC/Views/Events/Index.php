@@ -70,8 +70,12 @@ class Index extends IView
         // Nombre del evento
         $h5 = new HTML('h5');
         $h5->setText($event['title'] . ($isPast ? " - Finalizado" : ""));
-        $h5->setStyle(['color' => '#fff', 'text-align' => 'center', 'margin-top' => '15px']);
+        $h5->setStyle(['color' => '#fff', 'text-align' => 'center', 'margin-top' => '15px', 'font-size' => '20px']);
         $h5->setClass( $isPast ? 'bg-danger' : 'bg-primary' );
+
+        $h5_2 = new HTML('h5');
+        $h5_2->setText($event['date']);
+        $h5_2->setStyle(['color' => '#fff', 'text-align' => 'center', 'margin-top' => '15px', 'font-size' => '14px']);
 
         // Descripción del evento
         $p = new HTML('p');
@@ -80,6 +84,7 @@ class Index extends IView
 
         $div_card->addElement($img);
         $div_card->addElement($h5);
+        $div_card->addElement($h5_2);
         $div_card->addElement($p);
 
         $this->div_gallery->addElement($div_card);
