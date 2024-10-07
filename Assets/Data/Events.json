@@ -1,13 +1,8 @@
-{
-    "config" : {
-        "fields" : {
-            "title"         : "string",
-            "description"   : "string",
-            "date"          : "date",
-            "image"         : "image"
-        }
-    },
-    "date" : {
-        
+[
+    {
+        "title"         : "string",
+        "description"   : "string",
+        "date"          : "date",
+        "image"         : "image"
     }
-}
+]

@@ -8,10 +8,17 @@
         "duration"  : "1:00:00"
     },
     {
-        "title"     : "Biel - Sesion 1",
+        "title"     : "BIEL - Sesion 1",
         "artist"    : "Biel",
         "image"     : "Assets/Images/Sessions/biel_session1.jpg",
         "audio"     : "Assets/Audio/Sessions/Omega - Session 1.wav",
+        "duration"  : "1:00:00"
+    },
+    {
+        "title"     : "SADI - Sesion 1",
+        "artist"    : "Sadi",
+        "image"     : "Assets/Images/Sessions/sadi_session1.jpg",
+        "audio"     : "Assets/Audio/Sessions/Sadi - Session 1.wav",
         "duration"  : "1:00:00"
     }
 
