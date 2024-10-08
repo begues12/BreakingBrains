@@ -13,16 +13,14 @@
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra más prominente para más profundidad */
     margin-bottom: 30px; /* Espacio entre tarjetas */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para hover */
-    background: linear-gradient(to bottom, #333333 50%, #212529 100%); /* Gradiente sutil */
     padding: 0;
 }
 
 .card-event:hover {
     transform: translateY(-5px); /* Levanta la tarjeta al hacer hover */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Sombra más intensa en hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra suave para destacar */
 }
 
 /* Imágenes de eventos */
