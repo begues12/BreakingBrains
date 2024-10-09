@@ -21,10 +21,10 @@ class Index extends IController
             
             $this->setCookie('show_event_alert', true, time() + 3600);
         }*/
-        
+
         $alert = new LinkAlert(true, 'info', 'fa-info-circle');
         $alert->setMessage('¡No te pierdas nuestro próximo evento!');
-        $alert->setLink('https://www.facebook.com/events/1234567890/');
+        $alert->setLink('?Ctrl=Events');
 
         $this->setVar('eventAlert', $alert);
 
