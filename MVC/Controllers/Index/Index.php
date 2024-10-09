@@ -17,13 +17,16 @@ class Index extends IController
         /*$alert = new HTML('div', ['d-none']);
         if (!$this->getCookie('show_event_alert'))
         {
-            $alert = new LinkAlert(true, 'info', 'fa-info-circle');
-            $alert->setMessage('¡No te pierdas nuestro próximo evento!');
-            $alert->setLink('https://www.facebook.com/events/1234567890/');
+           
             
             $this->setCookie('show_event_alert', true, time() + 3600);
-        }
-        $this->setVar('eventAlert', $alert);9*/
+        }*/
+        
+        $alert = new LinkAlert(true, 'info', 'fa-info-circle');
+        $alert->setMessage('¡No te pierdas nuestro próximo evento!');
+        $alert->setLink('https://www.facebook.com/events/1234567890/');
+
+        $this->setVar('eventAlert', $alert);
 
         $this->setVar('galleryImages',
         [

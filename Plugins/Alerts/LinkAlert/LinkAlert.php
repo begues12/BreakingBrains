@@ -53,7 +53,7 @@ class LinkAlert extends HTML
         $this->a->setClasses(['alert-link']);
         $this->a->addElement('Click here to go to the link');
 
-        $this->i = new Icon('fa-times', '1x', '', ['close']);
+        $this->i = new Icon('fa-times');
 
         $this->compile();
     }
