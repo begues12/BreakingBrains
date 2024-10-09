@@ -2,6 +2,7 @@
 namespace MVC\Controllers\Index;
 
 use Engine\Core\IController;
+use Plugins\Alerts\BasicAlert\BasicAlert;
 
 class Index extends IController
 {
@@ -13,6 +14,16 @@ class Index extends IController
 
     public function prepare()
     {
+
+        if (!$this->getCookie('show_event_alert'))
+        {
+            $alert = new BasicAlert(true, 'info', 'fa-info-circle');
+            $alert->text->addElement('¡No te pierdas nuestro próximo evento!');
+
+            $this->setVar('eventAlert', $alert);
+            $this->setCookie('show_event_alert', true, time() + 3600);
+        }
+
         $this->setVar('galleryImages',
         [
             'Assets\Images\TeamPhoto\BielTheLake_SergiLopez 10.jpg',

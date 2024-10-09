@@ -21,20 +21,19 @@
 });
 Estp es ima funcion para enviar info al servidor creame una funcion que pueda ser reutilizada en cualquier parte del codigo
 */
-
-function sendToServer(controller, action, data)
+// Do is 
+function sendToServer(controller, page, action, data)
 {
-    fetch(`?Ctrl=${controller}&Action=${action}`, {
+
+    fetch(`?Ctrl=${controller}&Do=${page}&Action=${action}`, {
         method: 'POST',
         body: data
     })
     .then(response => response.text())
     .then(data => {
-        console.log('Success:', data);
-        alert('Mensaje enviado correctamente!');
+        return data;
     })
     .catch((error) => {
-        console.error('Error:', error);
-        alert('Error al enviar el mensaje.');
+        return error;
     });
 }

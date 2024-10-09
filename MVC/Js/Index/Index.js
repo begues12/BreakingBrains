@@ -10,5 +10,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-sendToServer('Contact', 'SendEmail', [1, 2, 3]); // Ejemplo de uso de la función sendToServer
-
+data = sendToServer('Index', 'Index', 'getEventsAlerts', null);
+console.log(data);

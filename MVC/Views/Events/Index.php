@@ -16,6 +16,9 @@ class Index extends IView
         $this->setHeader(new Header());
         // Supongamos que estos datos se obtienen de alguna lógica del backend:
         $this->events = $this->getVar('events');
+
+        $this->addElement($this->getVar('show_event_alert'));
+
     }
 
     public function createObjects()
