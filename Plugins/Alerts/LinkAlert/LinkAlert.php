@@ -62,7 +62,7 @@ class LinkAlert extends HTML
 
         $this->label->addElement($this->a);
 
-        $this->alertContainer->addElements([$this->icon, $this->label, $this->a]);
+        $this->alertContainer->addElements([$this->icon, $this->label]);
 
 
         $this->addElement($this->alertContainer);

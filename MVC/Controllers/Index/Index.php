@@ -23,7 +23,7 @@ class Index extends IController
         }*/
 
         $alert = new LinkAlert(true, 'info', 'fa-info-circle');
-        $alert->setMessage('¡No te pierdas nuestro próximo evento!');
+        $alert->setMessage('¡Nuevo evento!');
         $alert->setLink('?Ctrl=Events');
 
         $this->setVar('eventAlert', $alert);
