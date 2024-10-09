@@ -52,7 +52,7 @@ class LinkAlert extends HTML
         $this->a->setAttribute('href', '#');
         $this->a->setClasses(['alert-link']);
 
-        $this->i = new Icon('fa-times');
+        $this->i = new Icon('fa-link');
 
         $this->compile();
     }
