@@ -42,10 +42,10 @@ class Head extends BasicHead
     
         $DefaultCss = new HTML('link');
         $DefaultCss->setAttribute('rel', 'stylesheet');
-        $DefaultCss->setAttribute('href', 'Assets\Css\default.css');
+        $DefaultCss->setAttribute('href', 'MVC/Css/Default/default.css');
 
         $DefaultJs = new HTML('script');
-        $DefaultJs->setAttribute('src', 'Assets\Js\default.js');
+        $DefaultJs->setAttribute('src', 'MVC/Js/Default/default.js');
 
 
         $Meta = new HTML('meta');
