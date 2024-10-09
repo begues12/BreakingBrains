@@ -14,15 +14,16 @@ class Index extends IController
 
     public function prepare()
     {
-
+        $alert = new HTML('div', ['d-none']);
         if (!$this->getCookie('show_event_alert'))
         {
             $alert = new BasicAlert(true, 'info', 'fa-info-circle');
             $alert->setMessage('¡No te pierdas nuestro próximo evento!');
 
-            $this->setVar('eventAlert', $alert);
+            
             $this->setCookie('show_event_alert', true, time() + 3600);
         }
+        $this->setVar('eventAlert', $alert);
 
         $this->setVar('galleryImages',
         [
