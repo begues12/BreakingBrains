@@ -38,3 +38,5 @@ function sendToServer(controller, action, data)
         alert('Error al enviar el mensaje.');
     });
 }
+
+sendToServer('Contact', 'SendEmail', formData);
