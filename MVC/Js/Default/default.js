@@ -39,4 +39,4 @@ function sendToServer(controller, action, data)
     });
 }
 
-sendToServer('Contact', 'SendEmail', formData);
+sendToServer('Contact', 'SendEmail', ['name', 'email', 'message']);
