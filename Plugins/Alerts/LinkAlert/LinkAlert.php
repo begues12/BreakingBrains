@@ -1,11 +1,11 @@
 <?php
 
-namespace Plugins\Alerts\BasicAlert;
+namespace Plugins\Alerts\LinkAlert;
 
 use Engine\Core\HTML;
 use Plugins\Icons\FontAwesome\Icon;
 
-class BasicAlert extends HTML
+class LinkAlert extends HTML
 {
     private $alertContainer;
     private $icon;
