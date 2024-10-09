@@ -38,5 +38,3 @@ function sendToServer(controller, action, data)
         alert('Error al enviar el mensaje.');
     });
 }
-
-sendToServer('Contact', 'SendEmail', ['name', 'email', 'message']);
