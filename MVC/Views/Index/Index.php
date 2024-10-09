@@ -145,7 +145,7 @@ class Index extends IView{
         // $this->addBody($this->div_video_container);
 
         $this->addBody($this->div_title);
-        $this->addBody($this->getVar('eventAlert'));
+        #$this->addBody($this->getVar('eventAlert'));
 
         $this->div_title->addElement($this->img_breaking);
 
