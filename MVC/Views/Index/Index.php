@@ -34,6 +34,8 @@ class Index extends IView{
 
     public function createObjects()
     {
+        
+
 
         // Título e imagen
         $this->div_title = new HTML('div', ['class' => 'image-container']);
@@ -143,6 +145,8 @@ class Index extends IView{
         // $this->addBody($this->div_video_container);
 
         $this->addBody($this->div_title);
+        $this->addBody($this->getVar('show_event_alert'));
+
         $this->div_title->addElement($this->img_breaking);
 
         // Añadir los botones debajo del video
