@@ -60,12 +60,10 @@ class LinkAlert extends HTML
     private function compile()
     {
         // No es necesario agregar más contenido aquí, ya que el mensaje de éxito se establece dinámicamente.
-        
-        $this->alertContainer->addElements([$this->icon, $this->label, $this->a]);
+        $this->a->addElement($this->i);
         $this->label->addElement($this->text);
 
-        $this->alertContainer->addElement($this->a);
-        $this->alertContainer->addElement($this->i);
+        $this->alertContainer->addElements([$this->icon, $this->label, $this->a]);
 
 
         $this->addElement($this->alertContainer);
