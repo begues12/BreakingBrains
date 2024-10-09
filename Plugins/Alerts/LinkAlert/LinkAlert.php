@@ -52,16 +52,15 @@ class LinkAlert extends HTML
         $this->a->setAttribute('href', '#');
         $this->a->setClasses(['alert-link']);
 
-        $this->i = new Icon('fa-link');
-
         $this->compile();
     }
 
     private function compile()
     {
         // No es necesario agregar más contenido aquí, ya que el mensaje de éxito se establece dinámicamente.
-        $this->a->addElement($this->i);
-        $this->label->addElement($this->text);
+        $this->a->addElement($this->text);
+
+        $this->label->addElement($this->a);
 
         $this->alertContainer->addElements([$this->icon, $this->label, $this->a]);
 
