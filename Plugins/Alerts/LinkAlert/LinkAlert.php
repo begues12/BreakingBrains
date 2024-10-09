@@ -11,6 +11,8 @@ class BasicAlert extends HTML
     private $icon;
     private $label;
     private $text;
+    private $i;
+    private $a;
 
     public function __construct(bool $visible = false, string $alertType = 'success', $icon = 'fa-check-circle')
     {
@@ -21,8 +23,8 @@ class BasicAlert extends HTML
             'basic-alert'
         ]);
         $this->setStyle(['visibility' => $visible ? 'visible' : 'hidden']);
-        $this->setCssFile('Plugins/Alerts/BasicAlert/Css/BasicAlert.css');
-        $this->setJsFile('Plugins/Alerts/BasicAlert/Js/BasicAlert.js');
+        $this->setCssFile('Plugins/Alerts/LinkAlert/Css/LinkAlert.css');
+        $this->setJsFile('Plugins/Alerts/LinkAlert/Js/LinkAlert.js');
 
         // Alerta de éxito
         $this->alertContainer = new HTML('div');
@@ -45,15 +47,27 @@ class BasicAlert extends HTML
         ]);
 
         $this->text = new HTML('strong');
-        
+
+        $this->a = new HTML('a');
+        $this->a->setAttribute('href', '#');
+        $this->a->setClasses(['alert-link']);
+        $this->a->addElement('Click here to go to the link');
+
+        $this->i = new Icon('fa-times', '1x', '', ['close']);
+
         $this->compile();
     }
 
     private function compile()
     {
         // No es necesario agregar más contenido aquí, ya que el mensaje de éxito se establece dinámicamente.
-        $this->alertContainer->addElements([$this->icon, $this->label]);
+        $this->alertContainer->addElements([$this->icon, $this->label, $this->a]);
         $this->label->addElement($this->text);
+
+        $this->alertContainer->addElement($this->a);
+        $this->alertContainer->addElement($this->i);
+
+
         $this->addElement($this->alertContainer);
 
     }
@@ -61,6 +75,11 @@ class BasicAlert extends HTML
     public function setMessage(string $message)
     {
         $this->text->setText($message);
+    }
+    
+    public function setLink(string $link)
+    {
+        $this->a->setAttribute('href', $link);
     }
 
 }

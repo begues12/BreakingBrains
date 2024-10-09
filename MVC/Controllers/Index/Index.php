@@ -19,7 +19,6 @@ class Index extends IController
         {
             $alert = new BasicAlert(true, 'info', 'fa-info-circle');
             $alert->setMessage('¡No te pierdas nuestro próximo evento!');
-
             
             $this->setCookie('show_event_alert', true, time() + 3600);
         }
