@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ocultar la alerta al cerrar
     function hideAlert() {
         alertContainer.classList.remove('visible');
-        alertContainer.style.right = '-300px'; // Desliza hacia afuera
+        alertContainer.style.right = alertContainer.offsetWidth + 20 + 'px';
     }
 
     // Botón de cerrar
