@@ -37,9 +37,9 @@ class Footer extends BasicFooter
         // Enlaces legales más compactos
         $legalLinks = [
             ['Aviso Legal', '?Ctrl=LegalNotice'],
-            ['Privacidad', '?Ctrl=PrivacyPolicy'],
-            ['Cookies', '?Ctrl=CookiesPolicy'],
-            ['Términos', '?Ctrl=TermsAndConditions'],
+            ['Privacidad',  '?Ctrl=PrivacyPolicy'],
+            ['Cookies',     '?Ctrl=CookiesPolicy'],
+            ['Términos',    '?Ctrl=TermsAndConditions'],
         ];
 
         foreach ($legalLinks as $link) {

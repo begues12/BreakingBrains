@@ -115,12 +115,12 @@ abstract class IView extends HTML
             $this->addElement($this->header);
         }
         
-        $this->addElement($this->loadingSpinner);
-        $this->addElement($this->confirmOk);
         $this->addElement($this->body);
         
 
         $this->body->addElement($this->main);
+        $this->body->addElement($this->loadingSpinner);
+        $this->body->addElement($this->confirmOk);
 
         $this->addElement($this->footer);
         
