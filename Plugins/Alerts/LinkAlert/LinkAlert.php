@@ -53,7 +53,7 @@ class LinkAlert extends HTML
         $this->a->setClasses(['alert-link']);
 
         $this->i = new Icon('fa-times');
-        $this->i->setClasses(['close']);
+        $this->i->setClasses(['close', 'ml-2']);
         $this->i->setAttribute('data-dismiss', 'alert');
 
 

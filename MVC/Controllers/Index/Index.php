@@ -22,7 +22,7 @@ class Index extends IController
             $this->setCookie('show_event_alert', true, time() + 3600);
         }*/
 
-        $alert = new LinkAlert(true, 'info', 'fa-info-circle');
+        $alert = new LinkAlert(true, 'info', 'fa-ticket');
         $alert->setMessage('¡Nuevo evento!');
         $alert->setLink('?Ctrl=Events');
 
