@@ -8,5 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     codeBlocks.forEach(function (codeBlock) {
         Prism.highlightElement(codeBlock);
     });
+    sendToServer('Contact', 'SendEmail', formData);
 });
 

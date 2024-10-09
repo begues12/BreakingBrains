@@ -39,6 +39,14 @@ class Head extends BasicHead
         $FontAwsome = new HTML('link');
         $FontAwsome->setAttribute('rel', 'stylesheet');
         $FontAwsome->setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+    
+        $DefaultCss = new HTML('link');
+        $DefaultCss->setAttribute('rel', 'stylesheet');
+        $DefaultCss->setAttribute('href', 'Assets\Css\default.css');
+
+        $DefaultJs = new HTML('script');
+        $DefaultJs->setAttribute('src', 'Assets\Js\default.js');
+
 
         $Meta = new HTML('meta');
         $Meta->setAttribute('name', 'viewport');
@@ -50,7 +58,9 @@ class Head extends BasicHead
             $LinkJquery, 
             $LinkBootstrapJs, 
             $FontAwsome,
-            $Meta
+            $Meta,
+            $DefaultCss,
+            $DefaultJs
         ]);
     }
 
