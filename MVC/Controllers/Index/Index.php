@@ -2,7 +2,7 @@
 namespace MVC\Controllers\Index;
 
 use Engine\Core\IController;
-use Plugins\Alerts\BasicAlert\BasicAlert;
+use Plugins\Alerts\LinkAlert\LinkAlert;
 
 class Index extends IController
 {
@@ -17,7 +17,7 @@ class Index extends IController
         $alert = new HTML('div', ['d-none']);
         if (!$this->getCookie('show_event_alert'))
         {
-            $alert = new BasicAlert(true, 'info', 'fa-info-circle');
+            $alert = new LinkAlert(true, 'info', 'fa-info-circle');
             $alert->setMessage('¡No te pierdas nuestro próximo evento!');
             
             $this->setCookie('show_event_alert', true, time() + 3600);
