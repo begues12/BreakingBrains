@@ -4,7 +4,7 @@
     right: -300px; /* Posiciona fuera de la pantalla inicialmente */
     transition: right 0.5s ease-in-out; /* Deslizamiento suave */
     z-index: 9999; /* Asegura que el alert esté encima de otros elementos */
-    max-width: 300px; /* Ancho máximo del alert */
+    max-width: 450px; /* Ancho máximo del alert */
 }
 
 .alert-container.visible {
