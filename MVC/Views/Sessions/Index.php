@@ -52,7 +52,6 @@ class Index extends IView
         $div_session = new HTML('div', ['class' => 'session-item']);
         $div_session->setStyle([
             'border' => '4px solid transparent',
-            'background-color' => '#333',
             'padding' => '15px',
             'border-radius' => '10px',
             'margin-left' => 'auto',

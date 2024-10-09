@@ -53,7 +53,7 @@
 /* Genera una animación para el brillo */
 @keyframes glow {
     from {
-        box-shadow: 0px 0px 10px 5px white;
+        box-shadow: 0px 0px 0px 0px white;
     }
     to {
         box-shadow: 0px 0px 20px 10px white;
@@ -74,3 +74,5 @@
         border-color: #f76800;
     }
 }
+
+

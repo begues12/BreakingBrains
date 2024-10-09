@@ -1,21 +1,31 @@
-/* Estilo de la alerta de éxito */
 .alert-container {
     position: fixed;
     top: 20px;
-    right: 20px;
-    z-index: 1000;
+    right: -300px; /* Posiciona fuera de la pantalla inicialmente */
+    transition: right 0.5s ease-in-out; /* Deslizamiento suave */
+    z-index: 9999; /* Asegura que el alert esté encima de otros elementos */
+    max-width: 300px; /* Ancho máximo del alert */
 }
 
-/* Estilo para la animación de entrada desde arriba */
-.alert-success {
-    animation: slideIn 0.5s ease-in-out;
+.alert-container.visible {
+    right: 20px; /* Posición final cuando el alert es visible */
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
+.alert-basic {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
 }
+
+.alert .close {
+    margin-left: auto; /* Empuja la cruz hacia la derecha */
+    padding: 0 10px; /* Ajusta el espacio alrededor de la cruz */
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.close:hover {
+    color: red; /* Efecto hover para la cruz */
+}
+

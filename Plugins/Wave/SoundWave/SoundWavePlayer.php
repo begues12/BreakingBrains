@@ -49,7 +49,6 @@ class SoundWavePlayer extends HTML
             'display' => 'flex',
             'flex-direction' => 'column',
             'justify-content' => 'center',
-            'margin-bottom' => '10px',
             'align-items' => 'center'
         ]);
 
@@ -97,7 +96,6 @@ class SoundWavePlayer extends HTML
             'display' => 'flex',
             'align-items' => 'center',
             'justify-content' => 'center',
-            'margin-bottom' => '10px',
         ]);
 
         // Añadir los controles al contenedor
@@ -110,7 +108,6 @@ class SoundWavePlayer extends HTML
             'width' => '100%',
             'height' => '70px',
             'background-color' => '#212529',
-            'margin-top' => '10px',
         ]);
 
         // Añadir los elementos al contenedor principal (distribución en columna)

@@ -65,8 +65,12 @@ abstract class IController
         return false;
     }
 
-    public function post($name)
+    public function post(string $name=''): mixed
     {
+        if ($name == '') {
+            return $this->post;
+        }
+
         if (isset($this->post[$name])) {
             return $this->post[$name];
         }
@@ -74,8 +78,12 @@ abstract class IController
         return '';
     }
 
-    public function get($name)
+    public function get(string $name=''): mixed
     {
+        if ($name == '') {
+            return $this->get;
+        }
+
         if (isset($this->get[$name])) {
             return $this->get[$name];
         }
@@ -113,25 +121,17 @@ abstract class IController
 
     private function cleanRequest()
     {
-        // Inicializa arrays vacíos para las entradas limpias.
-        $cleanedPost = [];
-        $cleanedGet = [];
+        $cleanedPost    = [];
+        $cleanedGet     = [];
     
-        // Limpieza de datos POST.
         foreach ($_POST as $key => $value) {
-            // Utiliza la función htmlspecialchars para escapar caracteres especiales en valores POST.
             $cleanedPost[$key] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
         }
     
-        // Limpieza de datos GET.
         foreach ($_GET as $key => $value) {
-            // Utiliza la función htmlspecialchars para escapar caracteres especiales en valores GET.
             $cleanedGet[$key] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
         }
-    
-        // Ahora, los datos POST y GET limpios están disponibles en $cleanedPost y $cleanedGet.
-    
-        // Puedes asignar estos datos limpios a las propiedades de tu objeto si es necesario.
+        
         $this->post = $cleanedPost;
         $this->get = $cleanedGet;
     }

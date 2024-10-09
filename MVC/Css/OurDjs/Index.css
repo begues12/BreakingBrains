@@ -1,81 +1,57 @@
-/* Contenedor principal */
-.djs-gallery {
+.container {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-/* Estilo de las tarjetas de DJ */
 .dj-card {
-    display: inline-block;
-    background-color: #212529;
-    border-radius: 8px;
-    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 90%;
-    cursor: pointer;
 }
 
 .dj-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Imagen cuadrada con recorte */
 .dj-img {
-    width: 250px;   /* Ancho fijo para la imagen */
-    height: 250px;  /* Altura fija para que la imagen sea cuadrada */
-    border-radius: 8px;
-    overflow: hidden;  /* Asegura que la imagen quede dentro del div cuadrado */
-    margin-right: 20px;  /* Espaciado entre la imagen y el contenido textual */
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
 }
 
 .dj-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;   /* Recorta la imagen para que encaje en el contenedor cuadrado */
-    object-position: center;   /* Centra la imagen recortada */
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-/* Contenedor de la información del DJ */
+.dj-card:hover .dj-img img {
+    transform: scale(1.1);
+}
+
 .dj-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 20px;
+    text-align: center;
 }
 
-/* Título del DJ */
-.dj-card h4 {
-    color: #fff;
-    font-size: 22px;
+.dj-info h4 {
+    font-size: 24px;
+    color: #333;
     font-weight: bold;
     margin-bottom: 10px;
-    text-align: left;
 }
 
-/* Descripción del DJ */
-.dj-card p {
-    color: #ccc;
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-    text-align: left;
-}
-
-/* Asegurarse que en móviles la disposición sea correcta */
-@media (max-width: 768px) {
-    .dj-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .dj-img {
-        margin-bottom: 20px;
-    }
-
-    .dj-info h4, .dj-info p {
-        text-align: left;
-    }
+.dj-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
 }

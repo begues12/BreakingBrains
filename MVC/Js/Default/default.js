@@ -22,10 +22,10 @@
 Estp es ima funcion para enviar info al servidor creame una funcion que pueda ser reutilizada en cualquier parte del codigo
 */
 // Do is 
-function sendToServer(controller, page, action, data)
+function sendToServer(controller, action, data)
 {
 
-    fetch(`?Ctrl=${controller}&Do=${page}&Action=${action}`, {
+    fetch(`?Ctrl=${controller}&Action=${action}`, {
         method: 'POST',
         body: data
     })

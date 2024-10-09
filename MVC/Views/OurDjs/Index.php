@@ -24,11 +24,10 @@ class Index extends IView
 
     public function createObjects()
     {
-        // Contenedor principal de la galería
-        $this->div_djs = new HTML('div', ['class' => 'container']);
-        $this->div_djs->setClasses(['djs-gallery']);
-
-        $this->createPhotoGallery();
+        // Contenedor principal de la galería en cuadrícula
+        $this->div_djs = new HTML('div', ['class' => 'grid-container']);
+        
+        $this->createPhotoGrid();
     }
 
     public function compile()
@@ -36,42 +35,42 @@ class Index extends IView
         $this->addBody($this->div_djs);
     }
 
-    private function createPhotoGallery()
+    private function createPhotoGrid()
     {
         foreach ($this->djs as $dj) {
-            $this->createDjCard($dj);
+            $this->createDjTile($dj);
         }
     }
 
-    private function createDjCard($dj)
+    private function createDjTile($dj)
     {
-        // Tarjeta contenedora con flexbox para la estructura responsive
-        $div_card = new HTML('div', ['class' => 'dj-card']);
+        // Tarjeta con un diseño de cuadrícula
+        $div_tile = new HTML('div', ['class' => 'dj-tile']);
 
-        $div_img = new HTML('div', ['class' => 'dj-img']);
-
+        // Imagen del DJ
         $img = new HTML('img', [
             'src' => $dj['src'],
             'class' => 'img-fluid',
             'alt' => 'Photo of ' . $dj['name']
         ]);
 
-        $div_text = new HTML('div', ['class' => 'dj-info']);
-
-        $h5 = new HTML('h4');
-        $h5->setText($dj['name']);
-
+        // Información del DJ
+        $div_info = new HTML('div', ['class' => 'dj-info']);
+        
+        $h4 = new HTML('h4');
+        $h4->setText($dj['name']);
+        
         $p = new HTML('p');
         $p->setText($dj['description']);
 
-        $div_text->addElement($h5);
-        $div_text->addElement($p);
+        $div_info->addElement($h4);
+        $div_info->addElement($p);
 
-        $div_img->addElement($img);
+        // Añadir imagen e información al tile
+        $div_tile->addElement($img);
+        $div_tile->addElement($div_info);
 
-        $div_card->addElement($div_img);
-        $div_card->addElement($div_text);
-
-        $this->div_djs->addElement($div_card);
+        // Añadir el tile al contenedor principal
+        $this->div_djs->addElement($div_tile);
     }
 }
