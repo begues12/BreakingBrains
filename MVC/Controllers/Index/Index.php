@@ -23,7 +23,7 @@ class Index extends IController
         }*/
 
         $alert = new LinkAlert(true, 'dark', 'fa-ticket-simple');
-        $alert->setMessage('¡Tenemos un evento especial!');
+        $alert->setMessage('¡Tenemos un evento especial🎶😎!');
         $alert->setLink('?Ctrl=Events');
 
         $this->setVar('eventAlert', $alert);
