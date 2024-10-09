@@ -14,7 +14,7 @@ class Index extends IController
 
     public function prepare()
     {
-        $alert = new HTML('div', ['d-none']);
+        /*$alert = new HTML('div', ['d-none']);
         if (!$this->getCookie('show_event_alert'))
         {
             $alert = new LinkAlert(true, 'info', 'fa-info-circle');
@@ -23,7 +23,7 @@ class Index extends IController
             
             $this->setCookie('show_event_alert', true, time() + 3600);
         }
-        $this->setVar('eventAlert', $alert);
+        $this->setVar('eventAlert', $alert);9*/
 
         $this->setVar('galleryImages',
         [
