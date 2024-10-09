@@ -260,7 +260,7 @@ class Index extends IView{
     
         // Crear la imagen
         $img = new HTML('img', [
-            'src' => 'Assets\Images\TeamPhoto\3Djs2.jpg', 
+            'src' => 'Assets\Images\TeamPhoto\3Djs2.JPG', 
             'alt' => 'Breaking Brains'
         ]);
         $img->setStyle([
