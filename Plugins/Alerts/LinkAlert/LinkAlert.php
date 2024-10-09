@@ -31,9 +31,6 @@ class LinkAlert extends HTML
         $this->alertContainer->setClasses([
             'alert',
             'alert-' . $alertType,
-            'alert-dismissible',
-            'fade',
-            'show',
             'alert-basic'
         ]);
         $this->alertContainer->setAttribute('role', 'alert');
