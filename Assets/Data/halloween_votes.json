@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Pumpkin",
+        "votes": 0,
+        "image" "Assets/Images/Halloween/halloween1.jpg"
+    },
+    {
+        "name": "Ghost",
+        "votes": 0,
+        "image" : "Assets/Images/Halloween/halloween1.jpg"
+    },
+    {
+        "name": "Witch",
+        "votes": 0,
+        "image" : "Assets/Images/Halloween/halloween1.jpg"
+    },
+    {
+        "name": "Zombie",
+        "votes": 0,
+        "image" : "Assets/Images/Halloween/halloween1.jpg"
+    },
+    {
+        "name": "Vampire",
+        "votes": 0,
+        "image" : "Assets/Images/Halloween/halloween1.jpg"
+    }
+]

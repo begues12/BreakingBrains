@@ -7,7 +7,7 @@ use Plugins\Tools\RequestJson;
 
 class Index extends IController
 {
-    private $voteFilePath = 'Assets/Votes/halloween_votes.json';
+    private $voteFilePath = 'Assets/Data/halloween_votes.json';
     private $votes;
     private $requestJson;
 
@@ -39,9 +39,9 @@ class Index extends IController
             $this->votes    = $jsonData ? json_decode($jsonData, true) : [];
         } else {
             $this->votes = [
-                '1' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0],
-                '2' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0],
-                '3' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0],
+                '1' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 1'],
+                '2' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 2'],
+                '3' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 3'],
             ];
         }
     }
