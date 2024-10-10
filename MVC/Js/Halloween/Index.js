@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('You voted for ' + contestantId);
             let data = sendToServer("Halloween", "Vote", {"id" : contestantId});
             $("body").append(data['msg']);
+            location.reload();
         });
     });
 });
