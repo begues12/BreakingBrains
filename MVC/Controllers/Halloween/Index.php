@@ -67,7 +67,7 @@ class Index extends IController
 
         $this->setCookie('voted_halloween', true, time() + (86400 * 30));
 
-        $this->requestJson->requestJsonEncode(['msg' => '¡Tu voto se ha guardo!', 200]);
+        $this->requestJson->requestJsonEncode(['msg' => '¡Tu voto se ha guardo!'], 200);
     }
 
     public function getVotes()
