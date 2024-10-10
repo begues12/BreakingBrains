@@ -56,7 +56,9 @@ class Index extends IController
     {
         $contestantId = $this->post('id');
         
-    echo '-'.$contestantId.'-';
+        echo '-'.$contestantId.'-';
+        
+        pre_array($this->post());
 
         if ($this->getCookie('voted_halloween')) {
             $this->requestJson->requestJsonEncode(['msg' => "¡Ya has votado anteriormente!"], 500);
