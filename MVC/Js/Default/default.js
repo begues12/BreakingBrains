@@ -24,10 +24,11 @@ Estp es ima funcion para enviar info al servidor creame una funcion que pueda se
 // Do is 
 function sendToServer(controller, action, data)
 {
+    
 
     fetch(`?Ctrl=${controller}&Action=${action}`, {
         method: 'POST',
-        body: data
+        body: JSON.stringify(data)
     })
     .then(response => response.text())
     .then(data => {
