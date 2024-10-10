@@ -54,13 +54,8 @@ class Index extends IController
 
     public function vote(): void
     {
-        $contestantId = $this->post('id');
+        $contestantId = $this->payload('id');
         
-        echo '-'.$contestantId.'-';
-        
-        echo '-----';
-        pre_array($this->post());
-        echo '-----';
         if ($this->getCookie('voted_halloween')) {
             $this->requestJson->requestJsonEncode(['msg' => "¡Ya has votado anteriormente!"], 500);
             return;

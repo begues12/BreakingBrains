@@ -91,6 +91,21 @@ abstract class IController
         return '';
     }
 
+    public function payload(string $name=''): mixed
+    {
+        $payload = json_decode(file_get_contents('php://input'), true);
+
+        if ($name == '') {
+            return $payload;
+        }
+
+        if (isset($payload[$name])) {
+            return $payload[$name];
+        }
+
+        return '';
+    }
+
     public function BlockByIp()
     {
         $this->bloquedByIp = true;
