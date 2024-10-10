@@ -37,7 +37,6 @@ class Index extends IController
         if (file_exists($this->voteFilePath)) {
             $jsonData       = file_get_contents($this->voteFilePath);
             $this->votes    = $jsonData ? json_decode($jsonData, true) : [];
-            print_r($this->votes);
         } else {
             $this->votes = [
                 '1' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 1'],
@@ -67,7 +66,7 @@ class Index extends IController
 
         $this->saveVotes();
 
-        $this->setCookie('voted_halloween', true, time() + (86400 * 30));
+        #$this->setCookie('voted_halloween', true, time() + (86400 * 30));
 
         $this->requestJson->requestJsonEncode(['msg' => '¡Tu voto se ha guardo!'], 200);
         return;
