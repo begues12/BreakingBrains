@@ -39,9 +39,9 @@ class Index extends IController
             $this->votes    = $jsonData ? json_decode($jsonData, true) : [];
         } else {
             $this->votes = [
-                '1' => ['image' => 'Assets/Images/Halloween/participant1.jpg', 'votes' => 0],
-                '2' => ['image' => 'Assets/Images/Halloween/participant2.jpg', 'votes' => 0],
-                '3' => ['image' => 'Assets/Images/Halloween/participant3.jpg', 'votes' => 0],
+                '1' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0],
+                '2' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0],
+                '3' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0],
             ];
         }
     }
