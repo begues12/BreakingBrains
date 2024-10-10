@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             const contestantId = this.getAttribute('data-id');
             alert('You voted for ' + contestantId);
-            let data = sendToServer("Halloween", "Vote", {'id' : contestantId});
+            let data = sendToServer("Halloween", "Vote", [contestantId]);
             $("body").append(data['msg']);
         });
     });
