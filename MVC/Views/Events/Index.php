@@ -42,7 +42,7 @@ class Index extends IView
 
     private function createEventGallery()
     {
-        $today = date('Y-m-d'); // Fecha actual para comparar con la fecha del evento
+        $today = date('Y-m-d');
         foreach ($this->events as $event) {
             $isPast = (strtotime($event['date']) < strtotime($today)) ? true : false;
             $this->createEventCard($event, $isPast);
@@ -58,8 +58,7 @@ class Index extends IView
             'overflow' => 'hidden'
         ]);
 
-        // Carrusel de medios (imágenes y videos)
-        $carousel_id = 'carousel_' . uniqid(); // ID único para cada carrusel
+        $carousel_id = 'carousel_' . uniqid();
         $div_carousel = new HTML('div', [
             'id' => $carousel_id,
             'class' => 'carousel slide',
@@ -73,7 +72,6 @@ class Index extends IView
             ]);
 
             if (preg_match('/\.(jpg|jpeg|png|gif)$/i', $media)) {
-                // Si el archivo es una imagen
                 $img = new HTML('img', [
                     'src' => $media,
                     'class' => 'd-block w-100',
@@ -85,7 +83,6 @@ class Index extends IView
                 ]);
                 $carousel_item->addElement($img);
             } elseif (preg_match('/\.(mp4|webm)$/i', $media)) {
-                // Si el archivo es un video
                 $video = new HTML('video', [
                     'class' => 'd-block w-100',
                     'controls' => true
@@ -107,7 +104,6 @@ class Index extends IView
 
         $div_carousel->addElement($div_carousel_inner);
 
-        // Controles del carrusel (prev y next)
         $carousel_control_prev = new HTML('a', [
             'class' => 'carousel-control-prev',
             'href' => '#' . $carousel_id,
@@ -127,20 +123,18 @@ class Index extends IView
         $div_carousel->addElement($carousel_control_prev);
         $div_carousel->addElement($carousel_control_next);
 
-        // Añadir el carrusel al div de la tarjeta
         $div_card->addElement($div_carousel);
 
-        // Nombre del evento
         $h5 = new HTML('h5');
         $h5->setText($event['title'] . ($isPast ? " - Finalizado" : ""));
         $h5->setStyle(['color' => '#fff', 'text-align' => 'center', 'margin-top' => '15px', 'font-size' => '20px']);
         $h5->setClass($isPast ? 'bg-danger' : 'bg-primary');
 
         $h5_2 = new HTML('h5');
-        $h5_2->setText($event['date']);
+        //Change format date
+        $h5_2->setText(date('d/m/Y', strtotime($event['date'])));
         $h5_2->setStyle(['color' => '#fff', 'text-align' => 'center', 'margin-top' => '15px', 'font-size' => '14px']);
 
-        // Descripción del evento
         $p = new HTML('p');
         $p->setText($event['description']);
         $p->setStyle(['color' => '#ccc', 'text-align' => 'center', 'font-size' => '14px']);

@@ -34,10 +34,6 @@ class Index extends IView{
 
     public function createObjects()
     {
-        
-
-
-        // Título e imagen
         $this->div_title = new HTML('div', ['class' => 'image-container']);
         $this->div_title->setClasses(['d-flex', 'flex-column', 'align-items-center', 'justify-content-center', 'w-100']);
 
@@ -142,7 +138,6 @@ class Index extends IView{
 
     public function compile()
     {
-        // $this->addBody($this->div_video_container);
 
         $this->addBody($this->div_title);
         $this->addBody($this->getVar('eventAlert'));
@@ -219,7 +214,7 @@ class Index extends IView{
     
         // Crear el párrafo
         $p_text = new HTML('p');
-        $p_text->setText("Breaking Brains es un grupo de DJs que se dedican a la música electrónica. Nos encargamos de hacer que tu evento sea inolvidable.");
+        $p_text->setText($this->getVar('BBText'));
         $p_text->setStyle([
             'font-size'     => '16px',
             'color'         => 'white',
@@ -294,7 +289,7 @@ class Index extends IView{
     
         // Crear el párrafo
         $p_text = new HTML('p');
-        $p_text->setText("Nos encargamos de hacer que tu evento sea inolvidable. Con nuestra música electrónica y nuestros DJs profesionales, tu evento será único.");
+        $p_text->setText($this->getVar('BBText2'));
         $p_text->setStyle([
             'font-size'     => '16px',
             'color'         => 'white',

@@ -36,6 +36,8 @@
 
 .btn-futuristic:hover {
     transform: scale(1.2);    
+    /* Color degradado para el botón en rojo */
+    background-color: linear-gradient(45deg, #f76800, #86fd03, #018ff1);
     opacity: 1;
 }
 
