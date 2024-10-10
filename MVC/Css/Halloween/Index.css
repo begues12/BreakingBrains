@@ -1,11 +1,9 @@
 body {
-    background-color: #2b2b2b;
     font-family: 'Creepster', cursive;
     color: #ff7518;
 }
 
 .gallery-container {
-    background-color: #1f1f1f;
     padding: 20px;
     border-radius: 15px;
 }
