@@ -40,7 +40,7 @@ class Index extends IView
             ]);
 
             $voteButton = new HTML('button');
-            $voteButton->setClasses(['btn', 'btn-vote', 'mt-3']);
+            $voteButton->setClasses(['btn', 'btn-vote', 'mt-3', 'text-white']);
             $voteButton->setText("Votar 🎃");
             $voteButton->setAttributes(['data-id' => $id]);
 
