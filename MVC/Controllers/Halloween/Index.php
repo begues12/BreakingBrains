@@ -58,6 +58,7 @@ class Index extends IController
 
         if ($this->getCookie('voted_halloween')) {
             $this->requestJson->requestJsonEncode(['msg' => "¡Ya has votado anteriormente!"], 500);
+            continue;
         }
 
         if (isset($this->votes[$contestantId])) {
@@ -69,6 +70,7 @@ class Index extends IController
         $this->setCookie('voted_halloween', true, time() + (86400 * 30));
 
         $this->requestJson->requestJsonEncode(['msg' => '¡Tu voto se ha guardo!'], 200);
+        continue;
     }
 
     public function getVotes()
