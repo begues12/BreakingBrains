@@ -2,7 +2,7 @@
     {
         "name": "Pumpkin",
         "votes": 0,
-        "image" "Assets/Images/Halloween/halloween1.jpg"
+        "image" : "Assets/Images/Halloween/halloween1.jpg"
     },
     {
         "name": "Ghost",
