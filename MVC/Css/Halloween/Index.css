@@ -8,10 +8,9 @@ body {
     background-color: #1f1f1f;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0px 0px 20px #ff7518;
 }
 
-.contestant img {
+.contestant img :hover {
     box-shadow: 0px 0px 15px #ff7518;
 }
 
