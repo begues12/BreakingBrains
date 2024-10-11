@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function resetVotes()
 {
+    alert("resetVotes");
     data = sendToServer("Halloween", "ResetVotes", {});
-    console.log(data);
     insertAlert(data['alert']);
 
     return data;
