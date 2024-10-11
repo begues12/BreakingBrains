@@ -3,6 +3,7 @@
 namespace MVC\Controllers\Halloween;
 
 use Engine\Core\IController;
+use Plugins\Alerts\BasicAlert\BasicAlert;
 use Plugins\Tools\RequestJson;
 
 class Index extends IController
@@ -56,7 +57,10 @@ class Index extends IController
         $contestantId = $this->payload('id');
         
         if ($this->getCookie('voted_halloween')) {
-            $this->requestJson->requestJsonEncode(['msg' => "¡Ya has votado anteriormente!"], 500);
+            $alertVote = new BasicAlert(true, 'danger', 'fas fa-exclamation-triangle');
+            $alertVote->setMessage("¡No puedes volver a votar!");
+
+            $this->requestJson->requestJsonEncode(['msg' => "¡No puedes volver a votar!", 'alert' => $alertVote->toString()], 500);
             return;
         }
 
@@ -66,9 +70,12 @@ class Index extends IController
 
         $this->saveVotes();
 
-        #$this->setCookie('voted_halloween', true, time() + (86400 * 30));
+        $this->setCookie('voted_halloween', true, time() + (86400 * 30));
 
-        $this->requestJson->requestJsonEncode(['msg' => '¡Tu voto se ha guardo!'], 200);
+        $alertVote = new BasicAlert(true);
+        $alertVote->setMessage("¡Has votado!");
+
+        $this->requestJson->requestJsonEncode(['msg' => '¡Tu voto se ha guardo!', 'alert' => $alertVote->toString()],200);
         return;
     }
 

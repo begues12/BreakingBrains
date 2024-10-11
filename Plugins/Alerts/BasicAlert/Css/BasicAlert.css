@@ -1,21 +1,23 @@
-/* Estilo de la alerta de éxito */
-.alert-container {
+#basic-alert {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+    top: 20px; /* Ubicación en la parte superior */
+    right: -100%; /* Comienza fuera de la pantalla */
+    z-index: 9999;
+    max-width: 450px; /* Ajusta el ancho según sea necesario */
+    transition: right 0.5s ease-in-out;
+    visibility: hidden;
 }
 
-/* Estilo para la animación de entrada desde arriba */
-.alert-success {
-    animation: slideIn 0.5s ease-in-out;
+#basic-alert.fade-out {
+    opacity: 0;
+    visibility: hidden;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
+#basic-alert.show {
+    right: 20px; /* Ubica la alerta dentro de la pantalla */
+    visibility: visible;
+}
+
+.custom-margin {
+    margin-right: 10px; /* Ajusta este valor según el espacio que desees */
 }

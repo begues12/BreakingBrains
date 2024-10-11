@@ -1,6 +1,5 @@
 body {
     font-family: 'Creepster', cursive;
-    color: #ff7518;
 }
 
 .gallery-container {
@@ -8,11 +7,15 @@ body {
     border-radius: 15px;
 }
 
-.contestant :hover {
-    box-shadow: 0px 0px 15px #ff7518;
-
+.contestant {
+    border-radius: 8px;
 }
 
+.contestant:hover{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
 
 .btn-vote {
     background-color: #ff7518;

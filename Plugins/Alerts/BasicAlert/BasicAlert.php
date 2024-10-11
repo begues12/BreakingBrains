@@ -18,12 +18,13 @@ class BasicAlert extends HTML
         $this->setId('basic-alert');
         $this->setClasses([
             'alert-container',
-            'basic-alert'
+            'basic-alert',
+            $visible ? 'show' : ''
         ]);
         $this->setStyle(['visibility' => $visible ? 'visible' : 'hidden']);
         $this->setCssFile('Plugins/Alerts/BasicAlert/Css/BasicAlert.css');
         $this->setJsFile('Plugins/Alerts/BasicAlert/Js/BasicAlert.js');
-
+    
         // Alerta de éxito
         $this->alertContainer = new HTML('div');
         $this->alertContainer->setClasses([
@@ -36,7 +37,7 @@ class BasicAlert extends HTML
         ]);
         $this->alertContainer->setAttribute('role', 'alert');
 
-        $this->icon = new Icon($icon, '1x', '', ['mr-2']);
+        $this->icon = new Icon($icon, '1x', '', ['custom-margin']);
 
         $this->label = new HTML('label');
         $this->label->setClasses([

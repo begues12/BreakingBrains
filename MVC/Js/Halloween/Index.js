@@ -4,10 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
     voteButtons.forEach(button => {
         button.addEventListener('click', function () {
             const contestantId = this.getAttribute('data-id');
-            alert('You voted for ' + contestantId);
-            let data = sendToServer("Halloween", "Vote", {"id" : contestantId});
-            $("body").append(data['msg']);
-            location.reload();
+            
+            // Llamada a sendToServer
+            sendToServer("Halloween", "Vote", {"id": contestantId})
+            .then(data => {
+                console.log(data);  // Aquí puedes procesar la respuesta una vez que la promesa se resuelva
+                // Add the alert to body viene en data['alert'] como texto
+                document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
+                console.log(data[0]['alert']);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     });
 });

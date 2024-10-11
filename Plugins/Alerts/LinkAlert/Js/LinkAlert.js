@@ -7,17 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
         data = sendToServer('ServerActions', 'index', 'ShowAlert', true);
     }
 
-    // Ocultar la alerta al cerrar
     function hideAlert() {
         alertContainer.classList.remove('visible');
         alertContainer.style.right = -alertContainer.offsetWidth - 20 + 'px';
     }
 
-    // Botón de cerrar
     document.querySelector('.close').addEventListener('click', function() {
         hideAlert();
     });
 
-    // Simulación de la aparición de la alerta
-    setTimeout(showAlert, 100); // Aparece después de 100ms
+    setTimeout(showAlert, 200); // Aparece después de 100ms
 });

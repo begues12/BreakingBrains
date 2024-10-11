@@ -1,40 +1,23 @@
-/*document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(form);
-        fetch('?Ctrl=Contact&Action=SendEmail', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log('Success:', data);
-            alert('Mensaje enviado correctamente!');
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            alert('Error al enviar el mensaje.');
-        });
-    });
-});
-Estp es ima funcion para enviar info al servidor creame una funcion que pueda ser reutilizada en cualquier parte del codigo
-*/
-// Do is 
-function sendToServer(controller, action, data)
-{
-    
-
-    fetch(`?Ctrl=${controller}&Action=${action}`, {
+function sendToServer(controller, action, data) {
+    return fetch(`?Ctrl=${controller}&Action=${action}`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(data)
     })
-    .then(response => response.text())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();  // Aquí asumimos que el servidor devuelve un JSON
+    })
     .then(data => {
-        return data;
+        // Convierte el JSON a un array si es posible
+        return Array.isArray(data) ? data : Object.values(data);
     })
     .catch((error) => {
-        return error;
+        console.error('Error:', error);
+        return [];  // Devuelve un array vacío en caso de error
     });
 }
