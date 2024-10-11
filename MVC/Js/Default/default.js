@@ -23,6 +23,11 @@ function sendToServer(controller, action, data) {
 }
 
 
+function insertAlert(alert)
+{
+    document.body.insertAdjacentHTML('beforeend', alert);
+}
+
 function closeAlert(target) {
     if (target) {
         setTimeout(function () {

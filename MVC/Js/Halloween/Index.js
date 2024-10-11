@@ -19,3 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+function resetVotes()
+{
+    data = sendToServer("Halloween", "ResetVotes", {});
+    insertAlert(data['alert']);
+}

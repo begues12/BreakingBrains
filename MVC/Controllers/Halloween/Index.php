@@ -52,6 +52,13 @@ class Index extends IController
         file_put_contents($this->voteFilePath, json_encode($this->votes, JSON_PRETTY_PRINT));
     }
 
+    public function getVotes()
+    {
+        return is_array($this->votes) ? $this->votes : [];
+    }
+
+
+    #=== Server actions ===#
     public function vote(): void
     {
         $contestantId = $this->payload('id');
@@ -79,8 +86,21 @@ class Index extends IController
         return;
     }
 
-    public function getVotes()
+    public function resetVotes(): void
     {
-        return is_array($this->votes) ? $this->votes : [];
+        foreach ($this->votes as $key => $value) {
+            $this->votes[$key]['votes'] = 0;
+        }
+
+        $this->saveVotes();
+
+        $alertVote = new BasicAlert(true);
+        $alertVote->setMessage("¡Votos reiniciados!");
+            
+        $this->requestJson->requestJsonEncode(['msg' => '¡Votos reiniciados!', 'alert' => $alertVote->toString()],200);
+
+        return;
     }
+
+  
 }
