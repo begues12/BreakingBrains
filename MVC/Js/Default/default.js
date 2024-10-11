@@ -31,13 +31,12 @@ function insertAlert(alert)
 function closeAlert(target) {
     if (target) {
         setTimeout(function () {
-            alertElement.classList.add('fade-out'); // Añade la clase para el fade-out
-        }, 3000); // Espera 5 segundos antes de empezar el fade-out
+            alertElement.classList.add('fade-out'); 
+        }, 3000); 
 
-        // Opcional: remover completamente el mensaje del DOM después del fade-out
         setTimeout(function () {
-            alertElement.style.display = 'none'; // Ocultar el elemento tras el fade-out
+            alertElement.style.display = 'none'; 
             alertElement.parentNode.removeChild(target);
-        }, 4000); // Deja un segundo más para completar la transición antes de ocultarlo
+        }, 4000); 
     }
 }
