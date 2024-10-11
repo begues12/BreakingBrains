@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Llamada a sendToServer
             sendToServer("Halloween", "Vote", {"id": contestantId})
             .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data['alert']);
+                document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -20,8 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function resetVotes()
 {
-    data = sendToServer("Halloween", "ResetVotes", {});
-    insertAlert(data['alert']);
+    data = sendToServer("Halloween", "ResetVotes", {})
+    .then(data => {
+        insertAlert(data[0]['alert']);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    }
+
+    
 
     return data;
 }
