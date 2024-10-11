@@ -21,9 +21,9 @@ class BasicAlert extends HTML
             'basic-alert',
             $visible ? 'show' : '',
         ]);
-        
+
         $this->setAttributes([
-            'onload': 'closeAlert(this)'
+            'onload' => 'closeAlert(this)'
         ]);
 
         $this->setStyle(['visibility' => $visible ? 'visible' : 'hidden']);
