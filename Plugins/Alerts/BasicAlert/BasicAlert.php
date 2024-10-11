@@ -22,9 +22,9 @@ class BasicAlert extends HTML
             $visible ? 'show' : ''
         ]);
         $this->setStyle(['visibility' => $visible ? 'visible' : 'hidden']);
+        $this->setJsFile('Plugins/Alerts/BasicAlert/Js/BasicAlert.js');
         $this->setCssFile('Plugins/Alerts/BasicAlert/Css/BasicAlert.css');
 
-        $this->setJsFile('Plugins/Alerts/BasicAlert/Js/BasicAlert.js');
     
         // Alerta de éxito
         $this->alertContainer = new HTML('div');
