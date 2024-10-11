@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function resetVotes()
 {
-    alert("resetVotes");
     data = sendToServer("Halloween", "ResetVotes", {});
     insertAlert(data[0]['alert']);
 
