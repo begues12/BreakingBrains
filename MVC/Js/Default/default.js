@@ -24,7 +24,7 @@ function sendToServer(controller, action, data) {
 
 
 function closeAlert(target) {
-
+    alert('closeAlert');
     if (target) {
         setTimeout(function () {
             alertElement.classList.add('fade-out'); // Añade la clase para el fade-out
