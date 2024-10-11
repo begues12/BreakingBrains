@@ -113,7 +113,7 @@ class HTML {
         $string = '<' . $this->tag;
 
         foreach ($this->attributes as $name => $value) {
-            $string .= ' ' . $name . '="' . $value . '"';
+            $string .= " " . $name . "='" . $value . "'";
         }
 
         $string .= '>';
