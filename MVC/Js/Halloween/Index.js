@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Llamada a sendToServer
             sendToServer("Halloween", "Vote", {"id": contestantId})
             .then(data => {
-                console.log(data);  // Aquí puedes procesar la respuesta una vez que la promesa se resuelva
-                // Add the alert to body viene en data['alert'] como texto
                 document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
                 console.log(data[0]['alert']);
             })
@@ -25,7 +23,7 @@ function resetVotes()
 {
     alert("resetVotes");
     data = sendToServer("Halloween", "ResetVotes", {});
-    insertAlert(data['alert']);
+    insertAlert(data[0]['alert']);
 
     return data;
 }
