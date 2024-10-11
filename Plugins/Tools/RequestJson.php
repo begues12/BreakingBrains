@@ -9,10 +9,10 @@ class RequestJson
 
     public function requestJsonEncode(array $data, int $code): void
     {
-        echo json_encode({
+        echo json_encode([
             $data,
             "code"  => $code
-        });
+        ]);
     }
 
 
