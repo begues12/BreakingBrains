@@ -31,7 +31,7 @@ class Head extends BasicHead
         $LinkMaterialIcons->setAttribute('href', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 
         $LinkJquery = new HTML('script');
-        $LinkJquery->setAttribute('src', 'Engine\Utils\Apis\jquery\jquery-3.6.0.min.js');
+        $LinkJquery->setAttribute('src', 'Engine\Utils\Apis\Jquery\jquery-3.6.0.min.js');
 
         $LinkBootstrapJs = new HTML('script');
         $LinkBootstrapJs->setAttribute('src', 'Engine\Utils\Apis\Bootstrap\5.0.2\bootstrap.bundle.min.js');
