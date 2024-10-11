@@ -17,6 +17,7 @@ class Index extends IController
 
     public function prepare()
     {
+        $this->setVar('title', '📀 Sesiones');
         $this->setVar('sessions', $this->getSessions());
     }
 

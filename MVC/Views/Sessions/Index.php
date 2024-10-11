@@ -9,6 +9,7 @@ use Plugins\Wave\SoundWave\SoundWavePlayer;
 class Index extends IView
 {
     private $sessions;
+    private $h1_page_title;
     private $div_sessions_list;
 
     public function prepare()
@@ -19,6 +20,8 @@ class Index extends IView
 
     public function createObjects()
     {
+        $this->h1_page_title = new HTML('title');
+
         // Contenedor para la lista de sesiones
         $this->div_sessions_list = new HTML('div', ['class' => 'sessions-list']);
         $this->div_sessions_list->setStyle([

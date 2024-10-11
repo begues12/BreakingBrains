@@ -16,8 +16,8 @@ class Index extends IController
     {
         // Creación de la alerta para eventos
         $alert = new LinkAlert(true, 'dark', 'fa-ticket-simple');
-        $alert->setMessage('¡No te pierdas nuestro próximo evento especial! 🎶😎');
-        $alert->setLink('?Ctrl=Events');
+        $alert->setMessage('🎃¡Nuevo evento de Halloween!🎃<br>👻¡No te lo pierdas!👻');
+        $alert->setLink('?Ctrl=Halloween');
 
         $this->setVar('eventAlert', $alert);
 
