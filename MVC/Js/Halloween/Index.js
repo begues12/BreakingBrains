@@ -26,7 +26,7 @@ function resetVotes()
     })
     .catch(error => {
         console.error('Error:', error);
-    }
+    });
 
     
 
