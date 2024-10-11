@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
             sendToServer("Halloween", "Vote", {"id": contestantId})
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
+                //reload the page
+                location.reload();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -23,6 +25,7 @@ function resetVotes()
     data = sendToServer("Halloween", "ResetVotes", {})
     .then(data => {
         insertAlert(data[0]['alert']);
+        location.reload();
     })
     .catch(error => {
         console.error('Error:', error);
