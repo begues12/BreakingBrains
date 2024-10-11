@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Opcional: remover completamente el mensaje del DOM después del fade-out
         setTimeout(function () {
             alertElement.style.display = 'none'; // Ocultar el elemento tras el fade-out
+            alertElement.parentNode.removeChild(alertElement);
         }, 4000); // Deja un segundo más para completar la transición antes de ocultarlo
     }
 });
