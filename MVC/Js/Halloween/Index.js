@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
                 //reload the page
-                location.reload();
+                setTimeout(function () {
+                    location.reload();
+                }, 3000);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -25,7 +27,9 @@ function resetVotes()
     data = sendToServer("Halloween", "ResetVotes", {})
     .then(data => {
         insertAlert(data[0]['alert']);
-        location.reload();
+        setTimeout(function () {
+            location.reload();
+        }, 3000);
     })
     .catch(error => {
         console.error('Error:', error);
