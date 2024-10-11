@@ -6,7 +6,7 @@
     max-width: 450px; /* Ajusta el ancho según sea necesario */
     transition: right 0.5s ease-in-out;
     visibility: hidden;
-    animation: fadeOut 5s;
+    animation: fadeOut 5s forwards;
 }
 
 #basic-alert.fade-out {
