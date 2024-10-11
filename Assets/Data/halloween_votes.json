@@ -1,28 +1,27 @@
 [
     {
         "name": "Pumpkin",
-        "votes": 9,
+        "votes": 0,
         "image": "Assets\/Images\/Halloween\/halloween1.jpg"
     },
-    
     {
         "name": "Ghost",
-        "votes": 5,
+        "votes": 0,
         "image": "Assets\/Images\/Halloween\/halloween1.jpg"
     },
     {
         "name": "Witch",
-        "votes": 9,
+        "votes": 0,
         "image": "Assets\/Images\/Halloween\/halloween1.jpg"
     },
     {
         "name": "Zombie",
-        "votes": 5,
+        "votes": 0,
         "image": "Assets\/Images\/Halloween\/halloween1.jpg"
     },
     {
         "name": "Vampire",
-        "votes": 4,
+        "votes": 0,
         "image": "Assets\/Images\/Halloween\/halloween1.jpg"
     }
 ]

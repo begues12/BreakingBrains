@@ -11,6 +11,7 @@ class Index extends IController
     private $voteFilePath = 'Assets/Data/halloween_votes.json';
     private $votes;
     private $requestJson;
+    private $voted_cookie = 'voted_halloween';
 
     public function prepare()
     {
@@ -18,6 +19,7 @@ class Index extends IController
 
         $this->loadVotes();
         $this->setVar('votes', $this->votes);
+        $this->setVar('is_actived', true);
     }
 
     public function execute()
@@ -63,7 +65,7 @@ class Index extends IController
     {
         $contestantId = $this->payload('id');
         
-        if ($this->getCookie('voted_halloween')) {
+        if ($this->getCookie($this->voted_cookie)) {
             $alertVote = new BasicAlert(true, 'danger', 'fas fa-exclamation-triangle');
             $alertVote->setMessage("¡No puedes volver a votar!");
 
@@ -77,7 +79,7 @@ class Index extends IController
 
         $this->saveVotes();
 
-        $this->setCookie('voted_halloween', true, time() + (86400 * 30));
+        $this->setCookie($this->voted_cookie, true, time() + (86400 * 30));
 
         $alertVote = new BasicAlert(true);
         $alertVote->setMessage("¡Has votado!");
@@ -88,6 +90,8 @@ class Index extends IController
 
     public function resetVotes(): void
     {
+        unset($_COOKIE[$this->voted_cookie]);
+
         foreach ($this->votes as $key => $value) {
             $this->votes[$key]['votes'] = 0;
         }

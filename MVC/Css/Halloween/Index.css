@@ -11,13 +11,27 @@ body {
     border-radius: 8px;
 }
 
-.contestant:hover{
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+
+.contestant img:hover{
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 6px #ff7518;
+}
+
+/* Add new font */
+/* Assets\Fonts\CFHalloween-Regular.ttf */
+@font-face {
+    font-family: 'Creepster';
+    src: url('/Assets/Fonts/Scary\ Halloween\ Font.ttf');
+}
+
+h1{
+    font-family: 'Creepster';
+    color: #ff7518;
 }
 
 .btn-vote {
+    font-family: 'Creepster';
     background-color: #ff7518;
     color: #fff;
     border: none;

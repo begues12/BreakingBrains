@@ -8,6 +8,8 @@ use Engine\Utils\Header;
 
 class Index extends IView
 {
+    private $div_button_add;
+    private $button_add_participant;
     private $div_gallery;
 
     public function prepare()
@@ -17,16 +19,22 @@ class Index extends IView
 
     public function createObjects()
     {
+        if ($this->getVar('is_actived')){
+            $this->createGallery();
+        }else{
+            $this->createText();
+        }
+    }
+
+    private function createGallery()
+    {
+
         $this->div_gallery = new HTML('div', ['class' => 'gallery-container']);
         $this->div_gallery->setClasses(['d-flex', 'flex-wrap', 'justify-content-center', 'my-5']);
 
         $votes = $this->getVar('votes');
 
-        $this->createGallery($votes);
-    }
 
-    private function createGallery(array $votes)
-    {
         foreach ($votes as $id => $contestant) {
             $div_image = new HTML('div', ['class' => 'contestant']);
             $div_image->setClasses(['d-flex', 'flex-column', 'align-items-center', 'm-3']);
@@ -50,11 +58,45 @@ class Index extends IView
 
             $div_image->addElements([$img, $voteButton, $votesCount]);
             $this->div_gallery->addElement($div_image);
+            
         }
+        $this->addBody($this->div_gallery);
+
+    }
+
+    private function createText()
+    {
+        
+        $div_with_text = new HTML('div');
+        $div_with_text->setClasses([
+            'w-100',
+            'd-block',
+            'text-center',
+            'mt-5',
+        ]);
+
+        $h1_text = new HTML('h1');
+        $h1_text->setText('Unete a nuestro concurso de disfraces! <br>🎃');
+
+        $div_with_text->addElement($h1_text);
+
+        $this->button_add_participant = new HTML('button');
+        $this->button_add_participant->setText('👻¡Unirse al concurso!👻');
+        $this->button_add_participant->setClasses([
+            'btn',
+            'btn-success',
+            'btn-outline',
+            'mt-5',
+        ]);
+        $div_with_text->addElement($this->button_add_participant);
+
+        $this->addBody($div_with_text);
+        
     }
 
     public function compile()
     {
-        $this->addBody($this->div_gallery);
+       
+
     }
 }
