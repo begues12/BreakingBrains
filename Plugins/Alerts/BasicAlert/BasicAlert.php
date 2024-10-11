@@ -19,8 +19,13 @@ class BasicAlert extends HTML
         $this->setClasses([
             'alert-container',
             'basic-alert',
-            $visible ? 'show' : ''
+            $visible ? 'show' : '',
         ]);
+        
+        $this->setAttributes([
+            'onload': 'closeAlert(this)'
+        ]);
+
         $this->setStyle(['visibility' => $visible ? 'visible' : 'hidden']);
         $this->setJsFile('Plugins/Alerts/BasicAlert/Js/BasicAlert.js');
         $this->setCssFile('Plugins/Alerts/BasicAlert/Css/BasicAlert.css');

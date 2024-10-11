@@ -52,6 +52,7 @@ class Head extends BasicHead
         $Meta->setAttribute('name', 'viewport');
         $Meta->setAttribute('content', 'width=device-width, initial-scale=1');
 
+
         $this->addElements([
             $LinkBootstrap, 
             $LinkMaterialIcons, 
