@@ -25,7 +25,7 @@ body {
     src: url('/Assets/Fonts/Scary\ Halloween\ Font.ttf');
 }
 
-h1{
+h1, span{
     font-family: 'Creepster';
     color: #ff7518;
 }
@@ -43,6 +43,7 @@ h1{
 
 .btn-vote:hover {
     background-color: #e65500;
+    color: black;
 }
 
 span {

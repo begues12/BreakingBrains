@@ -8,7 +8,9 @@ use Plugins\Tools\RequestJson;
 
 class Index extends IController
 {
-    private $voteFilePath = 'Assets/Data/halloween_votes.json';
+    private $voteFilePath = 'Assets/Data/Halloween/halloween_votes.json';
+    private $configFilePath = 'Assets/Data/Halloween/halloween_config.json';
+    private $config;
     private $votes;
     private $requestJson;
     private $voted_cookie = 'voted_halloween';
@@ -16,10 +18,11 @@ class Index extends IController
     public function prepare()
     {
         $this->requestJson = new RequestJson();
-
+        
+        $this->loadConfig();
         $this->loadVotes();
         $this->setVar('votes', $this->votes);
-        $this->setVar('is_actived', true);
+        $this->setVar('is_actived', $this->config['is_actived']);
     }
 
     public function execute()
@@ -47,6 +50,23 @@ class Index extends IController
                 '3' => ['image' => 'Assets\Images\Halloween\halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 3'],
             ];
         }
+    }
+
+    private function loadConfig()
+    {
+        if (file_exists($this->configFilePath)) {
+            $jsonData       = file_get_contents($this->configFilePath);
+            $this->config    = $jsonData ? json_decode($jsonData, true) : [];
+        } else {
+            $this->config = [
+                'is_actived' => false,
+            ];
+        }
+    }
+
+    private function saveConfig()
+    {
+        file_put_contents($this->configFilePath, json_encode($this->config, JSON_PRETTY_PRINT));
     }
 
     private function saveVotes()
@@ -106,5 +126,41 @@ class Index extends IController
         return;
     }
 
+    public function openVotes(): void
+    {
+        $this->config['is_actived'] = true;
+        $this->config['is_finished'] = false;
+        $this->saveConfig();
+
+        $alertVote = new BasicAlert(true);
+        $alertVote->setMessage("¡Votaciones abiertas!");
+
+        $this->requestJson->requestJsonEncode(['msg' => '¡Votaciones abiertas!', 'alert' => $alertVote->toString()],200);
+        return;
+    }
+
+    public function closeVotes(): void
+    {
+        $this->config['is_actived'] = false;
+        $this->saveConfig();
+
+        $alertVote = new BasicAlert(true);
+        $alertVote->setMessage("¡Votaciones cerradas!");
+
+        $this->requestJson->requestJsonEncode(['msg' => '¡Votaciones cerradas!', 'alert' => $alertVote->toString()],200);
+        return;
+    }
+
+    public function finishVotes(): void
+    {
+        $this->config['is_finished'] = true;
+        $this->saveConfig();
+
+        $alertVote = new BasicAlert(true);
+        $alertVote->setMessage("¡Votaciones finalizadas!");
+
+        $this->requestJson->requestJsonEncode(['msg' => '¡Votaciones finalizadas!', 'alert' => $alertVote->toString()],200);
+        return;
+    }
   
 }
