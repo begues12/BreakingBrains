@@ -60,7 +60,7 @@ class Index extends IView{
             '2x',
             'white',
             '?Ctrl=Sessions',
-            'Sessions',
+            'Sessiones',
             $button_classes
         );
 
@@ -69,7 +69,7 @@ class Index extends IView{
             '2x',
             'white',
             '?Ctrl=Gallery',
-            'Gallery',
+            'Galería',
             $button_classes
         );
 
@@ -78,7 +78,7 @@ class Index extends IView{
             '2x',
             'white',
             '?Ctrl=OurDjs',
-            'Our Djs',
+            'Nuestros Djs',
             $button_classes
         );
 
@@ -87,7 +87,7 @@ class Index extends IView{
             '2x',
             'white',
             '?Ctrl=Events',
-            'Events',
+            'Eventos',
             $button_classes
         );
 
@@ -96,7 +96,7 @@ class Index extends IView{
             '2x',
             'white',
             '?Ctrl=Contact',
-            'Contact Us',
+            'Contacto',
             $button_classes
         );
 

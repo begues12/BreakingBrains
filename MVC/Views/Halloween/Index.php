@@ -15,6 +15,8 @@ class Index extends IView
     public function prepare()
     {
         $this->setHeader(new Header());
+        $this->setTitle("🎃 Halloween");
+        
     }
 
     public function createObjects()
@@ -61,7 +63,6 @@ class Index extends IView
             
         }
         $this->addBody($this->div_gallery);
-
     }
 
     private function createText()

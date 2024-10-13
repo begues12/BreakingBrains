@@ -11,11 +11,10 @@ body {
     border-radius: 8px;
 }
 
-
-.contestant img:hover{
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
-    box-shadow: 0 4px 6px #ff7518;
+/* on hover in contestant i need the btn-vote change color */
+.contestant:hover .btn-vote {
+    background-color: #ff7518;
+    color: black;
 }
 
 /* Add new font */
@@ -32,7 +31,6 @@ h1, span{
 
 .btn-vote {
     font-family: 'Creepster';
-    background-color: #ff7518;
     color: #fff;
     border: none;
     padding: 10px 20px;

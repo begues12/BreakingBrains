@@ -14,10 +14,8 @@ class Index extends IView
     public function prepare()
     {
         $this->setHeader(new Header());
-        // Supongamos que estos datos se obtienen de alguna lógica del backend:
+        $this->setTitle('📅 Eventos');
         $this->events = $this->getVar('events');
-
-
     }
 
     public function createObjects()
@@ -26,7 +24,7 @@ class Index extends IView
         $this->div_gallery = new HTML('div', ['class' => 'container']);
         $this->div_gallery->setClasses(['row', 'justify-content-between', 'g-4', 'w-100']);
         $this->div_gallery->setStyle([
-            'margin-top'    => '50px',
+            'margin-top'    => '10px',
             'margin-bottom' => '50px',
             'margin-left'   => 'auto',
             'margin-right'  => 'auto'
@@ -51,7 +49,7 @@ class Index extends IView
 
     private function createEventCard($event, $isPast)
     {
-        $div_card = new HTML('div', ['class' => 'col-lg-4 col-md-4 col-sm-12 m-3 p-0 card-event']);
+        $div_card = new HTML('div', ['class' => 'col-lg-3 col-md-3 col-sm-12 m-3 p-0 card-event']);
         $div_card->setStyle([
             'margin-left' => 'auto',
             'margin-right' => 'auto',
@@ -85,7 +83,9 @@ class Index extends IView
             } elseif (preg_match('/\.(mp4|webm)$/i', $media)) {
                 $video = new HTML('video', [
                     'class' => 'd-block w-100',
-                    'controls' => true
+                    'controls' => false,
+                    'autoplay' => false,
+                    'loop' => true
                 ]);
                 $source = new HTML('source', [
                     'src' => $media,

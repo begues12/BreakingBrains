@@ -15,6 +15,7 @@ class Index extends IView
     public function prepare()
     {
         $this->setHeader(new Header());
+        $this->setTitle("📀 Sesiones");
         $this->sessions = $this->getVar('sessions'); // Obtener las sesiones preparadas en el controlador
     }
 

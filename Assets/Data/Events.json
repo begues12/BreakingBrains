@@ -1,29 +1,36 @@
 [
     {
         "title"         : "Panoramica Golf Club",
-        "description"   : "Panorámica Golf & Sport Resort es un complejo turístico y residencial situado en la Costa del Azahar, en Castellón.",
+        "description"   : "Panorámica Golf & Sport Resort fué uno de los primeros lugares donde nos acogieron para realizar nuestro evento. Un lugar con unas vistas espectaculares y un ambiente inmejorable. Fué un evento inolvidable que nos dió la oportunidad de empezar a crecer y recoger experiencias para futuros eventos.",
         "date"          : "2024-05-19",
         "media"         : [
-            "Assets/Images/Events/panoramica.jpeg",
-            "Assets/Images/Events/panoramica.jpeg",
-            "Assets/Images/Events/panoramica.jpeg",
-            "Assets/Images/Events/panoramica.jpeg"
+            "Assets/Images/Events/panoramica/panoramica_2.jpeg",
+            "Assets/Images/Events/panoramica/panoramica_1.jpg"
         ]
     },
     {
         "title"         : "Gavà Jove",
-        "description"   : "Gavà Jove es un espacio de ocio y cultura para jóvenes de 12 a 30 años, donde se realizan actividades y talleres de todo tipo.",
+        "description"   : "Gracias a Gavà Jove que nos dió espacios del ayunamiento para pinchar musica por la calle y hacer eventos para todo Gavà.",
         "date"          : "2024-06-12",
         "media"         : [
-            "Assets/Images/Events/casa_gran.jpeg",
-            "Assets/Images/Events/casa_gran.jpeg",
-            "Assets/Images/Events/casa_gran.jpeg",
-            "Assets/Images/Events/casa_gran.jpeg"
+            "Assets/Images/Events/gava_jove/gava_jove_1.jpeg",
+            "Assets/Images/Events/gava_jove/gava_jove_2.jpeg",
+            "Assets/Images/Events/gava_jove/gava_jove_3.jpg"
+        ]
+    },
+    {
+        "title"         : "San Juan: Flama del canigó",
+        "description"   : "Un evento anual que se celebra la noche del 23 de junio en la que se enciende una hoguera y gracias a la colaboración de la asociación de vecinos de Gavà pudimos realizar un evento increible en la plaza del ayunamiento de Gavà.",
+        "date"          : "2024-06-23",
+        "media"         : [
+            "Assets/Images/Events/flama/flama_canigo_1.jpg",
+            "Assets/Images/Events/flama/flama_canigo_2.mp4",
+            "Assets/Images/Events/flama/flama_canigo_3.mp4"
         ]
     },
     {
         "title"         : "The LAKE",
-        "description"   : "Un evento de música electrónica en el que se reúnen los mejores DJs de la escena electrónica actual.",
+        "description"   : "En este evento fuimos organizadores y Dj's de un espacio cedido por el ayuntamiento de Gavà en el American Lake de Gavà. Un evento que nos dió la oportunidad de hacer un evento en un lugar único y con un ambiente inmejorable. Pinchando al lado de Rowsi una Dj que está empezando a despuntar en la escena musical.",
         "date"          : "2024-07-12",
         "media"         : [
             "Assets/Images/Events/the_lake.png",

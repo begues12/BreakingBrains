@@ -14,6 +14,7 @@ class Index extends IView{
     public function prepare()
     {
         $this->setHeader(new Header());
+        $this->setTitle('📷 Galería');
         $this->photos = $this->getVar('photos');
     }
 

@@ -15,12 +15,12 @@ class Header extends BasicHeader{
 
         $this->setCssFile('MVC\Css\Header\Index.css');
         
-        $this->addHeaderLink('🏠 Home', '?', true, iconClass: 'fas fa-home');
-        $this->addHeaderLink('📀 Sessions', '?Ctrl=Sessions', iconClass: 'fas fa-music');
-        $this->addHeaderLink('📷 Gallery', '?Ctrl=Gallery', iconClass: 'fas fa-camera');
-        $this->addHeaderLink('📅 Events', '?Ctrl=Events', iconClass: 'fas fa-calendar-alt');
-        $this->addHeaderLink('​🎛️​ Our Djs', '?Ctrl=OurDjs', iconClass: 'fas fa-user');
-        $this->addHeaderLink('🎧​ Contact Us', '?Ctrl=Contact', iconClass: 'fas fa-headset');
+        $this->addHeaderLink('🏠 Menú',         '?', true, iconClass: 'fas fa-home');
+        $this->addHeaderLink('📀 Sessiones',    '?Ctrl=Sessions', iconClass: 'fas fa-music');
+        $this->addHeaderLink('📷 Galería',      '?Ctrl=Gallery', iconClass: 'fas fa-camera');
+        $this->addHeaderLink('📅 Eventos',      '?Ctrl=Events', iconClass: 'fas fa-calendar-alt');
+        $this->addHeaderLink('​🎛️​ Nuestros Djs', '?Ctrl=OurDjs', iconClass: 'fas fa-user');
+        $this->addHeaderLink('🎧​ Contacto',     '?Ctrl=Contact', iconClass: 'fas fa-headset');
 
         if(in_array($_SERVER['REMOTE_ADDR'], $config->get('ipEditor')['whitelist']))
         {

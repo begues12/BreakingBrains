@@ -27,7 +27,6 @@ function resetVotes()
     data = sendToServer("Halloween", "ResetVotes", {})
     .then(data => {
         insertAlert(data[0]['alert']);
-        // unset cookie voted_halloween
         document.cookie = "voted_halloween=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         setTimeout(function () {
             location.reload();
@@ -36,9 +35,7 @@ function resetVotes()
     .catch(error => {
         console.error('Error:', error);
     });
-
     
-
     return data;
 }
 

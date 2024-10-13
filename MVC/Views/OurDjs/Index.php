@@ -14,7 +14,8 @@ class Index extends IView
     public function prepare()
     {
         $this->setHeader(new Header());
-        // Aquí deberías cargar los datos de los DJs de una base de datos o configuración
+        $this->setTitle("🎛 Nuestros DJs");
+
         $this->djs = [
             $this->getVar('biel-text'),
             $this->getVar('ntk-text'),
@@ -24,9 +25,7 @@ class Index extends IView
 
     public function createObjects()
     {
-        // Contenedor principal de la galería en cuadrícula
         $this->div_djs = new HTML('div', ['class' => 'grid-container']);
-        
         $this->createPhotoGrid();
     }
 

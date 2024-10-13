@@ -13,14 +13,12 @@ use Engine\Config;
 abstract class IView extends HTML
 {
     private $head;
-    private $loadingSpinner;
-    private $confirmOk;
     private $body;
     private $header;
+    private $title;
     private $main;
     private $footer;
     private $vars = array();
-    private $editorButton;
     private $config;
 
     public function __construct()
@@ -29,18 +27,18 @@ abstract class IView extends HTML
         
         $this->config = new Config();
 
-        $this->head = new Head();
-        $this->loadingSpinner = new BasicLoading(false);
-        $this->confirmOk = new BasicConfirmOk(false);
-        $this->body = new HTML('body');
-        $this->main = new HTML('main');
-        $this->footer = new Footer();
+        $this->head     = new Head();
+        $this->body     = new HTML('body');
+        $this->title    = new HTML('title');
+        $this->main     = new HTML('main');
+        $this->footer   = new Footer();
 
         $this->body->setAttribute('style', 'height: 100%;');
         $this->body->setClass('bg-dark text-light');
 
         $this->main->setId('main-content');
         $this->main->setClass('pb-5');
+    
     }
 
     public function setVars($vars)
@@ -105,6 +103,13 @@ abstract class IView extends HTML
         $this->footer->render();
     }
 
+    function setTitle(string $title): void
+    {
+        $this->title = new HTML('h2');
+        $this->title->setText($title);
+        $this->title->setClass('mt-3 mx-5');
+    }
+
     function compileView()
     {
         if ($this->head){
@@ -117,10 +122,12 @@ abstract class IView extends HTML
         
         $this->addElement($this->body);
         
+        if ($this->title){
+            $this->body->addElement($this->title);
+        }
 
         $this->body->addElement($this->main);
-        $this->body->addElement($this->loadingSpinner);
-        $this->body->addElement($this->confirmOk);
+
 
         $this->addElement($this->footer);
         
