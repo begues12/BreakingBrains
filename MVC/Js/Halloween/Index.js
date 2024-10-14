@@ -21,9 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.getElementById('upload-container').addEventListener('click', function() {
-    document.getElementById('participant_image').click();
-});
+// If exists
+if (document.getElementById('upload-container')) {
+    document.getElementById('upload-container').addEventListener('click', function() {
+        document.getElementById('participant_image').click();
+    });
+}
 
 function resetVotes()
 {
