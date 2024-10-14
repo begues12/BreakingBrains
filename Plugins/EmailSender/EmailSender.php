@@ -69,7 +69,6 @@ class EmailSender
             $this->mailer->AltBody = strip_tags($body);
 
             $this->mailer->send();
-            echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$this->mailer->ErrorInfo}";
         }

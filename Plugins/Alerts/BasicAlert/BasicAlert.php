@@ -12,7 +12,7 @@ class BasicAlert extends HTML
     private $label;
     private $text;
 
-    public function __construct(bool $visible = false, string $alertType = 'success', $icon = 'fa-check-circle')
+    public function __construct(bool $visible = true, string $alertType = 'success', $icon = 'fa-check-circle')
     {
         parent::__construct('div');
         $this->setId('basic-alert');
