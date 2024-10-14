@@ -206,29 +206,69 @@ class Index extends IController
 
     private function uploadImage(): string
     {
-        if (isset($_FILES['participant_image']) && $_FILES['participant_image']['error'] === UPLOAD_ERR_OK) {
-            $fileTmpPath = $_FILES['participant_image']['tmp_name'];
-            $fileName = $_FILES['participant_image']['name'];
-            $fileNameCmps = explode(".", $fileName);
-            $fileExtension = strtolower(end($fileNameCmps));
-            $allowedfileExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+        if (isset($_FILES['participant_image'])) {
+            $fileError = $_FILES['participant_image']['error'];
 
-            if (in_array($fileExtension, $allowedfileExtensions)) {
-                $uploadFileDir = $this->save_folder;
-                $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-                $dest_path = $uploadFileDir . $newFileName;
+            // Verificar el código de error de la subida de archivos
+            switch ($fileError) {
+                case UPLOAD_ERR_OK:
+                    // No hay error, procedemos con la subida
+                    $fileTmpPath = $_FILES['participant_image']['tmp_name'];
+                    $fileName = $_FILES['participant_image']['name'];
+                    $fileSize = $_FILES['participant_image']['size'];
+                    $fileNameCmps = explode(".", $fileName);
+                    $fileExtension = strtolower(end($fileNameCmps));
+                    $allowedfileExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
-                if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                    // Verificar si el archivo tiene una extensión permitida
+                    if (!in_array($fileExtension, $allowedfileExtensions)) {
+                        throw new Exception("¡Tipo de archivo no permitido! Solo se permiten extensiones: " . implode(", ", $allowedfileExtensions));
+                    }
+
+                    // Verificar el tamaño del archivo (puedes ajustar el tamaño permitido)
+                    $maxFileSize = 5 * 1024 * 1024; // 5MB
+                    if ($fileSize > $maxFileSize) {
+                        throw new Exception("¡El archivo es demasiado grande! El tamaño máximo permitido es de " . ($maxFileSize / (1024 * 1024)) . "MB.");
+                    }
+
+                    // Intentar mover el archivo al directorio de destino
+                    $uploadFileDir = $this->save_folder;
+                    $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+                    $dest_path = $uploadFileDir . $newFileName;
+
+                    if (!move_uploaded_file($fileTmpPath, $dest_path)) {
+                        throw new Exception("¡Error al mover la imagen al directorio destino! Verifique los permisos de escritura en el directorio: " . $uploadFileDir);
+                    }
+
                     return $dest_path; // Devolver la ruta de la imagen
-                }else{
-                    throw new Exception("¡Error al subir la imagen por que no se pudo mover al directorio destino!");
-                }
-            }else{
-                throw new Exception("¡Tipo de archivo no permitido!");
-            }
-        }
 
-        throw new Exception("Error al subir la imagen.");
+                case UPLOAD_ERR_INI_SIZE:
+                    throw new Exception("¡El archivo excede el tamaño máximo permitido por la directiva upload_max_filesize en php.ini!");
+
+                case UPLOAD_ERR_FORM_SIZE:
+                    throw new Exception("¡El archivo excede el tamaño máximo especificado en el formulario HTML!");
+
+                case UPLOAD_ERR_PARTIAL:
+                    throw new Exception("¡El archivo solo se subió parcialmente!");
+
+                case UPLOAD_ERR_NO_FILE:
+                    throw new Exception("¡No se subió ningún archivo!");
+
+                case UPLOAD_ERR_NO_TMP_DIR:
+                    throw new Exception("¡Falta la carpeta temporal en el servidor!");
+
+                case UPLOAD_ERR_CANT_WRITE:
+                    throw new Exception("¡Error al escribir el archivo en el disco!");
+
+                case UPLOAD_ERR_EXTENSION:
+                    throw new Exception("¡Subida detenida por una extensión de PHP!");
+
+                default:
+                    throw new Exception("¡Error desconocido al subir la imagen!");
+            }
+        } else {
+            throw new Exception("¡No se ha detectado ningún archivo para subir!");
+        }
     }
 
     public function newParticipant(string $name, string $email, string $fileURL)
