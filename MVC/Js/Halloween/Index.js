@@ -28,6 +28,15 @@ if (document.getElementById('upload-container')) {
     });
 }
 
+// Quitar la cookie de votación y recargar la página
+
+
+// Si se ha borrado la cookie, recargar la página
+if (document.cookie.includes('voted_halloween')){
+    document.cookie = "voted_halloween=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    location.reload();
+}
+
 function resetVotes()
 {
     data = sendToServer("Halloween", "ResetVotes", {})
