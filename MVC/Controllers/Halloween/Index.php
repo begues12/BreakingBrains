@@ -211,7 +211,10 @@ class Index extends IController
     private function uploadImage(): string
     {
         if (isset($_FILES['participant_image'])) {
-            error_log("Subida de archivo detectada.");
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+
 
             $fileError = $_FILES['participant_image']['error'];
 
