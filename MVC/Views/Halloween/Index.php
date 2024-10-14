@@ -56,7 +56,7 @@ class Index extends IView
 
             // Crear el botón de votar solo si se permite votar
             $voteButton = new HTML('button');
-            $voteButton->setClasses(['btn', 'btn-submit', 'mt-3', 'text-white']);
+            $voteButton->setClasses(['btn', 'btn-vote', 'btn-submit', 'mt-3', 'text-white']);
             $voteButton->setText("Votar 🎃");
             $voteButton->setAttributes(['data-id' => $id]);
 
