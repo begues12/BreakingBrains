@@ -207,12 +207,14 @@ class Index extends IController
     private function uploadImage(): string
     {
         if (isset($_FILES['participant_image'])) {
+            error_log("Subida de archivo detectada.");
+
             $fileError = $_FILES['participant_image']['error'];
 
             // Verificar el código de error de la subida de archivos
             switch ($fileError) {
                 case UPLOAD_ERR_OK:
-                    // No hay error, procedemos con la subida
+                    error_log("No hay errores en el archivo.");
                     $fileTmpPath = $_FILES['participant_image']['tmp_name'];
                     $fileName = $_FILES['participant_image']['name'];
                     $fileSize = $_FILES['participant_image']['size'];
@@ -231,6 +233,11 @@ class Index extends IController
                         throw new Exception("¡El archivo es demasiado grande! El tamaño máximo permitido es de " . ($maxFileSize / (1024 * 1024)) . "MB.");
                     }
 
+                    // Verificar si el archivo temporal existe
+                    if (!file_exists($fileTmpPath)) {
+                        throw new Exception("¡El archivo temporal no existe!");
+                    }
+
                     // Intentar mover el archivo al directorio de destino
                     $uploadFileDir = $this->save_folder;
                     $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
@@ -240,6 +247,7 @@ class Index extends IController
                         throw new Exception("¡Error al mover la imagen al directorio destino! Verifique los permisos de escritura en el directorio: " . $uploadFileDir);
                     }
 
+                    error_log("Archivo subido con éxito a " . $dest_path);
                     return $dest_path; // Devolver la ruta de la imagen
 
                 case UPLOAD_ERR_INI_SIZE:
@@ -270,6 +278,7 @@ class Index extends IController
             throw new Exception("¡No se ha detectado ningún archivo para subir!");
         }
     }
+
 
     public function newParticipant(string $name, string $email, string $fileURL)
     {
