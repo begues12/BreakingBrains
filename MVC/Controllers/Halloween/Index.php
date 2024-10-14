@@ -200,7 +200,7 @@ class Index extends IController
 
         } catch (Exception $e) {
             error_log("Error al enviar el mensaje de contacto: " . $e->getMessage());
-            $alertError->setMessage("¡Error al enviar el mensaje!");
+            $alertError->setMessage("¡Error al enviar el mensaje!".$this->config_server['email']);
             $request->requestJsonEncode(['msg' => '¡Error al enviar el mensaje!', 'alert' => $alertError->toString()], 500);
         }
     }
