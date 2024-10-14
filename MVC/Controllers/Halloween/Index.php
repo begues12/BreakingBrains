@@ -220,7 +220,11 @@ class Index extends IController
 
                 if (move_uploaded_file($fileTmpPath, $dest_path)) {
                     return $dest_path; // Devolver la ruta de la imagen
+                }else{
+                    throw new Exception("¡Error al subir la imagen por que no se pudo mover al directorio destino!");
                 }
+            }else{
+                throw new Exception("¡Tipo de archivo no permitido!");
             }
         }
 
