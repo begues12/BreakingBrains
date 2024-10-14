@@ -118,8 +118,6 @@ function sendMail() {
         processData: false,
         dataType: "json",
         success: function(data) {
-            console.log("Respuesta completa del servidor:", data);
-
             if (data.alert) {
                 document.body.insertAdjacentHTML('beforeend', data.alert);
             } else if (data['0'] && data['0'].alert) {
@@ -127,9 +125,11 @@ function sendMail() {
             } else {
                 console.error("No se encontró la alerta en la respuesta.");
             }
+            setTimeout(function () {
+                location.reload();
+            }, 3000);
         },
         error: function(xhr) {
-            console.error("Error:", xhr);
             if (xhr.responseJSON && xhr.responseJSON.alert) {
                 document.body.insertAdjacentHTML('beforeend', xhr.responseJSON.alert);
             } else if (xhr.responseJSON && xhr.responseJSON['0'] && xhr.responseJSON['0'].alert) {
@@ -137,6 +137,9 @@ function sendMail() {
             } else {
                 document.body.insertAdjacentHTML('beforeend', "<div class='alert alert-danger'>Error al enviar el correo</div>");
             }
+            setTimeout(function () {
+                location.reload();
+            }, 3000);
         }
     });
 }
