@@ -90,6 +90,22 @@ function finishVotes()
     return data;
 }
 
+function clearParticipants()
+{
+    data = sendToServer("Halloween", "ClearParticipants", {})
+    .then(data => {
+        insertAlert(data[0]['alert']);
+        setTimeout(function () {
+            location.reload();
+        }, 3000);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    return data;
+}
+
 function sendMail() {
     let form = document.getElementById('halloween-form');
     let formData = new FormData(form);

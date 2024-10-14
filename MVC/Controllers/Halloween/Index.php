@@ -171,6 +171,16 @@ class Index extends IController
         $this->requestJson->requestJsonEncode(['msg' => '¡Votaciones finalizadas!', 'alert' => $alertVote->toString()], 200);
     }
 
+    public function clearParticipants(): void
+    {
+        $this->votes = [];
+        $this->saveVotes();
+
+        $alertVote = new BasicAlert(true);
+        $alertVote->setMessage("¡Participantes eliminados!");
+        $this->requestJson->requestJsonEncode(['msg' => '¡Participantes eliminados!', 'alert' => $alertVote->toString()], 200);
+    }
+
     public function sendEmail()
     {
         $request    = new RequestJson();
