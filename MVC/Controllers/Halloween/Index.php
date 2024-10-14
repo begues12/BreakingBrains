@@ -22,7 +22,7 @@ class Index extends IController
         $this->loadConfig();
         $this->loadVotes();
         $this->setVar('votes', $this->votes);
-        $this->setVar('is_actived', $this->config['is_actived']);
+        $this->setVar('status', $this->config['status']);
     }
 
     public function execute()
@@ -128,8 +128,7 @@ class Index extends IController
 
     public function openVotes(): void
     {
-        $this->config['is_actived'] = true;
-        $this->config['is_finished'] = false;
+        $this->config['status'] = "activated";
         $this->saveConfig();
 
         $alertVote = new BasicAlert(true);
@@ -141,7 +140,7 @@ class Index extends IController
 
     public function closeVotes(): void
     {
-        $this->config['is_actived'] = false;
+        $this->config['status'] = "closed";
         $this->saveConfig();
 
         $alertVote = new BasicAlert(true);
@@ -153,7 +152,7 @@ class Index extends IController
 
     public function finishVotes(): void
     {
-        $this->config['is_finished'] = true;
+        $this->config['activated'] = "show_votes";
         $this->saveConfig();
 
         $alertVote = new BasicAlert(true);

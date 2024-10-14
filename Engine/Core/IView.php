@@ -53,9 +53,7 @@ abstract class IView extends HTML
 
     public function getVar($name)
     {
-        if (!isset($this->vars[$name])) {
-            echo "Error: Variable {$name} not found";
-        }else{
+        if (isset($this->vars[$name])) {
             return $this->vars[$name];
         }
 

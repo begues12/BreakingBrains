@@ -16,26 +16,28 @@ class Index extends IView
     {
         $this->setHeader(new Header());
         $this->setTitle("🎃 Halloween");
-        
     }
 
     public function createObjects()
     {
-        if ($this->getVar('is_actived')){
-            $this->createGallery();
+        if ($this->getVar('status') == "activated"){ 
+            if (!$this->getVar('has_email')){
+                $this->createText();
+            }else{
+                $this->createGallery();
+            }
         }else{
-            $this->createText();
+            $this->createGallery(false);
         }
     }
 
-    private function createGallery()
+    private function createGallery(bool $active=true)
     {
 
         $this->div_gallery = new HTML('div', ['class' => 'gallery-container']);
         $this->div_gallery->setClasses(['d-flex', 'flex-wrap', 'justify-content-center', 'my-5']);
 
         $votes = $this->getVar('votes');
-
 
         foreach ($votes as $id => $contestant) {
             $div_image = new HTML('div', ['class' => 'contestant']);
@@ -54,11 +56,12 @@ class Index extends IView
             $voteButton->setText("Votar 🎃");
             $voteButton->setAttributes(['data-id' => $id]);
 
-            $votesCount = new HTML('span');
-            $votesCount->setText("Votos: " . $contestant['votes']);
-            $votesCount->setStyle(['margin-top' => '10px', 'color' => 'white']);
+            $div_image->addElement($img);
+            
+            if($active){
+                $div_image->addElement($voteButton);
+            }
 
-            $div_image->addElements([$img, $voteButton, $votesCount]);
             $this->div_gallery->addElement($div_image);
             
         }
@@ -81,15 +84,31 @@ class Index extends IView
 
         $div_with_text->addElement($h1_text);
 
+        $input_name = new HTML('input');
+        $input_name->setId("participant_email");
+        $input_name->setAttributes(['placeholder' => "Nombre", "type" => "text"]);
+        $input_name->setClasses([
+            "input",
+            'm-3'
+        ]);
+
+        $input_mail = new HTML('input');
+        $input_mail->setId("participant_email");
+        $input_mail->setAttributes(['placeholder' => "E-Mail", "type" => "email"]);
+        $input_mail->setClasses([
+            "input",
+            'm-3'
+        ]);
+
         $this->button_add_participant = new HTML('button');
         $this->button_add_participant->setText('👻¡Unirse al concurso!👻');
         $this->button_add_participant->setClasses([
             'btn',
             'btn-success',
             'btn-outline',
-            'mt-5',
+            'm-3'
         ]);
-        $div_with_text->addElement($this->button_add_participant);
+        $div_with_text->addElements([$input_name, $input_mail, $this->button_add_participant]);
 
         $this->addBody($div_with_text);
         
