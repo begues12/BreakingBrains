@@ -14,6 +14,7 @@ class Index extends IController
     private $voteFilePath = 'Assets/Data/Halloween/halloween_votes.json';
     private $configFilePath = 'Assets/Data/Halloween/halloween_config.json';
     private $config;
+    private $config_server;
     private $save_folder;
     private $votes;
     private $requestJson;
@@ -23,11 +24,25 @@ class Index extends IController
     {
         $this->requestJson = new RequestJson();
         $config = new Config();
-        $this->config = $config->get('contact');
+        $this->config_server = $config->get('contact');
         $this->save_folder = "Assets/Images/Halloween/";
         
         $this->loadConfig();
         $this->loadVotes();
+
+        // Verificar si el hash del participante está guardado en la cookie
+        $participantHash = $this->getCookie('participant_hash');
+
+        // Verificar si el hash existe en los votos
+        $isRegistered = false;
+        foreach ($this->votes as $vote) {
+            if (isset($vote['hash']) && $vote['hash'] === $participantHash) {
+                $isRegistered = true;
+                break;
+            }
+        }
+
+        $this->setVar('can_vote', $isRegistered);
         $this->setVar('votes', $this->votes);
         $this->setVar('status', $this->config['status']);
     }
@@ -168,7 +183,7 @@ class Index extends IController
             $data = [
                 'name' => $data['name'],
                 'email' => $to,
-                'contact_email' => "info@breakingbrains.es",
+                'contact_email' => $this->config_server['email'],
             ];
 
             $emailSender = new EmailSender();
@@ -215,13 +230,20 @@ class Index extends IController
 
     public function newParticipant(string $name, string $email, string $fileURL)
     {
+        // Generar un hash único para el participante usando su email y el tiempo actual
+        $hash = md5($email . time());
+
         $this->votes[] = [
             'name' => $name,
             'email' => $email,
             'votes' => 0,
-            'image' => $fileURL
+            'image' => $fileURL,
+            'hash' => $hash  // Guardar el hash en los datos del participante
         ];
 
         $this->saveVotes();
+
+        // Guardar el hash en una cookie
+        $this->setCookie('participant_hash', $hash, time() + (86400 * 30)); // La cookie expira en 30 días
     }
 }

@@ -1,0 +1,23 @@
+[
+    {
+        "name": "alex",
+        "email": "beeguespark@gmail.com",
+        "votes": 1,
+        "image": "Assets\/Images\/Halloween\/1e2042bb887d3db84e89af9ee869153b.jpeg",
+        "hash": "ab0156d092063c260572a0fc64a6d9fb"
+    },
+    {
+        "name": "alex",
+        "email": "beeguespark@gmail.com",
+        "votes": 0,
+        "image": "Assets\/Images\/Halloween\/9864f6ecc3f75dcd4d39b3a8a8f25ff7.jpeg",
+        "hash": "a5d7649732615ec45d5032f53c6fc74a"
+    },
+    {
+        "name": "Alejandro",
+        "email": "beeguespark@gmail.com",
+        "votes": 1,
+        "image": "Assets\/Images\/Halloween\/0142e8bad84b789a0164b10e171aa766.jpeg",
+        "hash": "4ff49435cb58e65ed9a370f68f0a7cdb"
+    }
+]

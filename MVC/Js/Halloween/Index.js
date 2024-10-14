@@ -105,10 +105,8 @@ function sendMail() {
             console.log("Respuesta completa del servidor:", data);
 
             if (data.alert) {
-                console.log("Alerta encontrada:", data.alert);
                 document.body.insertAdjacentHTML('beforeend', data.alert);
             } else if (data['0'] && data['0'].alert) {
-                console.log("Alerta encontrada en 0:", data['0'].alert);
                 document.body.insertAdjacentHTML('beforeend', data['0'].alert);
             } else {
                 console.error("No se encontró la alerta en la respuesta.");
@@ -117,7 +115,6 @@ function sendMail() {
         error: function(xhr) {
             console.error("Error:", xhr);
             if (xhr.responseJSON && xhr.responseJSON.alert) {
-                console.log("Alerta de error encontrada:", xhr.responseJSON.alert);
                 document.body.insertAdjacentHTML('beforeend', xhr.responseJSON.alert);
             } else if (xhr.responseJSON && xhr.responseJSON['0'] && xhr.responseJSON['0'].alert) {
                 document.body.insertAdjacentHTML('beforeend', xhr.responseJSON['0'].alert);

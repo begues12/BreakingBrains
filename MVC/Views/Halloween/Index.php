@@ -8,8 +8,6 @@ use Engine\Utils\Header;
 
 class Index extends IView
 {
-    private $div_button_add;
-    private $button_add_participant;
     private $div_gallery;
 
     public function prepare()
@@ -20,20 +18,25 @@ class Index extends IView
 
     public function createObjects()
     {
-        if ($this->getVar('status') == "activated"){ 
-            if (!$this->getVar('has_email')){
+        // Verificamos si el usuario ya está registrado (mediante la cookie o la variable de estado)
+        if ($this->getVar('status') == "activated") { 
+            if (!$this->getVar('can_vote')) {
                 $this->createText();
-            }else{
-                $this->createGallery();
+            } else {
+                $this->createGallery($this->getVar('can_vote'));
             }
-        }else{
+        } else {
+            // Si el concurso aún no ha comenzado, mostrar la galería sin opción de votar
             $this->createGallery(false);
         }
     }
 
-    private function createGallery(bool $active=true)
+    /**
+     * Crear la galería de participantes
+     * @param bool $can_vote Indica si se puede votar o no
+     */
+    private function createGallery(bool $can_vote = false)
     {
-
         $this->div_gallery = new HTML('div', ['class' => 'gallery-container']);
         $this->div_gallery->setClasses(['d-flex', 'flex-wrap', 'justify-content-center', 'my-5']);
 
@@ -51,23 +54,35 @@ class Index extends IView
                 'object-fit' => 'cover'
             ]);
 
+            // Crear el botón de votar solo si se permite votar
             $voteButton = new HTML('button');
             $voteButton->setClasses(['btn', 'btn-vote', 'mt-3', 'text-white']);
             $voteButton->setText("Votar 🎃");
             $voteButton->setAttributes(['data-id' => $id]);
 
             $div_image->addElement($img);
-            
-            if($active){
+
+            if ($can_vote) {
+                // Si se puede votar, añadir el botón de votar
                 $div_image->addElement($voteButton);
+            } else {
+                // Si no se puede votar, añadir un mensaje en lugar del botón
+                $noVoteMessage = new HTML('p');
+                $noVoteMessage->setText("Votación no disponible.");
+                $noVoteMessage->setClasses(['text-muted', 'mt-3']);
+                $div_image->addElement($noVoteMessage);
             }
 
             $this->div_gallery->addElement($div_image);
-            
         }
+
+        // Añadir la galería al body
         $this->addBody($this->div_gallery);
     }
 
+    /**
+     * Crear el formulario de registro para nuevos participantes
+     */
     private function createText()
     {
         $div_with_text = new HTML('div');
@@ -114,16 +129,16 @@ class Index extends IView
         
         $text_upload = new HTML('p');
         $text_upload->setText("Haz clic aquí para subir tu foto de disfraz 🎃");
-        
+
         // Input de tipo file oculto
         $input_image = new HTML('input', ['type' => 'file', 'name' => 'participant_image']);
         $input_image->setAttributes(['id' => 'participant_image', 'style' => 'display:none']);
 
         $div_upload->addElements([$icon_upload, $text_upload]);
 
-        $this->button_add_participant = new HTML('button', ['type' => 'button', 'onclick' => 'sendMail()']);
-        $this->button_add_participant->setText('👻 ¡Unirse al concurso! 👻');
-        $this->button_add_participant->setClasses([
+        $button_add_participant = new HTML('button', ['type' => 'button', 'onclick' => 'sendMail()']);
+        $button_add_participant->setText('👻 ¡Unirse al concurso! 👻');
+        $button_add_participant->setClasses([
             'btn',
             'btn-submit',
             'btn-outline',
@@ -131,19 +146,15 @@ class Index extends IView
             'mt-3'
         ]);
 
-        $form->addElements([$input_name, $input_mail, $div_upload, $input_image, $this->button_add_participant]);
+        $form->addElements([$input_name, $input_mail, $div_upload, $input_image, $button_add_participant]);
 
         $div_with_text->addElement($form);
 
         $this->addBody($div_with_text);
     }
 
-
-
-
     public function compile()
     {
-       
-
+        // Compilar la vista si es necesario, se deja vacío si no es requerido.
     }
 }
