@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             const contestantId = this.getAttribute('data-id');
             
-            // Llamada a sendToServer
+            this.disabled = true;
+            this.addClass('disabled');
+
             sendToServer("Halloween", "Vote", {"id": contestantId})
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
