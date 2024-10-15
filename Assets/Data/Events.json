@@ -1,13 +1,5 @@
+
 [
-    {
-        "title"         : "Panoramica Golf Club",
-        "description"   : "Panorámica Golf & Sport Resort fué uno de los primeros lugares donde nos acogieron para realizar nuestro evento. Un lugar con unas vistas espectaculares y un ambiente inmejorable. Fué un evento inolvidable que nos dió la oportunidad de empezar a crecer y recoger experiencias para futuros eventos.",
-        "date"          : "2024-05-19",
-        "media"         : [
-            "Assets/Images/Events/panoramica/panoramica_2.jpeg",
-            "Assets/Images/Events/panoramica/panoramica_1.jpg"
-        ]
-    },
     {
         "title"         : "Gavà Jove",
         "description"   : "Gracias a Gavà Jove que nos dió espacios del ayunamiento para pinchar musica por la calle y hacer eventos para todo Gavà.",
@@ -37,6 +29,15 @@
             "Assets/Images/Events/the_lake.png",
             "Assets/Images/Events/the_lake.png",
             "Assets/Images/Events/the_lake.png"
+        ]
+    },
+    {
+        "title"         : "Panoramica Golf Club",
+        "description"   : "Panorámica Golf & Sport Resort fué uno de los primeros lugares donde nos acogieron para realizar nuestro evento. Un lugar con unas vistas espectaculares y un ambiente inmejorable. Fué un evento inolvidable que nos dió la oportunidad de empezar a crecer y recoger experiencias para futuros eventos.",
+        "date"          : "2024-05-19",
+        "media"         : [
+            "Assets/Images/Events/panoramica/panoramica_2.jpeg",
+            "Assets/Images/Events/panoramica/panoramica_1.jpg"
         ]
     }
 ]
