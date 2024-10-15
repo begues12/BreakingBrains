@@ -42,8 +42,7 @@ class Index extends IView{
         // Cambiar el contenedor a <section> para seguir la estructura semántica
         $this->div_gallery = new HTML('section', ['class' => 'gallery-container']);
         $this->div_gallery->setStyle([
-            'column-count' => '4', // Establece el número inicial de columnas
-            'column-gap' => '15px', // Espacio entre columnas
+            'column-gap' => '15px',
             'padding' => '20px',
             'width' => '100%'
         ]);

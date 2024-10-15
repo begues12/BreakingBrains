@@ -34,6 +34,11 @@ class Index extends IController
         return json_decode(file_get_contents($this->events_json), true);
     }
 
+    public function editor()
+    {
+        
+    }
+
 }
 
 ?>

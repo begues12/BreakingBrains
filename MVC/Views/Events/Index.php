@@ -49,7 +49,7 @@ class Index extends IView
 
     private function createEventCard($event, $isPast)
     {
-        $div_card = new HTML('div', ['class' => 'col-lg-3 col-md-3 col-sm-12 m-3 p-0 card-event']);
+        $div_card = new HTML('div', ['class' => 'col-lg-5 col-md-5 col-sm-12 m-3 p-0 card-event']);
         $div_card->setStyle([
             'margin-left' => 'auto',
             'margin-right' => 'auto',
@@ -76,7 +76,7 @@ class Index extends IView
                     'alt' => 'Media for event ' . $event['title']
                 ]);
                 $img->setStyle([
-                    'height' => '180px',
+                    'height' => '280px',
                     'object-fit' => 'cover' // Mantener el ratio de la imagen
                 ]);
                 $carousel_item->addElement($img);
@@ -93,7 +93,7 @@ class Index extends IView
                 ]);
                 $video->addElement($source);
                 $video->setStyle([
-                    'height' => '180px',
+                    'height' => '280px',
                     'object-fit' => 'cover' // Mantener el ratio de la imagen del video
                 ]);
                 $carousel_item->addElement($video);
