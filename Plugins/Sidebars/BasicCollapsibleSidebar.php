@@ -59,7 +59,7 @@ class BasicCollapsibleSidebar extends \Engine\Core\HTML
         $this->aSideBarHeadImg->setClass("m-2");
         $this->aSideBarHeadImg->setAttribute("width", "27");
         $this->aSideBarHeadImg->setAttribute("height", "27");
-        $this->aSideBarHeadImg->setAttribute("src", "https://cdn-icons-png.flaticon.com/512/128/128810.png");
+        $this->aSideBarHeadImg->setAttribute("src", "https://cdn-icons-png.flaticon.com/512/128/128810.jpg");
 
         $this->aSideBarHeadSpan = new HTML("span");
         $this->aSideBarHeadSpan->setClass("fs-5");

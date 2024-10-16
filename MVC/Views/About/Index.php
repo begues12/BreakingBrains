@@ -48,7 +48,7 @@ class Index extends IView{
         $this->img1 = new HTML('img');
         $this->img1->setClasses(['img-fluid', 'img-300']);
         $this->img1->setAttributes([
-            'src'   => 'https://cdn-icons-png.flaticon.com/512/128/128810.png',
+            'src'   => 'https://cdn-icons-png.flaticon.com/512/128/128810.jpg',
             'alt'   => 'placeholder'
         ]);
         
@@ -62,7 +62,7 @@ class Index extends IView{
 
         $this->img2 = new HTML('img');
         $this->img2->setAttributes([
-            'src'   => 'https://cdn-icons-png.flaticon.com/512/94/94776.png',
+            'src'   => 'https://cdn-icons-png.flaticon.com/512/94/94776.jpg',
             'alt'   => 'placeholder'
         ]);
         $this->img2->setClasses(['img-fluid', 'img-300']);

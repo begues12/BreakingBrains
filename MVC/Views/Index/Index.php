@@ -41,7 +41,7 @@ class Index extends IView{
         $this->img_breaking->setClasses(['ligthing-icon']);
         $this->img_breaking->setId('logo-image');
         $this->img_breaking->setAttributes([
-            'src' => 'Assets/Images/BreakingBrains/BreakingBrainsVinil.png',
+            'src' => 'Assets/Images/BreakingBrains/BreakingBrainsVinil.jpg',
             'alt' => 'Breaking Brains'
         ]);
 
