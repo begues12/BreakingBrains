@@ -5,7 +5,7 @@
     "type"          : "action",
     "description"   : "Show alerts messages in the screen",
     "category"      : "Alerts",
-    "icon"          : "icon.png",
+    "icon"          : "icon.jpg",
     "dependencies"  : ["jquery"],
     "installfile"   : "install.js"
 }

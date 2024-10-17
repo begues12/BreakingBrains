@@ -5,8 +5,8 @@
         "description"   : "Gracias a Gavà Jove que nos dió espacios del ayunamiento para pinchar musica por la calle y hacer eventos para todo Gavà.",
         "date"          : "2024-06-12",
         "media"         : [
-            "Assets/Images/Events/gava_jove/gava_jove_1.jpeg",
-            "Assets/Images/Events/gava_jove/gava_jove_2.jpeg",
+            "Assets/Images/Events/gava_jove/gava_jove_1.jpg",
+            "Assets/Images/Events/gava_jove/gava_jove_2.jpg",
             "Assets/Images/Events/gava_jove/gava_jove_3.jpg"
         ]
     },
@@ -22,13 +22,13 @@
     },
     {
         "title"         : "The LAKE",
-        "description"   : "En este evento fuimos organizadores y Dj's de un espacio cedido por el ayuntamiento de Gavà en el American Lake de Gavà. Un evento que nos dió la oportunidad de hacer un evento en un lugar único y con un ambiente inmejorable. Pinchando al lado de Rowsi una Dj que está empezando a despuntar en la escena musical.",
+        "description"   : "En este evento fuimos organizadores y Dj's de un espacio cedido por el ayuntamiento de Gavà en el American Lake. Nos dió la oportunidad de hacer un evento en un lugar único y con un ambiente inmejorable. Pinchando al lado de Rowsi una Dj que está empezando a despuntar en la escena musical.",
         "date"          : "2024-07-12",
         "media"         : [
-            "Assets/Images/Events/the_lake.png",
-            "Assets/Images/Events/the_lake.png",
-            "Assets/Images/Events/the_lake.png",
-            "Assets/Images/Events/the_lake.png"
+            "Assets/Images/Events/the_lake.jpg",
+            "Assets/Images/Events/the_lake.jpg",
+            "Assets/Images/Events/the_lake.jpg",
+            "Assets/Images/Events/the_lake.jpg"
         ]
     },
     {
@@ -36,7 +36,7 @@
         "description"   : "Panorámica Golf & Sport Resort fué uno de los primeros lugares donde nos acogieron para realizar nuestro evento. Un lugar con unas vistas espectaculares y un ambiente inmejorable. Fué un evento inolvidable que nos dió la oportunidad de empezar a crecer y recoger experiencias para futuros eventos.",
         "date"          : "2024-05-19",
         "media"         : [
-            "Assets/Images/Events/panoramica/panoramica_2.jpeg",
+            "Assets/Images/Events/panoramica/panoramica_2.jpg",
             "Assets/Images/Events/panoramica/panoramica_1.jpg"
         ]
     }

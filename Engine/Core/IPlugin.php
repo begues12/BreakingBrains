@@ -83,7 +83,7 @@ class IPlguin
 
     public function getIcon()
     {
-        return $this->url . '/icon.png';
+        return $this->url . '/icon.jpg';
     }
 
     public function getName()
