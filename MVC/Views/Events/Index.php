@@ -49,7 +49,7 @@ class Index extends IView
 
     private function createEventCard($event, $isPast)
     {
-        $div_card = new HTML('div', ['class' => 'col-lg-5 col-md-5 col-sm-12 m-3 p-0 card-event']);
+        $div_card = new HTML('div', ['class' => 'col-lg-5 col-md-5 col-sm-12 p-0 card-event']);
         $div_card->setStyle([
             'margin-left' => 'auto',
             'margin-right' => 'auto',

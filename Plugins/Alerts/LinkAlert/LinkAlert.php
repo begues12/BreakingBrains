@@ -49,8 +49,9 @@ class LinkAlert extends HTML
         $this->a->setAttribute('href', '#');
         $this->a->setClasses(['alert-link']);
 
-        $this->i = new Icon('fa-times');
-        $this->i->setClasses(['close', 'ml-2']);
+        $this->i = new Icon('');
+        $this->i->setText('❌');
+        $this->i->setClasses(['ml-2','close']);
         $this->i->setAttribute('data-dismiss', 'alert');
 
 

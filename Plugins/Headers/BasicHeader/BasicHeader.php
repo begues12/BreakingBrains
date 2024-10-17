@@ -134,7 +134,7 @@ class BasicHeader extends \Engine\Core\HTML
         }
 
         $li_a = new HTML('a');
-        $li_a->setClasses(['nav-link', 'text-white']);
+        $li_a->setClasses(['nav-link']);
         $li_a->setAttribute('href', $href);
 
         if ($aClasses) {

@@ -6,7 +6,7 @@
     overflow-x: hidden;
     border: 10px solid #4CAF50;  /* Un borde para simular el vinilo */
     animation: rotateVinyl 15s linear infinite, 
-    glow 2s linear infinite, 
+    glowShadow 5s linear infinite, 
     changeBorderColor 5s linear infinite;
     box-shadow: 0px 0px 10px 5px white;
     border-radius: 50%;
@@ -52,13 +52,22 @@
     z-index: -1;
 }
 
-/* Genera una animación para el brillo */
-@keyframes glow {
-    from {
-        box-shadow: 0px 0px 0px 0px white;
+
+
+/* Generate a animation changing the shadow size like a glow */
+@keyframes glowShadow {
+    /* Crea una transicion suave para el efecto de brillo */
+    0% {
+        box-shadow: 0px 0px 10px 5px #f76800;
     }
-    to {
-        box-shadow: 0px 0px 20px 10px white;
+    33% {
+        box-shadow: 0px 0px 10px 5px #86fd03;
+    }
+    66% {
+        box-shadow: 0px 0px 25px 5px #018ff1;
+    }
+    100% {
+        box-shadow: 0px 0px 10px 5px #f76800;
     }
 }
 

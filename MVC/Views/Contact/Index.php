@@ -19,11 +19,22 @@ class Index extends IView
     {
         // Contenedor principal con row de Bootstrap
         $this->div_contact = new HTML('div', ['class' => 'container my-5']);
+        
+        // Crear un div que contendrá el logo, centrado y con opacidad
+        $logo = new HTML('img', [
+            'src' => '/Assets/Images/BreakingBrains/breakingbrains_transparent.png', 
+            'alt' => 'Logo', 
+            'class' => 'contact-logo' // Le damos una clase para controlar su estilo
+        ]);
+
         $row = new HTML('div', ['class' => 'row']);
         
         // Información de contacto a la izquierda
         $div_info = $this->createContactInfo();
         $div_info->setClasses(['col-md-6', 'col-12']);
+        
+        // Añadir el logo en el contenedor de información
+        $div_info->addElement($logo);
 
         // Formulario de contacto a la derecha
         $div_form = $this->createContactForm();
@@ -33,6 +44,8 @@ class Index extends IView
         $row->addElement($div_form);
         $this->div_contact->addElement($row);
     }
+
+
 
     public function compile()
     {

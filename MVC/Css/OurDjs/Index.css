@@ -1,57 +1,118 @@
-.container {
+.dj-carousel {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dj-menu {
+    list-style-type: none;
+    padding: 0;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dj-menu li {
+    font-family: AGRESIVE;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    padding: 5px 10px;
+    border: 3px solid white;
+    transition: background-color 0.3s, border-color 0.3s;
+    border-radius: 6px;
+}
+
+.dj-menu li:hover {
+    color: red;
+    border-color: red;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.dj-menu li.active {
+    animation: changeBorderColor 5s linear infinite,
+    changeTextColor 5s linear infinite,
+    changeShadowColor 5s linear infinite;
+}
+
+.dj-name {
+    font-family: 'AGRESIVE';
+    font-size: 70px;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Añadir animación para los bordes y colores de texto */
+@keyframes changeBorderColor {
+    0% { border-color: red; }
+    50% { border-color: yellow; }
+    100% { border-color: red; }
+}
+
+@keyframes changeTextColor {
+    0% { color: red; }
+    50% { color: yellow; }
+    100% { color: red; }
+}
+
+/* Flexbox para alinear imagen e información */
+.dj-tile {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.dj-tile.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Flex container para alinear la imagen y la información */
+.dj-flex {
+    display: flex;
+    align-items: center;
     justify-content: space-around;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.dj-card {
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    background-color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dj-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.dj-img {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    position: relative;
-}
-
-.dj-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.dj-card:hover .dj-img img {
-    transform: scale(1.1);
+    padding: 20px;
+    margin: 20px 0;
 }
 
 .dj-info {
-    padding: 20px;
-    text-align: center;
+    text-align: left;
+    color: white;
+    padding: 15px;
+    width: 50%;
 }
 
 .dj-info h4 {
-    font-size: 24px;
-    color: #333;
-    font-weight: bold;
     margin-bottom: 10px;
 }
 
 .dj-info p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.dj-image {
+    max-width: 250px;
+    border-radius: 8px;
+    width: 35%;
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .dj-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dj-info {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .dj-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
 }
