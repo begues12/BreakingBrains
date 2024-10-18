@@ -19,7 +19,7 @@ class Head extends BasicHead
         $Icon = new HTML('link');
         $Icon->setAttribute('rel', 'icon');
         $Icon->setAttribute('type', 'image/x-icon');
-        $Icon->setAttribute('href', 'Assets\Images\BreakingBrains\breakingbrains_transparent.jpg');
+        $Icon->setAttribute('href', 'Assets\Images\BreakingBrains\breakingbrains_transparent.png');
         $this->addElement($Icon);
 
         $LinkBootstrap = new HTML('link');
