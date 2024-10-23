@@ -134,7 +134,7 @@ class Index extends IView
         $input_image = new HTML('input', ['type' => 'file', 'name' => 'participant_image']);
         $input_image->setAttributes(['id' => 'participant_image', 'style' => 'display:none']);
 
-        $div_upload->addElements([$icon_upload, $text_upload]);
+        # $div_upload->addElements([$icon_upload, $text_upload]);
 
         $button_add_participant = new HTML('button', ['type' => 'button', 'onclick' => 'sendMail()']);
         $button_add_participant->setText('👻 ¡Unirse al concurso! 👻');

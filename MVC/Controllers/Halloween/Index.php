@@ -66,12 +66,6 @@ class Index extends IController
         if (file_exists($this->voteFilePath)) {
             $jsonData = file_get_contents($this->voteFilePath);
             $this->votes = $jsonData ? json_decode($jsonData, true) : [];
-        } else {
-            $this->votes = [
-                '1' => ['image' => 'Assets/Images/Halloween/halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 1'],
-                '2' => ['image' => 'Assets/Images/Halloween/halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 2'],
-                '3' => ['image' => 'Assets/Images/Halloween/halloween1.jpg', 'votes' => 0, 'name' => 'Halloween 3'],
-            ];
         }
     }
 
