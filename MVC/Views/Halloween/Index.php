@@ -146,7 +146,7 @@ class Index extends IView
             'mt-3'
         ]);
 
-        $form->addElements([$input_name, $input_mail, $div_upload, $input_image, $button_add_participant]);
+        $form->addElements([$input_name, $input_mail, $input_image, $button_add_participant]);
 
         $div_with_text->addElement($form);
 
