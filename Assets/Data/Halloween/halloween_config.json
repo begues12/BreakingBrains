@@ -1,3 +1,8 @@
 {
-    "status": "activated"
+    "status": "activated",
+    "register_mails" : [
+        {
+            
+        }
+    ]
 }
