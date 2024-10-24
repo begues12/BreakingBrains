@@ -7,7 +7,6 @@ use Engine\Core\HTML;
 use Engine\Utils\Header;
 use Plugins\Wave\BasicWave\BasicWave;
 use Plugins\Icons\FontAwesome\LinkIcon;
-use Plugins\Icons\LinkEmoji;
 
 use function PHPSTORM_META\map;
 
@@ -56,45 +55,45 @@ class Index extends IView{
 
         $button_classes = ['btn', 'btn-futuristic', 'mt-3', 'mx-2', 'd-flex', 'align-items-center', 'justify-content-center'];
 
-        $this->linkIcon_showMusic = new LinkEmoji(
-            '📀',
-            '3x',
+        $this->linkIcon_showMusic = new LinkIcon(
+            'fa-compact-disc',
+            '2x',
             'white',
             '?Ctrl=Sessions',
             'Sessiones',
             $button_classes
         );
 
-        $this->linkIcon_showPhots = new LinkEmoji(
-            '📸',
-            '3x',
+        $this->linkIcon_showPhots = new LinkIcon(
+            'fa-camera-retro',
+            '2x',
             'white',
             '?Ctrl=Gallery',
             'Galería',
             $button_classes
         );
 
-        $this->linkIcon_ourDjs = new LinkEmoji(
-            '🎛',
-            '3x',
+        $this->linkIcon_ourDjs = new LinkIcon(
+            'fa-user',
+            '2x',
             'white',
             '?Ctrl=OurDjs',
             'Nuestros Djs',
             $button_classes
         );
 
-        $this->linkIcon_events  = new LinkEmoji(
-            '📅',
-            '3x',
+        $this->linkIcon_events  = new LinkIcon(
+            'fa-calendar',
+            '2x',
             'white',
             '?Ctrl=Events',
             'Eventos',
             $button_classes
         );
 
-        $this->linkIcon_contactUs = new LinkEmoji(
-            '📞',
-            '3x',
+        $this->linkIcon_contactUs = new LinkIcon(
+            'fa-headset',
+            '2x',
             'white',
             '?Ctrl=Contact',
             'Contacto',
