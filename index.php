@@ -1,5 +1,8 @@
 <?php
 
+// Don't show errors and warnings
+error_reporting(0);
+
 spl_autoload_register(function ($class) {
   $class = str_replace('\\', '/', $class);
   $path = $_SERVER['DOCUMENT_ROOT'] . explode('?', $_SERVER['REQUEST_URI'], 2)[0];

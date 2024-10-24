@@ -137,9 +137,6 @@ function sendMail() {
             } else {
                 console.error("No se encontró la alerta en la respuesta.");
             }
-            setTimeout(function () {
-                location.reload();
-            }, 3000);
         },
         error: function(xhr) {
             if (xhr.responseJSON && xhr.responseJSON.alert) {
@@ -149,9 +146,6 @@ function sendMail() {
             } else {
                 document.body.insertAdjacentHTML('beforeend', "<div class='alert alert-danger'>Error al enviar el correo</div>");
             }
-            setTimeout(function () {
-                location.reload();
-            }, 3000);
         }
     });
 }

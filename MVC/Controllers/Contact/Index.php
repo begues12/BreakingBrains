@@ -70,37 +70,37 @@ class Index extends IController
     {
         $request        = new RequestJson();
 
-        try{
-            $data       = $this->payload();
-            
-            $to         = $data['email'];
-            $subject    = $data['subject'];
+        $data       = $this->post();
+        
+        $to         = $data['email'];
+        $subject    = $data['subject'];
 
-            $data = [
-                'name'          => $data['name'],
-                'email'         => $data['email'],
-                'subject'       => $data['subject'],
-                'contact_email' => $this->config['email'],
-                'message'       => $data['message']
-            ];
+        $data = [
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'subject'       => $data['subject'],
+            'contact_email' => $this->config['email'],
+            'message'       => $data['message']
+        ];
 
-            $emailSender    = new EmailSender();
+        $emailSender    = new EmailSender();
 
-            $message    = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/send_info_template.html", $data);
-            $emailSender->sendEmail($to, $subject, $message);
-    
-            $body       = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/admin_notification_template.html", $data);
-            $emailSender->sendEmail($this->config['email'], $subject, $body);
+        $message    = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/send_info_template.html", $data);
+        $emailSender->sendEmail($to, $subject, $message);
 
+        $body       = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/admin_notification_template.html", $data);
+        
+
+        if ($emailSender->sendEmail($this->config['email'], $subject, $body)){
             $alert = new BasicAlert();
             $alert->setMessage("¡Email enviado correctamente! 📧");
             $request->requestJsonEncode(['msg' => '¡Email enviado correctamente! 📧', 'alert' => $alert->toString()], 200);
-
-        } catch (Exception $e) {
-            $alert = new BasicAlert();
-            $alert->setMessage("Error al enviar el email. Por favor, inténtalo de nuevo.");
+        } else {
+            $alert = new BasicAlert(true, 'danger', 'fa-exclamation-circle');
+            $alert->setMessage("Error al enviar el email.");
             $request->requestJsonEncode(['msg' => 'Error al enviar el email. Por favor, inténtalo de nuevo.', 'alert' => $alert->toString()], 500);
         }
+
     }
     
 }

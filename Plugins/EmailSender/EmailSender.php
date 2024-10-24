@@ -33,6 +33,7 @@ class EmailSender
             $this->mailer->Password     = $this->config['password'];
             $this->mailer->SMTPSecure   = PHPMailer::ENCRYPTION_STARTTLS;
             $this->mailer->Port         = $this->config['port'];
+            // $this->mailer->SMTPDebug    = 2;
 
             // Set the encoding to UTF-8
             $this->mailer->CharSet = 'UTF-8';
@@ -56,21 +57,26 @@ class EmailSender
         return $output;
     }
 
-    public function sendEmail($to, $subject, $body)
+    public function sendEmail($to, $subject, $body): bool
     {
         try {
             //Recipients
             $this->mailer->addAddress($to);
 
             //Content
-            $this->mailer->isHTML(true);                                  
+            $this->mailer->isHTML(true);
             $this->mailer->Subject = $subject;
             $this->mailer->Body    = $body;
             $this->mailer->AltBody = strip_tags($body);
-
+            
             $this->mailer->send();
+
+            return true;
+    
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$this->mailer->ErrorInfo}";
+            // echo "Message could not be sent. Mailer Error: {$this->mailer->ErrorInfo}";
         }
+
+        return false;
     }
 }
