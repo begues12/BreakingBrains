@@ -63,10 +63,8 @@ class Index extends IView
             $div_image->addElement($img);
 
             if ($can_vote) {
-                // Si se puede votar, añadir el botón de votar
                 $div_image->addElement($voteButton);
             } else {
-                // Si no se puede votar, añadir un mensaje en lugar del botón
                 $noVoteMessage = new HTML('p');
                 $noVoteMessage->setText("Votación no disponible.");
                 $noVoteMessage->setClasses(['text-muted', 'mt-3']);

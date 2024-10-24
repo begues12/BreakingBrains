@@ -1,11 +1,6 @@
 <?php
 namespace MVC\Controllers\Halloween;
 
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 use Engine\Core\IController;
 use Plugins\Alerts\BasicAlert\BasicAlert;
 use Plugins\Tools\RequestJson;
