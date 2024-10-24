@@ -63,10 +63,8 @@ class Index extends IView
             $div_image->addElement($img);
 
             if ($can_vote) {
-                // Si se puede votar, añadir el botón de votar
                 $div_image->addElement($voteButton);
             } else {
-                // Si no se puede votar, añadir un mensaje en lugar del botón
                 $noVoteMessage = new HTML('p');
                 $noVoteMessage->setText("Votación no disponible.");
                 $noVoteMessage->setClasses(['text-muted', 'mt-3']);
@@ -134,7 +132,7 @@ class Index extends IView
         $input_image = new HTML('input', ['type' => 'file', 'name' => 'participant_image']);
         $input_image->setAttributes(['id' => 'participant_image', 'style' => 'display:none']);
 
-        $div_upload->addElements([$icon_upload, $text_upload]);
+        # $div_upload->addElements([$icon_upload, $text_upload]);
 
         $button_add_participant = new HTML('button', ['type' => 'button', 'onclick' => 'sendMail()']);
         $button_add_participant->setText('👻 ¡Unirse al concurso! 👻');
@@ -146,7 +144,7 @@ class Index extends IView
             'mt-3'
         ]);
 
-        $form->addElements([$input_name, $input_mail, $div_upload, $input_image, $button_add_participant]);
+        $form->addElements([$input_name, $input_mail, $input_image, $button_add_participant]);
 
         $div_with_text->addElement($form);
 
