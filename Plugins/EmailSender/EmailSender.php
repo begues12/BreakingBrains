@@ -27,12 +27,12 @@ class EmailSender
         try {
             //Server settings
             $this->mailer->isSMTP();
-            $this->mailer->Host = $this->config['hostname'];
-            $this->mailer->SMTPAuth = true;
-            $this->mailer->Username = $this->config['username'];
-            $this->mailer->Password = $this->config['password'];
-            $this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $this->mailer->Port = $this->config['port'];
+            $this->mailer->Host         = $this->config['hostname'];
+            $this->mailer->SMTPAuth     = true;
+            $this->mailer->Username     = $this->config['username'];
+            $this->mailer->Password     = $this->config['password'];
+            $this->mailer->SMTPSecure   = PHPMailer::ENCRYPTION_STARTTLS;
+            $this->mailer->Port         = $this->config['port'];
 
             // Set the encoding to UTF-8
             $this->mailer->CharSet = 'UTF-8';

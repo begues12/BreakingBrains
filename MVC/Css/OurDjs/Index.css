@@ -13,7 +13,7 @@
 }
 
 .dj-menu li {
-    font-family: AGRESIVE;
+    font-family: 'AGRESIVE', sans-serif;
     margin: 0 10px;
     cursor: pointer;
     font-size: 20px;
@@ -37,13 +37,12 @@
 }
 
 .dj-name {
-    font-family: 'AGRESIVE';
+    font-family: 'AGRESIVE', sans-serif;
     font-size: 70px;
     color: white;
-    margin-top: 20px;
 }
 
-/* Añadir animación para los bordes y colores de texto */
+/* Animación para los bordes y colores de texto */
 @keyframes changeBorderColor {
     0% { border-color: red; }
     50% { border-color: yellow; }
@@ -56,7 +55,41 @@
     100% { color: red; }
 }
 
-/* Flexbox para alinear imagen e información */
+/* Flexbox para alinear imagen e información en el top */
+.dj-flex {
+    display: flex;
+    align-items: flex-start; /* Alineación en la parte superior */
+    justify-content: space-around;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Información del DJ */
+.dj-info {
+    text-align: left;
+    color: white;
+    padding: 15px;
+    width: 50%;
+    align-items: flex-start;
+}
+
+.dj-info h4 {
+    margin-bottom: 10px;
+}
+
+.dj-info p {
+    margin-bottom: 5px;
+}
+
+/* Imagen del DJ */
+.dj-image {
+    max-width: 250px;
+    border-radius: 8px;
+    width: 35%;
+    object-fit: cover;
+}
+
+/* Transiciones de opacidad para las tarjetas de DJ */
 .dj-tile {
     display: none;
     opacity: 0;
@@ -68,41 +101,12 @@
     opacity: 1;
 }
 
-/* Flex container para alinear la imagen y la información */
-.dj-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px;
-    margin: 20px 0;
-}
-
-.dj-info {
-    text-align: left;
-    color: white;
-    padding: 15px;
-    width: 50%;
-}
-
-.dj-info h4 {
-    margin-bottom: 10px;
-}
-
-.dj-info p {
-    margin-bottom: 5px;
-}
-
-.dj-image {
-    max-width: 250px;
-    border-radius: 8px;
-    width: 35%;
-}
-
 /* Estilos responsivos para dispositivos móviles */
 @media screen and (max-width: 768px) {
     .dj-flex {
         flex-direction: column;
         text-align: center;
+        align-items: center; /* Alinear al centro en móviles */
     }
 
     .dj-info {
@@ -113,6 +117,11 @@
     .dj-image {
         width: 100%;
         max-width: 100%;
+        margin-bottom: 20px; /* Añadir margen inferior para separar la imagen del texto */
     }
 
+    .dj-menu {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
