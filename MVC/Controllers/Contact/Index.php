@@ -34,18 +34,15 @@ class Index extends IController
 
     public function finish()
     {
-        // Opcional: lógica de finalización
     }
 
-    // Procesar el formulario de contacto
     private function processForm()
     {
-        // Capturar los datos del formulario
         $this->data = [
-            'name' => $_POST['name'] ?? '',
-            'email' => $_POST['email'] ?? '',
-            'subject' => $_POST['subject'] ?? '',
-            'message' => $_POST['message'] ?? ''
+            'name'      => $_POST['name']     ?? '',
+            'email'     => $_POST['email']    ?? '',
+            'subject'   => $_POST['subject']  ?? '',
+            'message'   => $_POST['message']  ?? ''
         ];
 
         if ($this->validate()) {
@@ -61,21 +58,19 @@ class Index extends IController
     // Validar los datos del formulario
     private function validate()
     {
-        return !empty($this->data['name']) && 
+        return !empty($this->data['name']) &&
                filter_var($this->data['email'], FILTER_VALIDATE_EMAIL) &&
-               !empty($this->data['subject']) && 
+               !empty($this->data['subject']) &&
                !empty($this->data['message']);
     }
 
-    // Simular el envío de un correo
     public function sendEmail()
     {
         try{
-            $data = $_POST;
-
+            $data       = $this->payload();
             
-            $to = $data['email'];
-            $subject = $data['subject'];
+            $to         = $data['email'];
+            $subject    = $data['subject'];
 
             $data = [
                 'name'          => $data['name'],
@@ -85,16 +80,14 @@ class Index extends IController
                 'message'       => $data['message']
             ];
 
+            $emailSender    = new EmailSender();
 
-            $emailSender = new EmailSender();
-            $message = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/send_info_template.html", $data);
+            $message    = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/send_info_template.html", $data);
             $emailSender->sendEmail($to, $subject, $message);
     
-            $body = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/admin_notification_template.html", $data);
-
+            $body       = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/admin_notification_template.html", $data);
             $emailSender->sendEmail($this->config['email'], $subject, $body);
 
-            // Para fines de desarrollo, simplemente puedes guardar en logs o simular el proceso.
             error_log("Mensaje de contacto enviado: \n" . $message);
     
         } catch (Exception $e) {
