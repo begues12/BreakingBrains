@@ -93,8 +93,8 @@ class Index extends IController
             $emailSender->sendEmail($this->config['email'], $subject, $body);
 
             $alert = new BasicAlert();
-            $alert->setMessage("¡Email enviado y participante registrado! 📧");
-            $request->requestJsonEncode(['msg' => '¡Email enviado y participante registrado! 📧', 'alert' => $alert->toString()], 200);
+            $alert->setMessage("¡Email enviado correctamente! 📧");
+            $request->requestJsonEncode(['msg' => '¡Email enviado correctamente! 📧', 'alert' => $alert->toString()], 200);
 
         } catch (Exception $e) {
             $alert = new BasicAlert();
