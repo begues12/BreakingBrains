@@ -10,12 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.text())
         .then(data => {
-            console.log('Success:', data);
-            alert('Mensaje enviado correctamente!');
+            document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
         })
         .catch((error) => {
-            console.error('Error:', error);
-            alert('Error al enviar el mensaje.');
+            document.body.insertAdjacentHTML('beforeend', data[0]['alert']);
         });
     });
 

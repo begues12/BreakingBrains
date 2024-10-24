@@ -2,9 +2,11 @@
 namespace MVC\Controllers\Contact;
 
 use Engine\Core\IController;
+use Plugins\Alerts\BasicAlert\BasicAlert;
 use Plugins\EmailSender\EmailSender;
 use Engine\Config;
 use Exception;
+use Plugins\Tools\RequestJson;
 
 class Index extends IController
 {
@@ -66,6 +68,8 @@ class Index extends IController
 
     public function sendEmail()
     {
+        $request        = new RequestJson();
+
         try{
             $data       = $this->payload();
             
@@ -88,10 +92,14 @@ class Index extends IController
             $body       = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/admin_notification_template.html", $data);
             $emailSender->sendEmail($this->config['email'], $subject, $body);
 
-            error_log("Mensaje de contacto enviado: \n" . $message);
-    
+            $alert = new BasicAlert();
+            $alert->setMessage("¡Email enviado y participante registrado! 📧");
+            $request->requestJsonEncode(['msg' => '¡Email enviado y participante registrado! 📧', 'alert' => $alert->toString()], 200);
+
         } catch (Exception $e) {
-            error_log("Error al enviar el mensaje de contacto: " . $e->getMessage());
+            $alert = new BasicAlert();
+            $alert->setMessage("Error al enviar el email. Por favor, inténtalo de nuevo.");
+            $request->requestJsonEncode(['msg' => 'Error al enviar el email. Por favor, inténtalo de nuevo.', 'alert' => $alert->toString()], 500);
         }
     }
     
