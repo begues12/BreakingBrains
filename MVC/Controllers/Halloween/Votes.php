@@ -29,7 +29,7 @@ class Votes extends IController
         $this->loadConfig();
 
         $this->setVar('votes', $this->votes);
-        $this->setVar('participant_hash', $this->participant_hash);
+        $this->setVar('participant_hash', $this->get('hash'));
     }
 
     public function execute()
