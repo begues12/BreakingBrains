@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gracias por participar - Concurso de Disfraces Halloween</title>
+    <title>Vota Ahora - Concurso de Disfraces Halloween</title>
     <style>
         html, body {
             margin: 0;
@@ -12,30 +12,30 @@
             background-color: #000000; /* Fondo oscuro de Halloween */
         }
         body {
-            font-family: 'Creepster', cursive, sans-serif; /* Fuente espeluznante */
-            background-color: #000000; /* Fondo oscuro */
-            color: #ff7518; /* Texto en naranja */
+            font-family: 'Creepster', cursive, sans-serif;
+            background-color: #000000;
+            color: #ff7518;
             text-align: center;
             padding: 20px;
         }
         .content-wrapper {
-            background-color: #1e1e1e; /* Fondo gris oscuro */
-            color: #ff7518; /* Texto naranja */
+            background-color: #1e1e1e;
+            color: #ff7518;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(255, 117, 24, 0.5); /* Sombra anaranjada */
+            box-shadow: 0 4px 12px rgba(255, 117, 24, 0.5);
             max-width: 600px;
             margin: 0 auto;
             text-align: center;
         }
         h1 {
-            color: #ff7518; /* Título en naranja */
+            color: #ff7518;
             font-size: 36px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 5px #000; /* Sombra negra */
+            text-shadow: 2px 2px 5px #000;
         }
         p {
-            color: #ffffff; /* Texto en blanco */
+            color: #ffffff;
             font-size: 18px;
             line-height: 1.6;
         }
@@ -45,18 +45,21 @@
             margin-top: 30px;
         }
         img {
-            width: 100px; /* Tamaño del logo */
+            width: 100px;
             height: auto;
             margin-bottom: 20px;
         }
-        .spooky-text {
-            color: #ff7518; /* Texto naranja */
-            font-size: 22px;
-            text-shadow: 2px 2px 5px #000; /* Sombra negra */
-        }
-        .highlight {
-            color: #ffffff; /* Resaltar detalles importantes */
+        .vote-button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin-top: 20px;
+            color: #1e1e1e;
+            background-color: #ff7518;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 20px;
             font-weight: bold;
+            text-shadow: 1px 1px 3px #000;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
@@ -68,9 +71,9 @@
             <div class="content-wrapper">
                 <img src="https://breakingbrains.es/Assets/Images/BreakingBrains/breakingbrains_transparent.png" alt="Breaking Brains Logo">
                 <h1>¡Gracias por participar, {{name}}! 🎃</h1>
-                <p>Nos alegra mucho que te hayas unido a nuestro <strong>Concurso de Disfraces de Halloween</strong>. Tu participación ha sido registrada con éxito.</p>
-                <p class="spooky-text">Pronto recibirás más noticias sobre el concurso. 📩</p>
-                <p>Cuando las votaciones estén abiertas, te enviaremos un correo especial para que puedas <strong class="highlight">votar por tu disfraz favorito</strong>. ¡Mantente atento!</p>
+                <p>Estamos muy emocionados de que seas parte de nuestro <strong>Concurso de Disfraces de Halloween</strong>. ¡Es momento de elegir tu disfraz favorito!</p>
+                <p>Haz clic en el siguiente botón para acceder a la votación:</p>
+                <a href="{{voting_link}}" class="vote-button">Vota Ahora</a>
                 <p class="footer">Si tienes alguna duda o pregunta, no dudes en contactarnos en: {{contact_email}}</p>
             </div>
         </td>

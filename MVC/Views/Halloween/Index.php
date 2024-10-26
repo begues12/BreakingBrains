@@ -18,66 +18,10 @@ class Index extends IView
 
     public function createObjects()
     {
-        // Verificamos si el usuario ya está registrado (mediante la cookie o la variable de estado)
-        if ($this->getVar('status') == "activated") { 
-            if (!$this->getVar('can_vote')) {
-                $this->createText();
-            } else {
-                $this->createGallery($this->getVar('can_vote'));
-            }
-        } else {
-            // Si el concurso aún no ha comenzado, mostrar la galería sin opción de votar
-            $this->createGallery(false);
-        }
+        $this->createText();   
     }
 
-    /**
-     * Crear la galería de participantes
-     * @param bool $can_vote Indica si se puede votar o no
-     */
-    private function createGallery(bool $can_vote = false)
-    {
-        $this->div_gallery = new HTML('div', ['class' => 'gallery-container']);
-        $this->div_gallery->setClasses(['d-flex', 'flex-wrap', 'justify-content-center', 'my-5']);
-
-        $votes = $this->getVar('votes');
-
-        foreach ($votes as $id => $contestant) {
-            $div_image = new HTML('div', ['class' => 'contestant']);
-            $div_image->setClasses(['d-flex', 'flex-column', 'align-items-center', 'm-3']);
-
-            $img = new HTML('img', ['src' => $contestant['image'], 'alt' => 'Disfraz Halloween']);
-            $img->setStyle([
-                'width' => '200px',
-                'height' => '200px',
-                'border-radius' => '10px',
-                'object-fit' => 'cover'
-            ]);
-
-            // Crear el botón de votar solo si se permite votar
-            $voteButton = new HTML('button');
-            $voteButton->setClasses(['btn', 'btn-vote', 'btn-submit', 'mt-3', 'text-white']);
-            $voteButton->setText("Votar 🎃");
-            $voteButton->setAttributes(['data-id' => $id]);
-
-            $div_image->addElement($img);
-
-            if ($can_vote) {
-                $div_image->addElement($voteButton);
-            } else {
-                $noVoteMessage = new HTML('p');
-                $noVoteMessage->setText("Votación no disponible.");
-                $noVoteMessage->setClasses(['text-muted', 'mt-3']);
-                $div_image->addElement($noVoteMessage);
-            }
-
-            $this->div_gallery->addElement($div_image);
-        }
-
-        // Añadir la galería al body
-        $this->addBody($this->div_gallery);
-    }
-
+ 
     /**
      * Crear el formulario de registro para nuevos participantes
      */
