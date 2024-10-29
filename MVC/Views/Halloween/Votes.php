@@ -14,7 +14,7 @@ class Votes extends IView
     {
         $this->setHeader(new Header());
         $this->setTitle("🎃 Halloween");
-        $hash = $this->getVar('hash');
+        $this->hash = $this->getVar('hash');
     }
 
     public function createObjects()
