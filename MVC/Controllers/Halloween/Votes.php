@@ -132,6 +132,11 @@ class Votes extends IController
 
     private function saveVotes()
     {
+        // If have permission to write
+        if (!is_writable($this->votesFilePath)) {
+            throw new Exception('No se puede escribir en el archivo de votos');
+        }
+
         file_put_contents($this->votesFilePath, json_encode($this->votes, JSON_PRETTY_PRINT));
     }
 
