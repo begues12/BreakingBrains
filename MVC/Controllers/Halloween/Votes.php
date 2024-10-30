@@ -79,10 +79,21 @@ class Votes extends IController
             $this->loadVotes();
             $this->loadParticipants();
             
-            $contestantId   = $this->payload('contestant_id');
-            $userHash       = $this->payload('hash');
+            $contestantId   = $this->payload('contestant_id') ?? $_REQUEST['contestant_id'];
+            $userHash       = $this->payload('hash') ?? $_REQUEST['hash'];
             $userVoted      = $this->userVote($userHash);
             
+            if ($contestantId === null || $userHash === null) {
+                $alertError = new BasicAlert(alertType: 'danger', icon: 'fas fa-exclamation-triangle');
+                $alertError->setMessage('Error al registrar el voto');
+
+                $this->requestJson->requestJsonEncode([
+                    'success' => false,
+                    'message' => 'Error al registrar el voto',
+                    'alert' => $alertError->toString()
+                ],400);
+            }
+
             if (!$userVoted) {
 
                 $this->addVote($contestantId, $userHash);
@@ -125,9 +136,13 @@ class Votes extends IController
     }
 
     private function addVote($contestantId, $userHash)
-    {
-        $this->votes[$contestantId]['votes'][] = $userHash;
-        $this->saveVotes();
+    {   
+        try {
+            $this->votes[$contestantId]['votes'][] = $userHash;
+            $this->saveVotes();
+        } catch (Exception $e) {
+            throw new Exception('Error al registrar el voto');
+        }
     }
 
     private function userVote($userHash): bool
