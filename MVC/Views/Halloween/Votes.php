@@ -9,11 +9,13 @@ use Engine\Utils\Header;
 class Votes extends IView
 {
     private $div_gallery;
+    private $hash;
 
     public function prepare()
     {
         $this->setHeader(new Header());
         $this->setTitle("🎃 Halloween");
+        $this->hash = $this->getVar("participant_hash");
     }
 
     public function createObjects()
@@ -44,7 +46,7 @@ class Votes extends IView
             $voteButton = new HTML('button');
             $voteButton->setClasses(['btn', 'btn-vote', 'vote-button','btn-submit', 'mt-3', 'text-white']);
             $voteButton->setText("Votar 🎃");
-            $voteButton->setAttributes(['data-contestant-id' => $id, 'data-contestant-hash' => $contestant['hash']]);
+            $voteButton->setAttributes(['data-contestant-id' => $id, 'data-contestant-hash' => $this->hash]);
 
             $div_image->addElements([$img, $voteButton]);
           
