@@ -128,7 +128,7 @@ class Index extends IController
             }
 
             $alertSuccess->setMessage("¡Correos de apertura de votación enviados a $sentCount participantes! 📧");
-            $this->requestJson->requestJsonEncode(['msg' => '¡Correos enviados con éxito!', 'alert' => $alertSuccess->toString()], 200);
+            $this->requestJson->requestJsonEncode(['msg' => "¡{$sentCount} Correos enviados con éxito!", 'alert' => $alertSuccess->toString()], 200);
 
         } catch (Exception $e) {
             $alertError->setMessage("Error al enviar correos de apertura: " . $e->getMessage());
