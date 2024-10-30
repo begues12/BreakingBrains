@@ -70,6 +70,12 @@ class EmailSender
             $this->mailer->AltBody = strip_tags($body);
             
             $this->mailer->send();
+            
+            $this->mailer->clearAddresses();
+            $this->mailer->clearAttachments();
+            
+            // Close the connection
+            $this->mailer->smtpClose();
 
             return true;
     
