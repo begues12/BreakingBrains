@@ -47,6 +47,7 @@ class Votes extends IView
             $voteButton->setClasses(['btn', 'btn-vote', 'vote-button','btn-submit', 'mt-3', 'text-white']);
             $voteButton->setText("Votar 🎃");
             $voteButton->setAttributes(['data-contestant-id' => $id, 'data-contestant-hash' => $this->hash]);
+            $voteButton->setAttributes(['data-contestant-id' => $id, 'data-contestant-hash' => $this->hash]);
 
             $div_image->addElements([$img, $voteButton]);
           
