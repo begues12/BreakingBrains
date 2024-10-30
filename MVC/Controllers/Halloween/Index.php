@@ -124,7 +124,6 @@ class Index extends IController
                 
                 $message = $emailSender->renderEmailTemplate("Plugins/EmailSender/templates/send_halloween_vote_template.html", $emailData);
                 $emailSender->sendEmail($participant['email'], $subject, $message);
-                echo $participant['email'] . "<br>";
                 $sentCount++;
             }
 
